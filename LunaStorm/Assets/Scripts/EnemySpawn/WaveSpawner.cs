@@ -12,6 +12,7 @@ public class WaveSpawner : MonoBehaviour
 
     // create an array of waves
     public EnemyWave[] wavesOfEnemies;
+    public Dictionary<int, Enemy> enemySpawnerrrrr = new Dictionary<int, Enemy>();
 
     // Wave Index
     public int enemyWaveIndex = 0;
@@ -64,7 +65,6 @@ public class WaveSpawner : MonoBehaviour
         if (wavesOfEnemies[enemyWaveIndex].enemiesLeftInWave == 0)
         {
             startWaveCountDown = true;
-
             enemyWaveIndex++;
                        
         }
@@ -78,9 +78,9 @@ public class WaveSpawner : MonoBehaviour
             for (int i = 0; i < wavesOfEnemies[enemyWaveIndex].enemies.Length; i++)
             {
                 Enemy enemy = Instantiate(wavesOfEnemies[enemyWaveIndex].enemies[i], enemySpawnPoint.transform);
-
                 enemy.transform.SetParent(enemySpawnPoint.transform);
-                Destroy(enemy, 5);
+                
+                Destroy(enemy, wavesOfEnemies[enemyWaveIndex].enemyLifeTime);
 
                 yield return new WaitForSeconds(wavesOfEnemies[enemyWaveIndex].timeToNextEnemy);
             }
@@ -103,7 +103,9 @@ public class WaveSpawner : MonoBehaviour
         public float timeToNextEnemy;
 
         // enemies left in wave
-        public int enemiesLeftInWave; 
+        public int enemiesLeftInWave;
+
+        public int enemyLifeTime;
 
     }
 }

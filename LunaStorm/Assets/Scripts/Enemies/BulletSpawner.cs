@@ -113,11 +113,11 @@ public class BulletSpawner : MonoBehaviour
         timer = 0f;
     }
     //Set it to shoot straight forward 
-    private void Normal()
+    public void Normal()
     {
         this.transform.SetLocalPositionAndRotation(startPos, Quaternion.identity);
     }
-    private void Straighten()
+    public void Straighten()
     {
         this.transform.rotation = startRotation;
     }
@@ -127,17 +127,17 @@ public class BulletSpawner : MonoBehaviour
         startRotation = Quaternion.Euler(newDir.x, newDir.y, newDir.z);
         Straighten();
     }
-    private void Spin()
+    public void Spin()
     {
         transform.Rotate(rotSpeed);
     }
 
-    private void Wavy()
+    public void Wavy()
     {
         transform.Rotate(new Vector3(1, 1, 0));
     }
 
-    private void LockedOn()
+    public void LockedOn()
     {
         if (target == null)
         {
@@ -156,6 +156,11 @@ public class BulletSpawner : MonoBehaviour
             transform.rotation = transform.rotation * Quaternion.Euler(0, -90, 0);
 
         }
+    }
+    public float SetFireRate(float f)
+    {
+        fireRate = f;
+        return fireRate;
     }
    
 }

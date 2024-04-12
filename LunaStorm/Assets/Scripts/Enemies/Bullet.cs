@@ -34,6 +34,7 @@ public class Bullet : MonoBehaviour
         float z = timer * speed * transform.right.z;
 
         Vector3 test = new Vector3(x + spawnPoint.x, spawnPoint.y, z + spawnPoint.z);// spawnPoint.z);
+      
         //Debug.Log(test);
         return test;
     }

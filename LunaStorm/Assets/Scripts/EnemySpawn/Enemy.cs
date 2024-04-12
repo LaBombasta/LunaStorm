@@ -6,24 +6,34 @@ public class Enemy : MonoBehaviour
 {
     // speed of enemy
     [SerializeField] private float enemySpeed;
-    // destroy enemy after # seconds
-    //[SerializeField] private float timeToDestroyEnemy = 5f;
     // reference to wave spawner
     private WaveSpawner waveSpawner;
+    private bool doOnce;
+    [SerializeField] private BulletSpawner[] attachedGuns;
+
+
 
     private void Start()
     {
         waveSpawner = GetComponentInParent<WaveSpawner>();
+        attachedGuns = gameObject.GetComponentsInChildren<BulletSpawner>(true);
     }
-
-
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * enemySpeed * Time.deltaTime);
-
+        transform.Translate(transform.forward * enemySpeed * Time.deltaTime, Space.World);
+        if(doOnce)
+        {
+            //switch
+            //start couroutines for lifetime of the enemy
+            //rotate the y value peroidically
+            //lower or raise enemy speed over times
+            //change gun pattern
+        }
+        doOnce = false;
     }
+
     private void OnDestroy()
     {
         Debug.Log("hi?");
