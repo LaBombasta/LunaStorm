@@ -81,7 +81,7 @@ public class WaveSpawner : MonoBehaviour
 
                 enemy.transform.SetParent(enemySpawnPoint.transform);
 
-                yield return new WaitForSeconds(wavesOfEnemies[enemyWaveIndex].timeToNextWave);
+                yield return new WaitForSeconds(wavesOfEnemies[enemyWaveIndex].timeToNextEnemy);
             }
         }
        
@@ -92,11 +92,16 @@ public class WaveSpawner : MonoBehaviour
     [System.Serializable]
     public class EnemyWave
     {
+        // array of enemies
         public Enemy[] enemies;
 
+        // time betweeen waves
         public float pauseBetweenWaves;
-        public float timeToNextWave;
 
+        // spacing between enemies
+        public float timeToNextEnemy;
+
+        // enemies left in wave
         public int enemiesLeftInWave; 
 
     }
