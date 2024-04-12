@@ -12,7 +12,7 @@ public class WaveSpawner : MonoBehaviour
 
     // create an array of waves
     public EnemyWave[] wavesOfEnemies;
-    public Dictionary<int, Enemy> enemySpawnerrrrr = new Dictionary<int, Enemy>();
+    //public Dictionary<int, Enemy> enemySpawnerrrrr = new Dictionary<int, Enemy>();
 
     // Wave Index
     public int enemyWaveIndex = 0;

@@ -27,8 +27,6 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private bool isFiring;
     [SerializeField] private Vector3 rotSpeed = new Vector3(0, 1, 0);
 
-
-
     private Vector3 startPos;
     private Vector3 spinDirection;
     private Quaternion startRotation;
