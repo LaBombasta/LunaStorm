@@ -80,6 +80,7 @@ public class WaveSpawner : MonoBehaviour
                 Enemy enemy = Instantiate(wavesOfEnemies[enemyWaveIndex].enemies[i], enemySpawnPoint.transform);
 
                 enemy.transform.SetParent(enemySpawnPoint.transform);
+                Destroy(enemy, 5);
 
                 yield return new WaitForSeconds(wavesOfEnemies[enemyWaveIndex].timeToNextEnemy);
             }

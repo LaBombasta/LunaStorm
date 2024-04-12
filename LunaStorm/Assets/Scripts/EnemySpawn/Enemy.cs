@@ -6,10 +6,8 @@ public class Enemy : MonoBehaviour
 {
     // speed of enemy
     [SerializeField] private float enemySpeed;
-
     // destroy enemy after # seconds
-    [SerializeField] private float timeToDestroyEnemy = 5f;
-
+    //[SerializeField] private float timeToDestroyEnemy = 5f;
     // reference to wave spawner
     private WaveSpawner waveSpawner;
 
@@ -25,14 +23,11 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(transform.forward * enemySpeed * Time.deltaTime);
 
-        timeToDestroyEnemy -= Time.deltaTime;
-
-        if (timeToDestroyEnemy < 0)
-        {
-            Destroy(gameObject);
-
-            waveSpawner.wavesOfEnemies[waveSpawner.enemyWaveIndex].enemiesLeftInWave--;
-        }
-
+    }
+    private void OnDestroy()
+    {
+        Debug.Log("hi?");
+        waveSpawner.wavesOfEnemies[waveSpawner.enemyWaveIndex].enemiesLeftInWave--;
+        Destroy(gameObject);
     }
 }
