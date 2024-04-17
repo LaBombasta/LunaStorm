@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6597863778137517788}
   m_Layer: 0
   m_Name: redEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 3
-  timeToDestroyEnemy: 5
+  attachedGuns: []
