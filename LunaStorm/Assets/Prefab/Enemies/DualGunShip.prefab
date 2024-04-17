@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 2985907290354799537}
   - component: {fileID: 548687211549785789}
   - component: {fileID: -3022177863231367598}
+  - component: {fileID: 1153302310895900134}
   m_Layer: 0
   m_Name: DualGunShip
   m_TagString: Enemy
@@ -229,6 +230,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 1
   attachedGuns: []
+--- !u!114 &1153302310895900134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932764952300946214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c32bfd54734db145beeec6cd2303333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySkin: {fileID: 1265556058007731002}
+  HP: 7
+  MaxHp: 7
+  hitScore: 5
+  deathScore: 50
+  blankCanvas: {fileID: 2100000, guid: 245f274d78c268241bb3c4775f2f7271, type: 2}
+  flash1: {r: 1, g: 0, b: 0, a: 1}
+  flash2: {r: 0.5566038, g: 0.52247244, b: 0.52247244, a: 0.972549}
 --- !u!1001 &2519344116659816412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,6 +326,11 @@ PrefabInstance:
 --- !u!4 &133705403849179221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2534830030140311433, guid: 023bfb094d0cadf4ab9b6227751019ac, type: 3}
+  m_PrefabInstance: {fileID: 2519344116659816412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1265556058007731002 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3703835381362228454, guid: 023bfb094d0cadf4ab9b6227751019ac, type: 3}
   m_PrefabInstance: {fileID: 2519344116659816412}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5639612362803356833

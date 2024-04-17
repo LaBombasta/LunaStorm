@@ -38,4 +38,10 @@ public class Bullet : MonoBehaviour
         //Debug.Log(test);
         return test;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        collision.transform.gameObject.BroadcastMessage("TakeDamage", 1f, SendMessageOptions.DontRequireReceiver);
+        Destroy(this.gameObject);
+    }
 }
