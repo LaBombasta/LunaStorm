@@ -1,10 +1,9 @@
 using UnityEngine;
-using System.Collections;
-using JetBrains.Annotations;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 20f;
     public Camera mainCamera;
 
     private Rigidbody rb;
@@ -13,12 +12,14 @@ public class PlayerMovement : MonoBehaviour
     private float minX, maxX, minZ, maxZ;
     private float backwardOffset = 20.0f;
     private float forwardOffset = 20.0f;
-    private float leftOffset = 40.0f;
-    private float rightOffset = 40.0f;
+    private float leftOffset = 42.0f;
+    private float rightOffset = 42.0f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionY;
 
         // Get the CameraMovement component attached to the camera
         cameraMovement = mainCamera.GetComponent<CameraMovement>();
@@ -36,18 +37,16 @@ public class PlayerMovement : MonoBehaviour
 
         // Clamp player's position
         Vector3 clampedPosition = transform.position;
+        CalculateBounds();
         if (cameraMovement == null || !cameraMovement.enabled)
         {
-            CalculateBounds();
-
-            // If CameraMovement script is disabled, clamp Z-axis
-            clampedPosition.z = Mathf.Clamp(clampedPosition.z, minZ, maxZ);
-            // If CameraMovement script is disabled, clamp X-axis
+            // If CameraMovement script is disabled, clamp X and Z axes
             clampedPosition.x = Mathf.Clamp(clampedPosition.x, minX, maxX);
+            clampedPosition.z = Mathf.Clamp(clampedPosition.z, minZ, maxZ);
         }
         else
         {
-            // If CameraMovement script is enabled, clamp X-axis
+            // If CameraMovement script is enabled, clamp X-axis only
             clampedPosition.x = Mathf.Clamp(clampedPosition.x, minX, maxX);
         }
         transform.position = clampedPosition;
