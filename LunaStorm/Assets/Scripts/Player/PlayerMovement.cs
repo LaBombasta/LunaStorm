@@ -1,25 +1,28 @@
 using UnityEngine;
+using System.Collections;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 20f;
     public Camera mainCamera;
-
-    private Rigidbody rb;
     private CameraMovement cameraMovement; // Reference to the CameraMovement script
+    private CharacterController controller;
+
+    public float forwardSpeed = 7f;
+    public float strafeSpeedMultiplier = 2.2f; // Multiplier for strafing speed
 
     private float minX, maxX, minZ, maxZ;
-    private float backwardOffset = 20.0f;
-    private float forwardOffset = 20.0f;
-    private float leftOffset = 42.0f;
-    private float rightOffset = 42.0f;
+    private float backwardOffset = 17.0f;
+    private float forwardOffset = 17.0f;
+    private float leftOffset = 30.0f;
+    private float rightOffset = 30.0f;
+
+    public float rollSpeed = 1000f;
+    private bool canRoll = true;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionY;
+        controller = GetComponent<CharacterController>();
 
         // Get the CameraMovement component attached to the camera
         cameraMovement = mainCamera.GetComponent<CameraMovement>();
@@ -30,10 +33,27 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Movement
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical) * speed * Time.deltaTime;
-        rb.MovePosition(transform.position + transform.TransformDirection(movement));
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        // Adjusting speed based on direction
+        float adjustedSpeed = forwardSpeed;
+        if (Mathf.Abs(horizontalInput) > 0f)
+        {
+            adjustedSpeed *= strafeSpeedMultiplier; // Apply strafe speed multiplier if moving sideways
+        }
+
+        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+        controller.Move(moveDirection * adjustedSpeed * Time.deltaTime);
+
+        // Barrel Roll
+        if (canRoll && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
+        {
+            // Determine the direction of the barrel roll based on horizontal input
+            int rollDirection = horizontalInput < 0 ? 1 : -1; // If moving left, roll right; if moving right, roll left
+
+            StartCoroutine(BarrelRoll(rollDirection));
+        }
 
         // Clamp player's position
         Vector3 clampedPosition = transform.position;
@@ -73,5 +93,28 @@ public class PlayerMovement : MonoBehaviour
         // Calculate the min and max Z positions, considering the backward and forward offsets
         minZ = mainCamera.transform.position.z - vertExtent - backwardOffset;
         maxZ = mainCamera.transform.position.z + vertExtent + forwardOffset;
+    }
+
+    IEnumerator BarrelRoll(int rollDirection)
+    {
+        canRoll = false; // Disable rolling until the cooldown is over
+
+        float rollAmount = 360f; // Adjust the amount of rotation for the barrel roll
+        float rollAngle = 0f;
+
+        while (rollAngle < rollAmount)
+        {
+            float deltaAngle = rollSpeed * Time.deltaTime * rollDirection;
+            transform.Rotate(Vector3.forward, deltaAngle);
+            rollAngle += Mathf.Abs(deltaAngle);
+            yield return null;
+        }
+
+        // Explicitly set rotation to ensure it ends at 0
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0f);
+
+        // Cooldown
+        yield return new WaitForSeconds(0.0f); // 1 second cooldown
+        canRoll = true; // Enable rolling again
     }
 }
