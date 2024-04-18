@@ -12,8 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public float strafeSpeedMultiplier = 2.2f; // Multiplier for strafing speed
 
     private float minX, maxX, minZ, maxZ;
-    private float backwardOffset = 17.0f;
-    private float forwardOffset = 17.0f;
+    private float backwardOffset = 16.0f;
+    private float forwardOffset = 16.0f;
     private float leftOffset = 30.0f;
     private float rightOffset = 30.0f;
 
