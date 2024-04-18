@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 737491507913926242}
-  - component: {fileID: 6001966555522162211}
   - component: {fileID: 220611807283020238}
   - component: {fileID: 2249806163724530251}
-  - component: {fileID: 5733149027511338599}
+  - component: {fileID: 4802532440381206777}
   m_Layer: 0
   m_Name: ship
   m_TagString: Player
@@ -42,33 +41,6 @@ Transform:
   - {fileID: 7631354720451023900}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &6001966555522162211
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 105773237109259480}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 52
-  m_CollisionDetection: 0
 --- !u!114 &220611807283020238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,8 +53,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa92e1e5d2a0624b8f8dbe70f394eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
   mainCamera: {fileID: 0}
+  forwardSpeed: 7
+  strafeSpeedMultiplier: 2.2
+  rollSpeed: 1000
 --- !u!114 &2249806163724530251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,15 +69,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2062f24e8969467479d47a7ee87b2129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefab: {fileID: 2888214702400964595, guid: ab61e19f35365734a86939e88f593652, type: 3}
-  bombSpawnPoints:
-  - {fileID: 4375364051477011940}
-  - {fileID: 4449638566755680978}
-  - {fileID: 6205060626664639104}
-  bombSpeed: 10
+  bulletPrefab: {fileID: 2888214702400964595, guid: a22980a992a01cd4ebb0e988c53320ea, type: 3}
+  bulletSpawnOffset: {x: 0, y: 0, z: 1}
+  bulletSpeed: 10
   fireRate: 0.2
---- !u!65 &5733149027511338599
-BoxCollider:
+--- !u!143 &4802532440381206777
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -121,7 +92,12 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.52, y: 1, z: 4.15}
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &448884894893667309
 GameObject:

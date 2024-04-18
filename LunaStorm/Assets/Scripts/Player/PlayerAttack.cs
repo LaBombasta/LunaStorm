@@ -4,31 +4,16 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    // Reference to the bomb prefab
-    public GameObject bombPrefab;
-
-    // Array to hold multiple spawn points
-    public Transform[] bombSpawnPoints;
-
-    // Position offset for spawning bombs relative to the main weapon's position
-    private Vector3 bombSpawnOffset = new Vector3(0f, 0f, 1f);
-
-    // Speed at which the bomb moves forward
-    public float bombSpeed = 10f;
-
-    // Reference to the bomb prefab
+    // Reference to the bullet prefab
     public GameObject bulletPrefab;
 
-    // Array to hold multiple spawn points
-    public Transform[] bulletSpawnPoints;
+    // Position offset for spawning bullets relative to the main weapon's position
+    public Vector3 bulletSpawnOffset = new Vector3(0f, 0f, 1f);
 
-    // Position offset for spawning bombs relative to the main weapon's position
-    private Vector3 bulletSpawnOffset = new Vector3(0f, 0f, 1f);
-
-    // Speed at which the bomb moves forward
+    // Speed at which the bullet moves forward
     public float bulletSpeed = 10f;
 
-    // Interval between consecutive bomb instantiations
+    // Interval between consecutive bullet instantiations
     public float fireRate = 0.2f;
 
     // Timer to control the rate of fire
@@ -37,27 +22,13 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Continuously drop bombs while holding down the spacebar
+        // Continuously fire bullets while holding down the spacebar
         if (Input.GetKey(KeyCode.Space))
         {
             // Increment the fire timer
             fireTimer += Time.deltaTime;
 
-            // If the fire timer exceeds the fire rate, drop a bomb and reset the timer
-            if (fireTimer >= fireRate)
-            {
-                DropBomb();
-                fireTimer = 0f;
-            }
-        }
-
-        // Fire bullets on left mouse click
-        if (Input.GetMouseButtonDown(0))
-        {
-            // Increment the fire timer
-            fireTimer += Time.deltaTime;
-
-            // If the fire timer exceeds the fire rate, fire bullets and reset the timer
+            // If the fire timer exceeds the fire rate, instantiate a bullet and reset the timer
             if (fireTimer >= fireRate)
             {
                 FireBullet();
@@ -66,46 +37,45 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    // Method to drop a bomb
-    void DropBomb()
-    {
-        foreach (Transform spawnPoint in bombSpawnPoints)
-        {
-            // Instantiate a bomb at the current spawn point position with the specified rotation
-            GameObject bomb = Instantiate(bombPrefab, spawnPoint.position + bombSpawnOffset, Quaternion.Euler(90f, 0f, 0f));
-
-            // Set bomb speed
-            Rigidbody bombRigidbody = bomb.GetComponent<Rigidbody>();
-            bombRigidbody.velocity = bomb.transform.forward * bombSpeed;
-
-            // Destroy the bomb after 5 seconds
-            Destroy(bomb, 5f);
-        }
-    }
-    
+    // Method to instantiate a bullet
     void FireBullet()
     {
-        foreach (Transform spawnPoint in bulletSpawnPoints)
+        // Find all game objects with the "MainWeapon" tag
+        GameObject[] mainWeapons = GameObject.FindGameObjectsWithTag("MainWeapon");
+
+        // Check if any main weapon is found
+        if (mainWeapons.Length > 0)
         {
-            // Instantiate a bullet at the current spawn point position with the specified rotation
-            GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position + bulletSpawnOffset, Quaternion.Euler(90f, 0f, 0f));
+            // Iterate through each main weapon found
+            foreach (GameObject mainWeapon in mainWeapons)
+            {
+                // Instantiate the bullet prefab at the main weapon's position and rotation
+                Quaternion rotation = mainWeapon.transform.rotation;
+                rotation *= Quaternion.Euler(90, 0, 0); // Rotate by 90 degrees around the x-axis
+                GameObject bullet = Instantiate(bulletPrefab, mainWeapon.transform.position + mainWeapon.transform.forward * bulletSpawnOffset.z, rotation);
 
-            // Calculate the direction the bullet should move (forward from the spawn point)
-            Vector3 direction = spawnPoint.forward;
+                // Get the bullet's rigidbody component
+                Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
 
-            // Move the bullet in the calculated direction at the specified speed
-            bullet.transform.position += direction * bulletSpeed * Time.deltaTime;
+                // Check if bulletRigidbody is found
+                if (bulletRigidbody != null)
+                {
+                    // Apply velocity to move the bullet forward
+                    bulletRigidbody.velocity = mainWeapon.transform.forward * bulletSpeed;
 
-            // Destroy the bomb after 5 seconds
-            Destroy(bullet, 5f);
+                    // Destroy the bullet after 2 seconds
+                    Destroy(bullet, 5f);
+                }
+                else
+                {
+                    Debug.LogWarning("Rigidbody component not found on the instantiated bullet.");
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No game objects found with the 'MainWeapon' tag.");
         }
     }
 
-
-    // Collision detection for the bomb
-    void OnCollisionEnter(Collision collision)
-    {
-        // Destroy the bomb upon collision with any object
-        Destroy(gameObject);
-    }
 }
