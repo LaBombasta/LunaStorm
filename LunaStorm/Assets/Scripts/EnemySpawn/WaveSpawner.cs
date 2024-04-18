@@ -107,6 +107,8 @@ public class WaveSpawner : MonoBehaviour
 
         public int enemyLifeTime;
 
-        public int spawn;
+        public int spawnLocation;
+
+        public int enemyMovement;
     }
 }
