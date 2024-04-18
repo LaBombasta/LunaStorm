@@ -5,14 +5,14 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     // enemy spawn point
-    [SerializeField] private GameObject enemySpawnPoint;
+    [SerializeField] private GameObject spawnPoints;
+    // []
 
     // create countdown to next wave
     [SerializeField] private float waveCountDown;
 
     // create an array of waves
     public EnemyWave[] wavesOfEnemies;
-    //public Dictionary<int, Enemy> enemySpawnerrrrr = new Dictionary<int, Enemy>();
 
     // Wave Index
     public int enemyWaveIndex = 0;
@@ -77,16 +77,16 @@ public class WaveSpawner : MonoBehaviour
         {
             for (int i = 0; i < wavesOfEnemies[enemyWaveIndex].enemies.Length; i++)
             {
-                Enemy enemy = Instantiate(wavesOfEnemies[enemyWaveIndex].enemies[i], enemySpawnPoint.transform);
-                enemy.transform.SetParent(enemySpawnPoint.transform);
+                Enemy enemy = Instantiate(wavesOfEnemies[enemyWaveIndex].enemies[i], spawnPoints.transform); //spawnPoints[Enemywave.spawn].transform;
+                enemy.transform.SetParent(spawnPoints.transform);
                 
                 Destroy(enemy, wavesOfEnemies[enemyWaveIndex].enemyLifeTime);
 
                 yield return new WaitForSeconds(wavesOfEnemies[enemyWaveIndex].timeToNextEnemy);
             }
         }
-       
 
+        GameManager.instance.FinishWave();
     }
 
     // create an array of enemies
@@ -107,5 +107,6 @@ public class WaveSpawner : MonoBehaviour
 
         public int enemyLifeTime;
 
+        public int spawn;
     }
 }

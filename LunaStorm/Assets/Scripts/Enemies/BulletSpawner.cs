@@ -152,7 +152,6 @@ public class BulletSpawner : MonoBehaviour
             Transform locked = target.transform;
             transform.LookAt(locked);
             transform.rotation = transform.rotation * Quaternion.Euler(0, -90, 0);
-
         }
     }
     public float SetFireRate(float f)

@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private BulletSpawner[] attachedGuns;
 
 
-
     private void Start()
     {
         waveSpawner = GetComponentInParent<WaveSpawner>();

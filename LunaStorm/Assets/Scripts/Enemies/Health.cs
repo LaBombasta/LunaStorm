@@ -46,8 +46,6 @@ public class Health : MonoBehaviour
                 //Destroy(this.gameObject);
             }
             
-
-
         }
         else
         {
