@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
     // enemy spawn point
-    [SerializeField] private GameObject spawnPoints;
-    // []
+    //[SerializeField] private GameObject SpawnPoints;
+    [SerializeField] private GameObject[] spawnPoints; 
 
     // create countdown to next wave
     [SerializeField] private float waveCountDown;
@@ -17,6 +19,9 @@ public class WaveSpawner : MonoBehaviour
     // Wave Index
     public int enemyWaveIndex = 0;
 
+    // spawn point index
+    private int spawnPointIndex = 0;
+
     private bool startWaveCountDown;
 
 
@@ -24,6 +29,8 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+             
+        
         // count down between waves... might be changed with collision
         startWaveCountDown = true;
 
@@ -58,8 +65,16 @@ public class WaveSpawner : MonoBehaviour
             // the waveCountDown timer = pauseBetweenWave amount
             waveCountDown = wavesOfEnemies[enemyWaveIndex].pauseBetweenWaves;
 
-            // spawn waves
-            StartCoroutine (SpawnEnemyWave());
+            // using the spawn point array, will move from 1 spawn point to the next releasing each wave.
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
+                Debug.Log("made it to spawn points");
+
+                // spawn waves
+                StartCoroutine(SpawnEnemyWave());
+                spawnPointIndex++;
+            }
+            
         }
 
         if (wavesOfEnemies[enemyWaveIndex].enemiesLeftInWave == 0)
@@ -77,8 +92,9 @@ public class WaveSpawner : MonoBehaviour
         {
             for (int i = 0; i < wavesOfEnemies[enemyWaveIndex].enemies.Length; i++)
             {
-                Enemy enemy = Instantiate(wavesOfEnemies[enemyWaveIndex].enemies[i], spawnPoints.transform); //spawnPoints[Enemywave.spawn].transform;
-                enemy.transform.SetParent(spawnPoints.transform);
+               
+                Enemy enemy = Instantiate(wavesOfEnemies[enemyWaveIndex].enemies[i], spawnPoints[i].transform); //spawnPoints[Enemywave.spawn].transform;
+                enemy.transform.SetParent(spawnPoints[i].transform);
                 
                 Destroy(enemy, wavesOfEnemies[enemyWaveIndex].enemyLifeTime);
 
@@ -86,7 +102,7 @@ public class WaveSpawner : MonoBehaviour
             }
         }
 
-        GameManager.instance.FinishWave();
+       // GameManager.instance.FinishWave();
     }
 
     // create an array of enemies

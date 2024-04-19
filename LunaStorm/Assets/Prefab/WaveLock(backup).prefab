@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9023199617432614512}
   - component: {fileID: 4110607423419686428}
   m_Layer: 0
-  m_Name: WaveLock
+  m_Name: WaveLock(backup)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
