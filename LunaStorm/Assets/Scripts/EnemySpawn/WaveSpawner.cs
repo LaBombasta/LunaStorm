@@ -18,14 +18,15 @@ public class WaveSpawner : MonoBehaviour
 
     // Wave Index
     public int enemyWaveIndex = 0;
+    private bool doOnce = true;
 
     // spawn point index
-    private int spawnPointIndex = 0;
+    //private int spawnPointIndex = 0;
 
-    private bool startWaveCountDown;
+    //private bool startWaveCountDown;
 
 
-
+    /*
     // Start is called before the first frame update
     void Start()
     {
@@ -85,24 +86,47 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-
+    */
+    public void BEGINDESTRUCTION()
+    {
+        StartCoroutine(SpawnEnemyWave());
+    }
     private IEnumerator SpawnEnemyWave()
     {
+        yield return new WaitForSeconds(waveCountDown);
         if (enemyWaveIndex < wavesOfEnemies.Length)
         {
             for (int i = 0; i < wavesOfEnemies[enemyWaveIndex].enemies.Length; i++)
             {
-               
-                Enemy enemy = Instantiate(wavesOfEnemies[enemyWaveIndex].enemies[i], spawnPoints[i].transform); //spawnPoints[Enemywave.spawn].transform;
-                enemy.transform.SetParent(spawnPoints[i].transform);
+
+                Enemy enemy = Instantiate(wavesOfEnemies[enemyWaveIndex].enemies[i], spawnPoints[wavesOfEnemies[enemyWaveIndex].spawnLocation].transform); //spawnPoints[Enemywave.spawn].transform;
+                //enemy.transform.SetParent(spawnPoints[i].transform);
                 
                 Destroy(enemy, wavesOfEnemies[enemyWaveIndex].enemyLifeTime);
 
                 yield return new WaitForSeconds(wavesOfEnemies[enemyWaveIndex].timeToNextEnemy);
             }
+            yield return new WaitForSeconds(wavesOfEnemies[enemyWaveIndex].timeUntilNextWave);
+            enemyWaveIndex++;
+            
         }
 
-       // GameManager.instance.FinishWave();
+        GameManager.instance.FinishWave();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(doOnce)
+        {
+            if (other.CompareTag("Player"))
+            {
+                GameManager.instance.EnterBattle();
+                BEGINDESTRUCTION();
+            }
+        }
+        doOnce = false;
+        
+
     }
 
     // create an array of enemies
@@ -118,13 +142,13 @@ public class WaveSpawner : MonoBehaviour
         // spacing between enemies
         public float timeToNextEnemy;
 
-        // enemies left in wave
-        public int enemiesLeftInWave;
+        public float timeUntilNextWave;
 
         public int enemyLifeTime;
 
+        [Range (0, 6)]
         public int spawnLocation;
 
-        public int enemyMovement;
+        //public int enemyMovement;
     }
 }

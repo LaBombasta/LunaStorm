@@ -33,6 +33,10 @@ public class Enemy : MonoBehaviour
         doOnce = false;
     }
 
+    public void SetWaveSpawner(WaveSpawner spawner)
+    {
+
+    }
     private IEnumerator SetMoveType(int behaviour)
     {
         yield return new WaitForSeconds(5f);
@@ -40,7 +44,6 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        waveSpawner.wavesOfEnemies[waveSpawner.enemyWaveIndex].enemiesLeftInWave--;
         Destroy(gameObject);
         //This is where you spawn an explosion particle effect
     }

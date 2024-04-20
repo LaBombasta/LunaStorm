@@ -47,7 +47,10 @@ public class GameManager : MonoBehaviour
         Debug.Log(playerHP);
     
     }
-
+    public void EnterBattle()
+    {
+        camMov.enabled = false;
+    }
     public void FinishWave()
     {
         camMov.enabled = true;
