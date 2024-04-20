@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96d9ef05167f454dad731936a71f4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 1
+  enemySpeed: 15
   attachedGuns: []
 --- !u!114 &1153302310895900134
 MonoBehaviour:
@@ -260,15 +260,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2534830030140311433, guid: 023bfb094d0cadf4ab9b6227751019ac, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2534830030140311433, guid: 023bfb094d0cadf4ab9b6227751019ac, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2534830030140311433, guid: 023bfb094d0cadf4ab9b6227751019ac, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2534830030140311433, guid: 023bfb094d0cadf4ab9b6227751019ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -351,15 +351,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 13.675895
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.1054273
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2185995
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -401,6 +401,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -429,15 +433,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 13.675895
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.1054273
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2185995
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalPosition.x

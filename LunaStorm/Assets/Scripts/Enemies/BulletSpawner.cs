@@ -90,7 +90,7 @@ public class BulletSpawner : MonoBehaviour
         if (bullet)
         {
             activeBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-            activeBullet.GetComponent<Bullet>().speed = speed;
+            activeBullet.GetComponent<Bullet>().speed = speed + GetComponentInParent<Enemy>().enemySpeed;
             activeBullet.GetComponent<Bullet>().bulletLifeTime = bulletLifetime;
             activeBullet.transform.rotation = transform.rotation;
         }

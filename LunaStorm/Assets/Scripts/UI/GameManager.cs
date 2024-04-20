@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int amount)
     {
         score += amount;
-        Debug.Log(score);
+        //Debug.Log(score);
         //update text object;
 
     }
@@ -44,15 +44,17 @@ public class GameManager : MonoBehaviour
     public void UpdateHP(float amount)
     {
         playerHP += amount;
-        Debug.Log(playerHP);
+        //Debug.Log(playerHP);
     
     }
     public void EnterBattle()
     {
         camMov.enabled = false;
+        Debug.Log("Battle Has Begun");
     }
     public void FinishWave()
     {
         camMov.enabled = true;
+        Debug.Log("Wave finished you can go home now");
     }
 }

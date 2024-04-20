@@ -94,10 +94,11 @@ public class WaveSpawner : MonoBehaviour
     private IEnumerator SpawnEnemyWave()
     {
         yield return new WaitForSeconds(waveCountDown);
-        if (enemyWaveIndex < wavesOfEnemies.Length)
+        while (enemyWaveIndex < wavesOfEnemies.Length)
         {
             for (int i = 0; i < wavesOfEnemies[enemyWaveIndex].enemies.Length; i++)
             {
+                Debug.Log(enemyWaveIndex);
 
                 Enemy enemy = Instantiate(wavesOfEnemies[enemyWaveIndex].enemies[i], spawnPoints[wavesOfEnemies[enemyWaveIndex].spawnLocation].transform); //spawnPoints[Enemywave.spawn].transform;
                 //enemy.transform.SetParent(spawnPoints[i].transform);
@@ -108,25 +109,23 @@ public class WaveSpawner : MonoBehaviour
             }
             yield return new WaitForSeconds(wavesOfEnemies[enemyWaveIndex].timeUntilNextWave);
             enemyWaveIndex++;
-            
         }
-
+        yield return new WaitForSeconds(wavesOfEnemies[enemyWaveIndex-1].enemyLifeTime);
         GameManager.instance.FinishWave();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(doOnce)
+        if (other.GetComponent<CharacterController>())
         {
-            if (other.CompareTag("Player"))
+            if (doOnce)
             {
                 GameManager.instance.EnterBattle();
                 BEGINDESTRUCTION();
             }
+            doOnce = false;
         }
-        doOnce = false;
         
-
     }
 
     // create an array of enemies
@@ -136,12 +135,10 @@ public class WaveSpawner : MonoBehaviour
         // array of enemies
         public Enemy[] enemies;
 
-        // time betweeen waves
-        public float pauseBetweenWaves;
-
         // spacing between enemies
         public float timeToNextEnemy;
 
+        // time betweeen waves
         public float timeUntilNextWave;
 
         public int enemyLifeTime;

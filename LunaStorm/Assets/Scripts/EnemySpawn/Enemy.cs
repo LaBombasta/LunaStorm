@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // speed of enemy
-    [SerializeField] private float enemySpeed;
+    public float enemySpeed;
     // reference to wave spawner
     private WaveSpawner waveSpawner;
     private bool doOnce;
