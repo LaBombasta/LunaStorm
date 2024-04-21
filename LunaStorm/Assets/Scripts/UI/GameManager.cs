@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("you dont have teh script");
+            Debug.Log("you dont have the script");
         }
         
         
