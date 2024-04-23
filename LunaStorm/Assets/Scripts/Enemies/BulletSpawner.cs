@@ -12,7 +12,6 @@ public class BulletSpawner : MonoBehaviour
         Wavy,
         Burst,
         LockedOn,
-        ResetGun,
     } //this will dictate the pattern
 
     [Header("Bullet Attributes")]
@@ -25,7 +24,7 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private float fireRate = 1f;
     //[SerializeField] private float firingAngle;
     [SerializeField] private bool isFiring;
-    [SerializeField] private Vector3 rotSpeed = new Vector3(0, 1, 0);
+    [SerializeField] private float rotSpeed;
 
     private Vector3 startPos;
     private Vector3 spinDirection;
@@ -38,6 +37,7 @@ public class BulletSpawner : MonoBehaviour
     {
         startPos = this.transform.localPosition;
         startRotation = this.transform.rotation;
+        isFiring = false;
     }
 
 
@@ -67,9 +67,6 @@ public class BulletSpawner : MonoBehaviour
                 case GunType.LockedOn:
                     LockedOn();
                     break;
-                case GunType.ResetGun:
-                    ResetGun();
-                    break;
                 default:
                     break;
             }
@@ -79,6 +76,31 @@ public class BulletSpawner : MonoBehaviour
                 timer = 0;
             }
         }
+    }
+    public void SetNormal()
+    {
+        gunType = GunType.Normal;
+    }
+
+    public void SetStraight()
+    {
+        gunType = GunType.Straight;
+    }
+    public void SetSpin()
+    {
+        gunType = GunType.Spin;
+    }
+    public void SetWavy()
+    {
+        gunType = GunType.Wavy;
+    }
+    public void SetBurst()
+    {
+        gunType = GunType.Burst;
+    }
+    public void SetLockedOn()
+    {
+        gunType = GunType.LockedOn;
     }
 
     //Gun Functions
@@ -127,12 +149,12 @@ public class BulletSpawner : MonoBehaviour
     }
     public void Spin()
     {
-        transform.Rotate(rotSpeed);
+        transform.Rotate( new Vector3(0, 1, 0)* rotSpeed*Time.deltaTime);
     }
 
     public void Wavy()
     {
-        transform.Rotate(new Vector3(1, 1, 0));
+        transform.Rotate(new Vector3(2, 1, 0)*rotSpeed*Time.deltaTime);
     }
 
     public void LockedOn()
