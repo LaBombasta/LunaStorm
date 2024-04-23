@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
 
     private void TakeDamage(float damage)
     {
-        Debug.Log("doing the thing");
+        //Debug.Log("doing the thing");
         HP -= damage;
         if(HP >0)
         {

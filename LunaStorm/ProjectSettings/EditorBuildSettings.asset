@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 5939bcc1e31d95d419d8f15077ff9f4b
+  - enabled: 1
+    path: Assets/Scenes/JColley_TestEnvironment/Level1_Testing.unity
+    guid: 98273d6727b67944c898d5d675df40e0
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 9a437aaf40f1b0e4a844c565c8d0102b
+  - enabled: 1
+    path: Assets/Scenes/Controls.unity
+    guid: 47f03ed1174e33f49826c429cde3f4fc
   m_configObjects: {}
