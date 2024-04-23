@@ -7,7 +7,6 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
     // enemy spawn point
-    //[SerializeField] private GameObject SpawnPoints;
     [SerializeField] private GameObject[] spawnPoints; 
 
     // create countdown to next wave
@@ -25,13 +24,10 @@ public class WaveSpawner : MonoBehaviour
 
     //private bool startWaveCountDown;
 
-
     /*
     // Start is called before the first frame update
     void Start()
     {
-             
-        
         // count down between waves... might be changed with collision
         startWaveCountDown = true;
 
