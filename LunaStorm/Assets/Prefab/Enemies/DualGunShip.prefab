@@ -230,7 +230,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 10
   turnSpeed: 45
-  enterDelay: 1
   attachedGuns: []
 --- !u!114 &1153302310895900134
 MonoBehaviour:
@@ -460,6 +459,10 @@ PrefabInstance:
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: fireRate
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: rotSpeed
+      value: -360
       objectReference: {fileID: 0}
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: rotSpeed.y

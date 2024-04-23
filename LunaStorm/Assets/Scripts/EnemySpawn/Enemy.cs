@@ -33,8 +33,16 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(RightTurn());
                 break;
             case 2:
-                Debug.Log("what is going on?");
                 StartCoroutine(LeftTurn());
+                break;
+            case 3:
+                StartCoroutine(RightTurn180());
+                break;
+            case 4:
+                StartCoroutine(LeftTurn180());
+                break;
+            case 5:
+                StartCoroutine(BuzzSaw());
                 break;
             default:
                 break;
@@ -77,8 +85,77 @@ public class Enemy : MonoBehaviour
         {
             turnDegree += turnSpeed * Time.deltaTime;
             transform.Rotate(new Vector3(0, -turnSpeed, 0) * Time.deltaTime);
-            Debug.Log(turnDegree);
             yield return new WaitForSeconds(0);
+        }
+    }
+
+    private IEnumerator RightTurn180()
+    {
+        StopAllGuns();
+        yield return new WaitForSeconds(1);
+        for (int i = 0; i < attachedGuns.Length; i++)
+        {
+            attachedGuns[i].SetLockedOn();
+            attachedGuns[i].SetFireRate(.7f);
+            attachedGuns[i].StartFiring();
+        }
+
+        yield return new WaitForSeconds(6);
+        StopAllGuns();
+        SetTurnSpeed(120);
+        while (turnDegree < 180)
+        {
+            
+            turnDegree += turnSpeed * Time.deltaTime;
+            transform.Rotate(new Vector3(0, turnSpeed, 0) * Time.deltaTime);
+            yield return new WaitForSeconds(0);
+        }
+        for (int i = 0; i < attachedGuns.Length; i++)
+        {
+            attachedGuns[i].SetWavy();
+            attachedGuns[i].SetFireRate(.3f);
+            attachedGuns[i].StartFiring();
+        }
+
+    }
+
+    private IEnumerator LeftTurn180()
+    {
+        StopAllGuns();
+        yield return new WaitForSeconds(1);
+        for (int i = 0; i < attachedGuns.Length; i++)
+        {
+            attachedGuns[i].SetLockedOn();
+            attachedGuns[i].SetFireRate(.7f);
+            attachedGuns[i].StartFiring();
+        }
+
+        yield return new WaitForSeconds(6);
+        StopAllGuns();
+        SetTurnSpeed(120);
+        while (turnDegree < 180)
+        {
+            turnDegree += turnSpeed * Time.deltaTime;
+            transform.Rotate(new Vector3(0, -turnSpeed, 0) * Time.deltaTime);
+            yield return new WaitForSeconds(0);
+        }
+        for (int j = 0; j < attachedGuns.Length; j++)
+        {
+            attachedGuns[j].SetWavy();
+            attachedGuns[j].SetFireRate(.3f);
+            attachedGuns[j].StartFiring();
+        }
+    }
+
+    private IEnumerator BuzzSaw()
+    {
+        StopAllGuns();
+        yield return new WaitForSeconds(1);
+        for (int j = 0; j < attachedGuns.Length; j++)
+        {
+            attachedGuns[j].SetSpin();
+            attachedGuns[j].SetFireRate(.1f);
+            attachedGuns[j].StartFiring();
         }
     }
 
