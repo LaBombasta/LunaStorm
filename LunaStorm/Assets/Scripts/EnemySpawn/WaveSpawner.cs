@@ -94,10 +94,10 @@ public class WaveSpawner : MonoBehaviour
         {
             for (int i = 0; i < wavesOfEnemies[enemyWaveIndex].enemies.Length; i++)
             {
-                Debug.Log(enemyWaveIndex);
+                //Debug.Log(enemyWaveIndex);
 
                 Enemy enemy = Instantiate(wavesOfEnemies[enemyWaveIndex].enemies[i], spawnPoints[wavesOfEnemies[enemyWaveIndex].spawnLocation].transform); //spawnPoints[Enemywave.spawn].transform;
-                //enemy.transform.SetParent(spawnPoints[i].transform);
+                enemy.SetMoveType(wavesOfEnemies[enemyWaveIndex].Behavior);
                 
                 Destroy(enemy, wavesOfEnemies[enemyWaveIndex].enemyLifeTime);
 
@@ -141,6 +141,8 @@ public class WaveSpawner : MonoBehaviour
 
         [Range (0, 6)]
         public int spawnLocation;
+
+        public int Behavior;
 
         //public int enemyMovement;
     }

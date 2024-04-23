@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4922936306577888895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 0.3210247, y: 0.24358, z: 1.6823}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -228,7 +228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96d9ef05167f454dad731936a71f4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 15
+  enemySpeed: 10
+  turnSpeed: 45
+  enterDelay: 1
   attachedGuns: []
 --- !u!114 &1153302310895900134
 MonoBehaviour:
@@ -346,8 +348,28 @@ PrefabInstance:
       value: Right
       objectReference: {fileID: 0}
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: gunType
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: fireRate
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: rotSpeed
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: rotSpeed.y
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: bulletLifetime
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalScale.x
@@ -363,7 +385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.59
+      value: 3.22
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -371,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.617
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -428,8 +450,24 @@ PrefabInstance:
       value: Left
       objectReference: {fileID: 0}
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: gunType
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: fireRate
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: rotSpeed.y
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: bulletLifetime
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalScale.x
@@ -445,7 +483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.36
+      value: 3.39
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -453,7 +491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.605
+      value: 1.64
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalRotation.w
