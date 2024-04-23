@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     public float rollSpeed = 1000f;
     private bool canRoll = true;
 
+    //change speed multiplier to take effect only during barrel roll
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -55,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(BarrelRoll(rollDirection));
         }
 
+        //******************************** add lerp when the camera movement becomes enabled again so that it is a smooth transition back to the player************************
         // Clamp player's position
         Vector3 clampedPosition = transform.position;
         CalculateBounds();

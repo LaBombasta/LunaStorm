@@ -13,6 +13,16 @@ public class PlayerAttack : MonoBehaviour
     // Speed at which the bullet moves forward
     public float bulletSpeed = 10f;
 
+
+    // Reference to the bullet prefab
+    public GameObject missilePrefab;
+
+    // Position offset for spawning bullets relative to the main weapon's position
+    public Vector3 missileSpawnOffset = new Vector3(0f, 0f, 1f);
+
+    // Speed at which the bullet moves forward
+    public float missileSpeed = 20f;
+
     // Interval between consecutive bullet instantiations
     public float fireRate = 0.2f;
 
@@ -32,6 +42,19 @@ public class PlayerAttack : MonoBehaviour
             if (fireTimer >= fireRate)
             {
                 FireBullet();
+                fireTimer = 0f;
+            }
+        }
+        //Fire homing missiles
+        if(Input.GetKey(KeyCode.F))
+        {
+            // Increment the fire timer
+            fireTimer += Time.deltaTime;
+
+            // If the fire timer exceeds the fire rate, instantiate a bullet and reset the timer
+            if (fireTimer >= fireRate)
+            {
+                HomingMissile();
                 fireTimer = 0f;
             }
         }
@@ -63,7 +86,7 @@ public class PlayerAttack : MonoBehaviour
                     // Apply velocity to move the bullet forward
                     bulletRigidbody.velocity = mainWeapon.transform.forward * bulletSpeed;
 
-                    // Destroy the bullet after 2 seconds
+                    // Destroy the bullet after 5 seconds
                     Destroy(bullet, 5f);
                 }
                 else
@@ -78,4 +101,48 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    void HomingMissile()
+    {
+        // Find all game objects with the "Turret" tag
+        GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
+
+        // If there are turrets, target them first
+        if (turrets.Length > 0)
+        {
+            GameObject missile = Instantiate(missilePrefab, transform.position, missilePrefab.transform.rotation);
+            missile.transform.LookAt(turrets[0].transform);
+
+            StartCoroutine(Homing(missile));
+        }
+        // If there are no turrets, target other enemies
+        else
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            if (enemies.Length > 0)
+            {
+                GameObject missile = Instantiate(missilePrefab, transform.position, missilePrefab.transform.rotation);
+                missile.transform.LookAt(enemies[0].transform);
+
+                StartCoroutine(Homing(missile));
+            }
+            else
+            {
+                Debug.LogWarning("No game objects found with the 'Enemy' tag.");
+            }
+        }
+    }
+
+    public IEnumerator Homing(GameObject missile)
+    {
+        while (Vector3.Distance(.transform.position, missile.transform.position) > 0.3f)
+        {
+            missile.transform.position += (.transform.position - missile.transform.position).normalized * missileSpeed * Time.deltaTime;
+            missile.transform.LookAt(.transform);
+            
+            yield return null;
+        }
+
+        Destroy(missile);
+    }
 }
