@@ -70,6 +70,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2888214702400964595, guid: a22980a992a01cd4ebb0e988c53320ea, type: 3}
   bulletSpawnOffset: {x: 0, y: 0, z: 1}
   bulletSpeed: 20
+  missilePrefab: {fileID: 9163555175170251341, guid: dba280d2c3dc1d149906587cc0e8f3f4, type: 3}
+  missileSpawnOffset: {x: 0, y: 0, z: 1}
+  missileSpeed: 20
   fireRate: 0.2
 --- !u!143 &4802532440381206777
 CharacterController:
