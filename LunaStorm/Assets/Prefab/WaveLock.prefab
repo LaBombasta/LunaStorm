@@ -285,14 +285,7 @@ MonoBehaviour:
   - {fileID: 4514893054846265930}
   - {fileID: 2657317043723797496}
   waveCountDown: 3
-  wavesOfEnemies:
-  - enemies:
-    - {fileID: 0}
-    timeToNextEnemy: 0
-    timeUntilNextWave: 0
-    enemyLifeTime: 0
-    spawnLocation: 0
-    Behavior: 0
+  wavesOfEnemies: []
   enemyWaveIndex: 0
 --- !u!1 &1457677293659151644
 GameObject:
