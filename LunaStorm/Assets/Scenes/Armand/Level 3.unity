@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &23160194 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4205933423821036327, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
+  m_PrefabInstance: {fileID: 8263371307583404207}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &71003293
 GameObject:
   m_ObjectHideFlags: 0
@@ -4444,6 +4449,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1655103990 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8933810431773834170, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
+  m_PrefabInstance: {fileID: 8263371307583404207}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1673977975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5680,6 +5690,42 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 207835703}
+    - target: {fileID: 590562955815525506, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698787873871754247, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 207835703}
+    - target: {fileID: 1698787873871754247, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
+      propertyPath: maxRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698787873871754247, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
+      propertyPath: turretAmmo
+      value: 
+      objectReference: {fileID: 1115942699217024950, guid: ae602f39854c94849985d30420a71711, type: 3}
+    - target: {fileID: 1698787873871754247, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
+      propertyPath: timeToExplode
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698787873871754247, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
+      propertyPath: projectileSpeed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698787873871754247, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
+      propertyPath: ammoSpawnPoint_L
+      value: 
+      objectReference: {fileID: 23160194}
+    - target: {fileID: 1698787873871754247, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
+      propertyPath: ammoSpawnPoint_R
+      value: 
+      objectReference: {fileID: 1655103990}
+    - target: {fileID: 1698787873871754247, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
+      propertyPath: timeBetweenShots
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8220958690839795869, guid: 84f75cab8725911499a2889dda1f064f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 50.8
