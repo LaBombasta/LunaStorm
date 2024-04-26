@@ -53,7 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   forwardSpeed: 7
-  strafeSpeedMultiplier: 2.2
+  barrelRollSpeedMultiplier: 2.2
+  smoothingFactor: 5
   rollSpeed: 1000
 --- !u!114 &2249806163724530251
 MonoBehaviour:
