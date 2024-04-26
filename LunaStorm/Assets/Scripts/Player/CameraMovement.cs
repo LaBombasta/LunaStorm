@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public Transform target;
-    public float verticalOffset = 10f;
+    public float verticalOffset = 10;
 
     void LateUpdate()
     {
@@ -16,3 +16,5 @@ public class CameraMovement : MonoBehaviour
         }
     }
 }
+
+//Lock backward motion

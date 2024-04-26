@@ -9,13 +9,15 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
 
     public float forwardSpeed = 7f;
-    public float strafeSpeedMultiplier = 2.2f; // Multiplier for strafing speed
+    public float barrelRollSpeedMultiplier = 2.2f; // Multiplier for strafing speed
 
     private float minX, maxX, minZ, maxZ;
     private float backwardOffset = 16.0f;
     private float forwardOffset = 16.0f;
     private float leftOffset = 30.0f;
     private float rightOffset = 30.0f;
+    private bool transitionToPlayer = false; // Flag to track whether transition to player has occurred
+    public float smoothingFactor = 5f; // Adjust the smoothing factor for camera transition
 
     public float rollSpeed = 1000f;
     private bool canRoll = true;
@@ -40,9 +42,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Adjusting speed based on direction
         float adjustedSpeed = forwardSpeed;
-        if (Mathf.Abs(horizontalInput) > 0f)
+        // Apply barrel roll speed multiplier if rolling
+        if (!canRoll)
         {
-            adjustedSpeed *= strafeSpeedMultiplier; // Apply strafe speed multiplier if moving sideways
+            adjustedSpeed *= barrelRollSpeedMultiplier;
         }
 
         Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
@@ -71,7 +74,10 @@ public class PlayerMovement : MonoBehaviour
         {
             // If CameraMovement script is enabled, clamp X-axis only
             clampedPosition.x = Mathf.Clamp(clampedPosition.x, minX, maxX);
+
+            
         }
+
         transform.position = clampedPosition;
     }
 
