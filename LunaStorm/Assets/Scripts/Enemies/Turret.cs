@@ -23,7 +23,7 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -49,12 +49,11 @@ public class Turret : MonoBehaviour
 
             case TurretAIState.Attacking:
 
+                transform.LookAt(target.transform.position);
                 if (weaponFired == false)
                 {
                     weaponFired = true;
-
-                    transform.LookAt(target.transform.position);
-                   
+                    
                     GameObject turretRound_Left = Instantiate(turretAmmo, ammoSpawnPoint_L.position, ammoSpawnPoint_L.rotation);
                     Rigidbody  turretRound_L_RB = turretRound_Left.GetComponent<Rigidbody>();
                     GameObject turretRound_Right = Instantiate(turretAmmo, ammoSpawnPoint_R.position, ammoSpawnPoint_R.rotation);

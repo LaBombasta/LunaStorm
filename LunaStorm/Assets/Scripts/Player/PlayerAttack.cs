@@ -65,6 +65,8 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    //separate out the homing missle code into its own script
+
     void HomingMissile()
     {
         GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
@@ -90,6 +92,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    //add code to find the distance from the player to the enemy, and home towards that one
     public IEnumerator Homing(GameObject missile, Transform target)
     {
         while (Vector3.Distance(target.position, missile.transform.position) > 0.3f)
