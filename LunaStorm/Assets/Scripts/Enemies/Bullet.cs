@@ -41,6 +41,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
         collision.transform.gameObject.BroadcastMessage("TakeDamage", 1f, SendMessageOptions.DontRequireReceiver);
         Destroy(this.gameObject);
     }
