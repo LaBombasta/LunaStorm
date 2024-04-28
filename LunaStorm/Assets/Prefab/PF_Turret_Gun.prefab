@@ -176,6 +176,6 @@ MonoBehaviour:
   maxRange: 50
   ammoSpawnPoint_L: {fileID: 8225051157929374053}
   ammoSpawnPoint_R: {fileID: 913849497943412730}
-  timeBetweenShots: 1
+  timeBetweenShots: 5
   projectileSpeed: 2000
   timeToExplode: 15

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private CameraMovement camMov;
     private int score;
     private float playerHP;
+    private bool lockedInBattle = false;
 
     // UI elements
     public TextMeshProUGUI scoreText;
@@ -62,11 +63,19 @@ public class GameManager : MonoBehaviour
     public void EnterBattle()
     {
         camMov.enabled = false;
+        lockedInBattle = true;
         Debug.Log("Battle Has Begun");
     }
-    public void FinishWave()
+    public void FinishBattle()
     {
+        
         camMov.enabled = true;
+        lockedInBattle = false;
         Debug.Log("Wave finished you can go home now");
+    }
+
+    public bool LockecInBattle()
+    {
+        return lockedInBattle;
     }
 }

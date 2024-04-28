@@ -47,10 +47,19 @@ public class PlayerMovement : MonoBehaviour
         {
             adjustedSpeed *= barrelRollSpeedMultiplier;
         }
-
-        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-        controller.Move(moveDirection * adjustedSpeed * Time.deltaTime);
-
+        if(GameManager.instance.LockecInBattle())
+        {
+            Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+            controller.Move(moveDirection * adjustedSpeed * Time.deltaTime);
+        }
+        else
+        {
+            Vector3 moveDirection = new Vector3(horizontalInput, 0f,1).normalized;
+            moveDirection.z /=3;
+            controller.Move(moveDirection * adjustedSpeed * Time.deltaTime);
+        }
+        
+        
         // Barrel Roll
         if (canRoll && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
         {
