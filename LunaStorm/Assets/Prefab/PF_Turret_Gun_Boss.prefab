@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4180253535629007401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6936315634389375399}
+  m_Layer: 0
+  m_Name: ProjectileSpawn_Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6936315634389375399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180253535629007401}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.413, y: 1.2065458, z: 6.201}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2930768758122019353}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8707775379012608258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1538028790046650130}
+  m_Layer: 0
+  m_Name: ProjectileSpawn_Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1538028790046650130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8707775379012608258}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.48, y: 1.2065458, z: 6.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2930768758122019353}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3397569910586580466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,6 +132,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8372a47d3f4ad60459c1e85960c5945d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1538028790046650130}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8372a47d3f4ad60459c1e85960c5945d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6936315634389375399}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8372a47d3f4ad60459c1e85960c5945d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4525064515556740551}
   m_SourcePrefab: {fileID: 100100000, guid: 8372a47d3f4ad60459c1e85960c5945d, type: 3}
+--- !u!1 &2587315807304065187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8372a47d3f4ad60459c1e85960c5945d, type: 3}
+  m_PrefabInstance: {fileID: 3397569910586580466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4525064515556740551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587315807304065187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c968eee73777040939d2eb903bc173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  target: {fileID: 0}
+  turretAmmo: {fileID: 1115942699217024950, guid: ae602f39854c94849985d30420a71711, type: 3}
+  maxRange: 50
+  ammoSpawnPoint_L: {fileID: 1538028790046650130}
+  ammoSpawnPoint_R: {fileID: 6936315634389375399}
+  timeBetweenShots: 1
+  projectileSpeed: 2000
+  timeToExplode: 15
+--- !u!4 &2930768758122019353 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8372a47d3f4ad60459c1e85960c5945d, type: 3}
+  m_PrefabInstance: {fileID: 3397569910586580466}
+  m_PrefabAsset: {fileID: 0}
