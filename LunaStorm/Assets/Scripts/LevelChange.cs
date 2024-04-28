@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
-//create portal effect to view next level, when trigger box collision, load next level
-
 public class LevelChange : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private EndLevel1IGC endLevel;
+
+    private void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.P)) { Destroy(gameObject); }
     }
 
-    // Update is called once per frame
-    void Update()
+    // This method is called when the object is destroyed
+    private void OnDestroy()
     {
-        
+        // Check if the destroyed object has the tag "FinalBoss"
+        if (gameObject.CompareTag("FinalBoss"))
+        {
+            endLevel.IGC();
+        }
     }
 }

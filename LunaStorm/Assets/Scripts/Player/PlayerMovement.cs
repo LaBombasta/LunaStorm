@@ -75,7 +75,11 @@ public class PlayerMovement : MonoBehaviour
             // If CameraMovement script is enabled, clamp X-axis only
             clampedPosition.x = Mathf.Clamp(clampedPosition.x, minX, maxX);
 
-            
+            // Clamp backward position (negative Z-axis)
+            if (clampedPosition.z < 0f)
+            {
+                clampedPosition.z = Mathf.Clamp(clampedPosition.z, minZ, 0f);
+            }
         }
 
         transform.position = clampedPosition;
