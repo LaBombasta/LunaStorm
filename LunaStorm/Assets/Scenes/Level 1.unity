@@ -5888,13 +5888,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356828609}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7043611, y: -0, z: -0, w: 0.70984197}
   m_LocalPosition: {x: 3.1420546, y: 113.7, z: -142.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.557, y: 0, z: 0}
 --- !u!81 &1356828611
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5968,6 +5968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1013104423}
   verticalOffset: 10
+  smoothSpeed: 1
 --- !u!1 &1363034167
 GameObject:
   m_ObjectHideFlags: 0
@@ -7798,6 +7799,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1465962529277952400, guid: 1cd7dc387f9cfd34480858dade6b6278, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2567908167036441825, guid: 1cd7dc387f9cfd34480858dade6b6278, type: 3}
       propertyPath: m_Name
       value: PF_MegaBuilding
@@ -7846,6 +7851,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 895de155ea8774f478d9d7cb9b35d2e7, type: 2}
+    - target: {fileID: 6952680686031931645, guid: 1cd7dc387f9cfd34480858dade6b6278, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952680686031931645, guid: 1cd7dc387f9cfd34480858dade6b6278, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -44.62067
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8454,6 +8467,14 @@ PrefabInstance:
       propertyPath: wavesOfEnemies.Array.data[1].enemies.Array.data[0]
       value: 
       objectReference: {fileID: -3022177863231367598, guid: 34700eea57b9a5749aeb8c299fd5aa67, type: 3}
+    - target: {fileID: 9023199617432614512, guid: e91fe326f0c385447a0026a967e448bb, type: 3}
+      propertyPath: m_Size.y
+      value: 208.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023199617432614512, guid: e91fe326f0c385447a0026a967e448bb, type: 3}
+      propertyPath: m_Center.y
+      value: 40.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

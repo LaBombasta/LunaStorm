@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 8734066976390313514}
   m_Layer: 0
   m_Name: WaveLock
-  m_TagString: Untagged
+  m_TagString: WaveLock
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3847312a3834a4db4fcf2565fba5c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMovementScript: {fileID: 0}
+  cameraLockScript: {fileID: 0}
 --- !u!114 &8734066976390313514
 MonoBehaviour:
   m_ObjectHideFlags: 0
