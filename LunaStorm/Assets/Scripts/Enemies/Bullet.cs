@@ -39,14 +39,7 @@ public class Bullet : MonoBehaviour
         return test;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-
-        collision.transform.gameObject.BroadcastMessage("TakeDamage", 1f, SendMessageOptions.DontRequireReceiver);
-        Destroy(this.gameObject);
-    }
-
-    void setSetSpeed(float newSpeed)
+    public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
     }

@@ -9,6 +9,7 @@ TagManager:
   - Crosshair
   - Turret
   - TurretProjectile
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -16,9 +17,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Projectile
+  - Player
+  - Enemy
   - 
   - 
   - 

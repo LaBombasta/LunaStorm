@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     //We can add whichever field needs to be updated in text files
     // text scoreui
     // progress bar HP
+    private GameObject myPlayer;
     private Camera cam;
     private CameraMovement camMov;
     private int score;
@@ -31,8 +32,13 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("you dont have the script");
         }
-        
-        
+        myPlayer = GameObject.FindGameObjectWithTag("Player");
+        if(myPlayer.GetComponent<Health>())
+        {
+            playerHP = myPlayer.GetComponent<Health>().getHP();
+        }
+
+
         instance = this;
         UpdateScore(0);
         UpdateHP(0);

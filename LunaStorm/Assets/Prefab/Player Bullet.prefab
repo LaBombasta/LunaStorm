@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 6147121774277482606}
   - component: {fileID: 1923710211103770420}
   - component: {fileID: -6539873469547398144}
-  m_Layer: 0
+  - component: {fileID: -5106160901177306858}
+  m_Layer: 6
   m_Name: Player Bullet
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4934,3 +4935,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 0
+--- !u!114 &-5106160901177306858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2888214702400964595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893b9c8c9955e1a4483b8698ee31e4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  tagToHit: Enemy
