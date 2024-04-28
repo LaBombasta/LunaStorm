@@ -49,12 +49,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a80827674bfc4234587c98641b82544b, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a80827674bfc4234587c98641b82544b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3dd1502173c21964bade5346c8a26058, type: 2}
     - target: {fileID: 919132149155446097, guid: a80827674bfc4234587c98641b82544b, type: 3}
       propertyPath: m_Name
-      value: SM_Health
+      value: PF_Health
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
