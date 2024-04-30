@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private CameraMovement cameraMovement; // Reference to the CameraMovement script
     private CharacterController controller;
 
+    private Health health;
+
     public float forwardSpeed = 7f;
     public float barrelRollSpeedMultiplier = 2.2f; // Multiplier for strafing speed
 
@@ -30,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Get the CameraMovement component attached to the camera
         cameraMovement = mainCamera.GetComponent<CameraMovement>();
+
+        health = FindObjectOfType<Health>();
 
         CalculateBounds();
     }
@@ -63,10 +67,14 @@ public class PlayerMovement : MonoBehaviour
         // Barrel Roll
         if (canRoll && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
         {
+            health.enabled = false;
+
             // Determine the direction of the barrel roll based on horizontal input
             int rollDirection = horizontalInput < 0 ? 1 : -1; // If moving left, roll right; if moving right, roll left
 
             StartCoroutine(BarrelRoll(rollDirection));
+
+            health.enabled = true;
         }
 
         //******************************** add lerp when the camera movement becomes enabled again so that it is a smooth transition back to the player************************

@@ -11,12 +11,17 @@ public class EndLevel1IGC : MonoBehaviour
 
     PlayerMovement playMov;
     CameraMovement camMov;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         mainCamera = Camera.main;
+
+        playMov = FindObjectOfType<PlayerMovement>();
+        camMov = FindObjectOfType<CameraMovement>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -27,6 +32,10 @@ public class EndLevel1IGC : MonoBehaviour
 
     public void IGC()
     {
+        playMov.enabled = false;
+        camMov.enabled = false;
+        gameManager.enabled = false;
+
         StartCoroutine(MoveCamera());
 
         // Find all objects with the tag "moveable" and store them in an array
