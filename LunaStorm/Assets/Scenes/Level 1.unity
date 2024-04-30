@@ -4603,6 +4603,10 @@ PrefabInstance:
       value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 93222528763481330, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 93222528763481330, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
