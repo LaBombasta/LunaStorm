@@ -2173,15 +2173,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3011685716387597196, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.0563
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3011685716387597196, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.9932835
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3011685716387597196, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.3154
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3011685716387597196, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2223,6 +2223,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4143457821234131171, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 772d7f019e908674895e9423e166e78d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4665,6 +4669,18 @@ PrefabInstance:
     - target: {fileID: 737491507913926242, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225011782475397021, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225011782475397021, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225011782475397021, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2249806163724530251, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
       propertyPath: bulletSpeed
