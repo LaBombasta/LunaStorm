@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Turret_Gun (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
       value: 164.265
@@ -553,6 +557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Turret_Gun (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
       value: 164.265
@@ -621,6 +629,10 @@ PrefabInstance:
     - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_Name
       value: PF_Turret_Gun (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
@@ -897,6 +909,10 @@ PrefabInstance:
     - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_Name
       value: PF_Turret_Gun (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
@@ -2198,10 +2214,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2486119619926348086, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 705180295}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
 --- !u!1 &463160442
 GameObject:
@@ -2567,6 +2580,10 @@ PrefabInstance:
     - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_Name
       value: PF_Turret_Gun (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
@@ -3087,6 +3104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Turret_Gun (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
       value: 164.265
@@ -3155,6 +3176,10 @@ PrefabInstance:
     - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_Name
       value: PF_Turret_Gun (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
@@ -3500,6 +3525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Turret_Gun (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
       value: 164.265
@@ -3557,23 +3586,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03d99b897db83e04382042f734bf300a, type: 3}
---- !u!1 &705180294 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2486119619926348086, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
-  m_PrefabInstance: {fileID: 455489408}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &705180295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705180294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba21d329c1addfa419185822c0420873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &709048447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3792,6 +3804,10 @@ PrefabInstance:
     - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_Name
       value: PF_Turret_Gun (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
@@ -4386,7 +4402,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0159b7fd0d4a88b4f9a684e5f727d343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveableTag: moveable
+--- !u!114 &982548528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982548522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba21d329c1addfa419185822c0420873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &992076695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5122,6 +5149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Turret_Gun (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
       value: 164.265
@@ -5404,6 +5435,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Turret_Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
       value: 164.265
@@ -5610,6 +5645,10 @@ PrefabInstance:
     - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_Name
       value: PF_Turret_Gun (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
@@ -6149,7 +6188,7 @@ Transform:
   m_GameObject: {fileID: 1356828609}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 3.1420546, y: 113.7, z: -142.3}
+  m_LocalPosition: {x: 3.1420546, y: 85, z: -142.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6589,6 +6628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Turret_Gun (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
       value: 164.265
@@ -6709,6 +6752,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2166780897654064070, guid: 9616579fa9e6eef4e865d6a16dd1aba8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 982548525}
+    - targetCorrespondingSourceObject: {fileID: 2166780897654064070, guid: 9616579fa9e6eef4e865d6a16dd1aba8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 982548528}
   m_SourcePrefab: {fileID: 100100000, guid: 9616579fa9e6eef4e865d6a16dd1aba8, type: 3}
 --- !u!1001 &1432013164
 PrefabInstance:
@@ -8280,6 +8326,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Turret_Gun (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x
       value: 164.265
@@ -9051,6 +9101,10 @@ PrefabInstance:
     - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_Name
       value: PF_Turret_Gun (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700042028274341466, guid: 03d99b897db83e04382042f734bf300a, type: 3}
+      propertyPath: m_TagString
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 4040538322802478304, guid: 03d99b897db83e04382042f734bf300a, type: 3}
       propertyPath: m_LocalScale.x

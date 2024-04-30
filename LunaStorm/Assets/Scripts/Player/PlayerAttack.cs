@@ -92,7 +92,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    //add code to find the distance from the player to the enemy, and home towards that one
+    //add code to find the distance from the player to the enemies, and home towards the closest one
     public IEnumerator Homing(GameObject missile, Transform target)
     {
         while (Vector3.Distance(target.position, missile.transform.position) > 0.3f)
