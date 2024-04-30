@@ -125,6 +125,8 @@ MonoBehaviour:
   enemySpeed: 10
   turnSpeed: 45
   attachedGuns: []
+  droppedItem:
+  - {fileID: 0}
 --- !u!114 &-4701805270046870578
 MonoBehaviour:
   m_ObjectHideFlags: 0
