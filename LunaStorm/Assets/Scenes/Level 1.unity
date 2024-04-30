@@ -4603,6 +4603,10 @@ PrefabInstance:
       value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 93222528763481330, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 93222528763481330, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
@@ -8278,6 +8282,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1227932742462155604, guid: 1cd7dc387f9cfd34480858dade6b6278, type: 3}
+      propertyPath: m_TagString
+      value: Moveable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465962529277952400, guid: 1cd7dc387f9cfd34480858dade6b6278, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2567908167036441825, guid: 1cd7dc387f9cfd34480858dade6b6278, type: 3}
       propertyPath: m_Name
       value: PF_MegaBuilding
@@ -8326,6 +8338,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 895de155ea8774f478d9d7cb9b35d2e7, type: 2}
+    - target: {fileID: 4699504676401861693, guid: 1cd7dc387f9cfd34480858dade6b6278, type: 3}
+      propertyPath: m_TagString
+      value: Moveable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952680686031931645, guid: 1cd7dc387f9cfd34480858dade6b6278, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952680686031931645, guid: 1cd7dc387f9cfd34480858dade6b6278, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -44.62067
+      objectReference: {fileID: 0}
     - target: {fileID: 7941535783902062594, guid: 1cd7dc387f9cfd34480858dade6b6278, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

@@ -130,6 +130,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Turret_Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dbc554c33be184a48b6971b9b4df1d04, type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 1138385650123611171, guid: dbc554c33be184a48b6971b9b4df1d04, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
