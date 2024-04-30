@@ -4618,6 +4618,18 @@ PrefabInstance:
       propertyPath: m_ReceiveShadows
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 93222528763481330, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dd31467c482728f43abc91aac0a17bb2, type: 2}
+    - target: {fileID: 93222528763481330, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: dd31467c482728f43abc91aac0a17bb2, type: 2}
+    - target: {fileID: 93222528763481330, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: dd31467c482728f43abc91aac0a17bb2, type: 2}
     - target: {fileID: 105773237109259480, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
       propertyPath: m_Name
       value: ship
