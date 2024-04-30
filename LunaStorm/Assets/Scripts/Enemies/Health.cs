@@ -56,6 +56,7 @@ public class Health : MonoBehaviour
             else if(gameObject.CompareTag("Enemy"))
             {
                 GameManager.instance.UpdateScore(deathScore);
+                gameObject.BroadcastMessage("ItemDrop", SendMessageOptions.DontRequireReceiver);
                 Destroy(this.gameObject);
                 //this is where you would instantiate a particle effect explosion.
             }

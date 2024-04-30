@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     // reference to wave spawner 
     private float turnDegree = 0;
     [SerializeField] private BulletSpawner[] attachedGuns;
+    [SerializeField] private GameObject[] droppedItem;
 
 
     private void Start()
@@ -210,6 +211,20 @@ public class Enemy : MonoBehaviour
     private void SetTurnSpeed(float speed)
     {
         turnSpeed = speed;
+    }
+    private void ItemDrop()
+    {
+        int rand = (int)Random.Range(0, droppedItem.Length);
+        if (droppedItem[rand] != null)
+        {
+            GameObject drop = Instantiate(droppedItem[rand], transform);
+            Destroy(drop, 10);
+        }
+        else
+        {
+            Debug.Log("you hit nothing as your reward");
+        }
+       
     }
     private void OnDestroy()
     {
