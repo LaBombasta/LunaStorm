@@ -7,18 +7,41 @@ public class LevelChange : MonoBehaviour
 {
     private EndLevel1IGC endLevel;
 
-    private void Update()
+    GameObject finalBoss;
+
+    private void Start()
     {
-        if(Input.GetKeyDown(KeyCode.P)) { Destroy(gameObject); }
+        // Assuming EndLevel1IGC is the script attached to an object in your scene.
+        endLevel = FindObjectOfType<EndLevel1IGC>();
+
+        // Use FindGameObjectWithTag to find an object with a specific tag.
+        finalBoss = GameObject.FindGameObjectWithTag("FinalBoss");
     }
 
-    // This method is called when the object is destroyed
-    private void OnDestroy()
+    private void Update()
     {
-        // Check if the destroyed object has the tag "FinalBoss"
-        if (gameObject.CompareTag("FinalBoss"))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            endLevel.IGC();
+            // Check if the finalBoss object is found before destroying it.
+            if (finalBoss != null)
+            {
+                Destroy(finalBoss);
+            }
+        }
+
+        // Check if the finalBoss object has been destroyed
+        // You can simply check if finalBoss is null to determine if it's been destroyed.
+        if (finalBoss == null)
+        {
+            // Call the IGC method from EndLevel1IGC script
+            if (endLevel != null)
+            {
+                endLevel.IGC();
+            }
+            else
+            {
+                Debug.LogWarning("EndLevel1IGC script reference not set.");
+            }
         }
     }
 }
