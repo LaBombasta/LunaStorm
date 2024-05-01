@@ -9,6 +9,10 @@ TagManager:
   - Crosshair
   - Turret
   - TurretProjectile
+  - PlayerBullet
+  - WaveLock
+  - Moveable
+  - FinalBoss
   layers:
   - Default
   - TransparentFX
@@ -16,9 +20,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Projectile
+  - Player
+  - Enemy
   - 
   - 
   - 

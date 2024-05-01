@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -9,10 +11,15 @@ public class GameManager : MonoBehaviour
     //We can add whichever field needs to be updated in text files
     // text scoreui
     // progress bar HP
+    private GameObject myPlayer;
     private Camera cam;
     private CameraMovement camMov;
     private int score;
     private float playerHP;
+    private bool lockedInBattle = false;
+
+    // UI elements
+    public TextMeshProUGUI scoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +33,13 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("you dont have the script");
         }
-        
-        
+        myPlayer = GameObject.FindGameObjectWithTag("Player");
+        if(myPlayer.GetComponent<Health>())
+        {
+            playerHP = myPlayer.GetComponent<Health>().getHP();
+        }
+
+
         instance = this;
         UpdateScore(0);
         UpdateHP(0);
@@ -38,6 +50,7 @@ public class GameManager : MonoBehaviour
         score += amount;
         //Debug.Log(score);
         //update text object;
+        scoreText.text = "Score: " + score;
 
     }
 
@@ -50,11 +63,19 @@ public class GameManager : MonoBehaviour
     public void EnterBattle()
     {
         camMov.enabled = false;
+        lockedInBattle = true;
         Debug.Log("Battle Has Begun");
     }
-    public void FinishWave()
+    public void FinishBattle()
     {
+        
         camMov.enabled = true;
+        lockedInBattle = false;
         Debug.Log("Wave finished you can go home now");
+    }
+
+    public bool LockecInBattle()
+    {
+        return lockedInBattle;
     }
 }

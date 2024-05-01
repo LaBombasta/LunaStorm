@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7241822142314769695}
   - component: {fileID: 3715977810241397691}
   - component: {fileID: 4052870361604481043}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,8 @@ GameObject:
   - component: {fileID: 548687211549785789}
   - component: {fileID: -3022177863231367598}
   - component: {fileID: 1153302310895900134}
-  m_Layer: 0
+  - component: {fileID: 5794142870391115412}
+  m_Layer: 8
   m_Name: DualGunShip
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -230,8 +231,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 10
   turnSpeed: 45
-  enterDelay: 1
   attachedGuns: []
+  droppedItem:
+  - {fileID: 0}
 --- !u!114 &1153302310895900134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,13 +247,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySkin: {fileID: 1265556058007731002}
-  HP: 7
+  HP: 5
   MaxHp: 7
   hitScore: 5
   deathScore: 50
-  blankCanvas: {fileID: 2100000, guid: 245f274d78c268241bb3c4775f2f7271, type: 2}
   flash1: {r: 1, g: 0, b: 0, a: 1}
   flash2: {r: 0.5566038, g: 0.52247244, b: 0.52247244, a: 0.972549}
+--- !u!136 &5794142870391115412
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932764952300946214}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4648756
+  m_Height: 4.5811186
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2519344116659816412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,6 +344,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Enemy_Medium
       objectReference: {fileID: 0}
+    - target: {fileID: 2911109694354480435, guid: 023bfb094d0cadf4ab9b6227751019ac, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -347,9 +375,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right
       objectReference: {fileID: 0}
+    - target: {fileID: 1768893693087233551, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: speed
-      value: 20
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: gunType
@@ -449,9 +481,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left
       objectReference: {fileID: 0}
+    - target: {fileID: 1768893693087233551, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: speed
-      value: 20
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: gunType
@@ -460,6 +496,10 @@ PrefabInstance:
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: fireRate
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: rotSpeed
+      value: -360
       objectReference: {fileID: 0}
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: rotSpeed.y

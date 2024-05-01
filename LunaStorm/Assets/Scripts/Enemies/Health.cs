@@ -6,11 +6,11 @@ public class Health : MonoBehaviour
 {
     public Renderer mySkin;
 
-    [SerializeField] private float HP;
-    [SerializeField] private float MaxHp;
+    [SerializeField] private int HP;
+    [SerializeField] private int MaxHp;
     [SerializeField] private int hitScore;
     [SerializeField] private int deathScore;
-    [SerializeField] private Material blankCanvas;
+    private Material blankCanvas;
     [SerializeField] private Color flash1 = Color.red;
     [SerializeField] private Color flash2 = Color.white;
 
@@ -24,10 +24,9 @@ public class Health : MonoBehaviour
         //here is where we find the scoring UI
         //
         origColor = mySkin.material;
-        TakeDamage(-1);
     }
 
-    private void TakeDamage(float damage)
+    private void TakeDamage(int damage)
     {
         //Debug.Log("doing the thing");
         HP -= damage;
@@ -38,6 +37,7 @@ public class Health : MonoBehaviour
             if (gameObject.CompareTag("Player"))
             {
                 GameManager.instance.UpdateHP(-damage);
+                Debug.Log("Ouch");
             }
             else if (gameObject.CompareTag("Enemy"))
             {
@@ -51,20 +51,31 @@ public class Health : MonoBehaviour
         {
             if(gameObject.CompareTag("Player"))
             {
-                //kill player
+                Debug.Log("Am deadddd");
             }
             else if(gameObject.CompareTag("Enemy"))
             {
                 GameManager.instance.UpdateScore(deathScore);
+                gameObject.BroadcastMessage("ItemDrop", SendMessageOptions.DontRequireReceiver);
                 Destroy(this.gameObject);
                 //this is where you would instantiate a particle effect explosion.
             }
             
         }
     }
+
+    public int getHP()
+    {
+        return HP;
+    }
+
     
     IEnumerator Flash()
     {
+        if(GetComponent<PlayerAttack>())
+        {
+            GetComponent<PlayerAttack>().enabled = false;
+        }
         mySkin.material = blankCanvas;
         mySkin.material.color = flash1;
         yield return new WaitForSeconds(.05f);
@@ -75,6 +86,10 @@ public class Health : MonoBehaviour
         mySkin.material.color = flash2;
         yield return new WaitForSeconds(.05f);
         mySkin.material = origColor;
+        if (GetComponent<PlayerAttack>())
+        {
+            GetComponent<PlayerAttack>().enabled =true;
+        }
     }
 
 }

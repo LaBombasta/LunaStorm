@@ -8,14 +8,18 @@ public class PlayerMovement : MonoBehaviour
     private CameraMovement cameraMovement; // Reference to the CameraMovement script
     private CharacterController controller;
 
+    private Health health;
+
     public float forwardSpeed = 7f;
-    public float strafeSpeedMultiplier = 2.2f; // Multiplier for strafing speed
+    public float barrelRollSpeedMultiplier = 2.2f; // Multiplier for strafing speed
 
     private float minX, maxX, minZ, maxZ;
     private float backwardOffset = 16.0f;
     private float forwardOffset = 16.0f;
     private float leftOffset = 30.0f;
     private float rightOffset = 30.0f;
+    private bool transitionToPlayer = false; // Flag to track whether transition to player has occurred
+    public float smoothingFactor = 5f; // Adjust the smoothing factor for camera transition
 
     public float rollSpeed = 1000f;
     private bool canRoll = true;
@@ -29,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
         // Get the CameraMovement component attached to the camera
         cameraMovement = mainCamera.GetComponent<CameraMovement>();
 
+        health = FindObjectOfType<Health>();
+
         CalculateBounds();
     }
 
@@ -40,21 +46,35 @@ public class PlayerMovement : MonoBehaviour
 
         // Adjusting speed based on direction
         float adjustedSpeed = forwardSpeed;
-        if (Mathf.Abs(horizontalInput) > 0f)
+        // Apply barrel roll speed multiplier if rolling
+        if (!canRoll)
         {
-            adjustedSpeed *= strafeSpeedMultiplier; // Apply strafe speed multiplier if moving sideways
+            adjustedSpeed *= barrelRollSpeedMultiplier;
         }
-
-        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-        controller.Move(moveDirection * adjustedSpeed * Time.deltaTime);
-
+        if(GameManager.instance.LockecInBattle())
+        {
+            Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+            controller.Move(moveDirection * adjustedSpeed * Time.deltaTime);
+        }
+        else
+        {
+            Vector3 moveDirection = new Vector3(horizontalInput, 0f,1).normalized;
+            moveDirection.z /=3;
+            controller.Move(moveDirection * adjustedSpeed * Time.deltaTime);
+        }
+        
+        
         // Barrel Roll
         if (canRoll && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
         {
+            health.enabled = false;
+
             // Determine the direction of the barrel roll based on horizontal input
             int rollDirection = horizontalInput < 0 ? 1 : -1; // If moving left, roll right; if moving right, roll left
 
             StartCoroutine(BarrelRoll(rollDirection));
+
+            health.enabled = true;
         }
 
         //******************************** add lerp when the camera movement becomes enabled again so that it is a smooth transition back to the player************************
@@ -71,7 +91,14 @@ public class PlayerMovement : MonoBehaviour
         {
             // If CameraMovement script is enabled, clamp X-axis only
             clampedPosition.x = Mathf.Clamp(clampedPosition.x, minX, maxX);
+
+            // Clamp backward position (negative Z-axis)
+            if (clampedPosition.z < 0f)
+            {
+                clampedPosition.z = Mathf.Clamp(clampedPosition.z, minZ, 0f);
+            }
         }
+
         transform.position = clampedPosition;
     }
 
