@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: -6719429902566544804}
   - component: {fileID: -4701805270046870578}
   - component: {fileID: 5636014337255502095}
-  m_Layer: 0
-  m_Name: greenEnemy
+  m_Layer: 8
+  m_Name: LightEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7063385461028402317}
-  - {fileID: 588257809019673132}
+  - {fileID: 6912794291875311724}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2257793956925994100
@@ -169,17 +169,53 @@ CapsuleCollider:
   m_Height: 2.120892
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7300459539049966073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6912794291875311724}
+  m_Layer: 8
+  m_Name: GunPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6912794291875311724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7300459539049966073}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 588257809019673132}
+  m_Father: {fileID: 7993561715534856216}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &5483725093607136091
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7993561715534856216}
+    m_TransformParent: {fileID: 6912794291875311724}
     m_Modifications:
     - target: {fileID: 1768893693087233551, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_Name
       value: Center
+      objectReference: {fileID: 0}
+    - target: {fileID: 1768893693087233551, guid: 80ca99834278b654a897e320491853e8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: speed
@@ -223,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -231,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4914539587385082231, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -326,6 +362,10 @@ PrefabInstance:
     - target: {fileID: 4407072617605703956, guid: f01e510bbbd0efe4d9f131b760cb5dbc, type: 3}
       propertyPath: m_Name
       value: PF_Enemy_Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 4407072617605703956, guid: f01e510bbbd0efe4d9f131b760cb5dbc, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

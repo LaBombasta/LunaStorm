@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768893693087233551}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9980828, z: -0, w: -0.061892796}
-  m_LocalPosition: {x: 166.73122, y: 388, z: 178.80527}
-  m_LocalScale: {x: 4.3903, y: 1, z: 0.36775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 187.097, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2171699586938168385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6133961411429911271, guid: 01f07e60ee123e440a607aed10c8153e, type: 3}
-  bulletLifetime: 1
+  bulletLifetime: 4
   speed: 10
-  gunType: 3
-  fireRate: 0.1
+  gunType: 0
+  fireRate: 1
   isFiring: 1
-  rotSpeed: {x: 0, y: 5, z: 0}
+  rotSpeed: 360
