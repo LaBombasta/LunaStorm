@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3185102861073834283}
   m_Layer: 0
-  m_Name: EnemySpawn_M5
+  m_Name: EnemySpawn_M4
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8000412559865265652
 Transform:
   m_ObjectHideFlags: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3847312a3834a4db4fcf2565fba5c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraLockScript: {fileID: 0}
+  cameraMovementScript: {fileID: 0}
 --- !u!114 &8734066976390313514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9457428b9cd464b9b5e26d85d98f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stationary: 1
   spawnPoints:
   - {fileID: 6810465156762525980}
   - {fileID: 6104652529016047821}
@@ -312,7 +313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5206526223419768658
 Transform:
   m_ObjectHideFlags: 0
@@ -409,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5115607760935916605}
   m_Layer: 0
-  m_Name: EnemySpawn_M7
+  m_Name: EnemySpawn_M6
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -441,7 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2234072528176188756}
   m_Layer: 0
-  m_Name: EnemySpawn_M6
+  m_Name: EnemySpawn_M5
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -481,7 +482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5389986672698010738
 Transform:
   m_ObjectHideFlags: 0
@@ -578,7 +579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2596092701245882709}
   m_Layer: 0
-  m_Name: EnemySpawn_M2
+  m_Name: EnemySpawn_M1
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -610,7 +611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8195558422371444926}
   m_Layer: 0
-  m_Name: EnemySpawn_M4
+  m_Name: EnemySpawn_M3
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -682,7 +683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7546036208667725519
 Transform:
   m_ObjectHideFlags: 0
@@ -787,7 +788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &882197343494919214
 Transform:
   m_ObjectHideFlags: 0
@@ -892,7 +893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4608041133483809171
 Transform:
   m_ObjectHideFlags: 0
@@ -997,7 +998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7410227556141605261
 Transform:
   m_ObjectHideFlags: 0
@@ -1094,7 +1095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5543993885657235350}
   m_Layer: 0
-  m_Name: EnemySpawn_M3
+  m_Name: EnemySpawn_M2
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

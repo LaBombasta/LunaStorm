@@ -67,29 +67,8 @@ public class Enemy : MonoBehaviour
             attachedGuns[i].StartFiring();
         }
     }
-    private IEnumerator StraightLockOn()
-    {
-        StopAllGuns();
-        yield return new WaitForSeconds(1);
-        for (int i = 0; i < attachedGuns.Length; i++)
-        {
-            attachedGuns[i].SetLockedOn();
-            attachedGuns[i].SetFireRate(1);
-            attachedGuns[i].StartFiring();
-        }
-    }
-    private IEnumerator StraightWavy()
-    {
-        StopAllGuns();
-        yield return new WaitForSeconds(1);
-        for (int i = 0; i < attachedGuns.Length; i++)
-        {
-            attachedGuns[i].SetWavy();
-            attachedGuns[i].SetFireRate(.5f);
-            attachedGuns[i].StartFiring();
-        }
     
-    }
+    
     private IEnumerator RightTurn()
     {
         StopAllGuns();
@@ -97,6 +76,7 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < attachedGuns.Length; i++)
         {
             attachedGuns[i].SetNormal();
+            attachedGuns[i].SetFireRate(1);
             attachedGuns[i].StartFiring();
         }
 
@@ -117,6 +97,7 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < attachedGuns.Length; i++)
         {
             attachedGuns[i].SetNormal();
+            attachedGuns[i].SetFireRate(1);
             attachedGuns[i].StartFiring();
         }
 
@@ -137,7 +118,7 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < attachedGuns.Length; i++)
         {
             attachedGuns[i].SetLockedOn();
-            attachedGuns[i].SetFireRate(1.2f);
+            attachedGuns[i].SetFireRate(1.5f);
             attachedGuns[i].StartFiring();
         }
 
@@ -154,7 +135,7 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < attachedGuns.Length; i++)
         {
             attachedGuns[i].SetWavy();
-            attachedGuns[i].SetFireRate(.4f);
+            attachedGuns[i].SetFireRate(.9f);
             attachedGuns[i].StartFiring();
         }
 
@@ -167,7 +148,7 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < attachedGuns.Length; i++)
         {
             attachedGuns[i].SetLockedOn();
-            attachedGuns[i].SetFireRate(1.2f);
+            attachedGuns[i].SetFireRate(1.5f);
             attachedGuns[i].StartFiring();
         }
 
@@ -195,9 +176,32 @@ public class Enemy : MonoBehaviour
         for (int j = 0; j < attachedGuns.Length; j++)
         {
             attachedGuns[j].SetSpin();
-            attachedGuns[j].SetFireRate(.1f);
+            attachedGuns[j].SetFireRate(.2f);
             attachedGuns[j].StartFiring();
         }
+    }
+    private IEnumerator StraightLockOn()
+    {
+        StopAllGuns();
+        yield return new WaitForSeconds(1);
+        for (int i = 0; i < attachedGuns.Length; i++)
+        {
+            attachedGuns[i].SetLockedOn();
+            attachedGuns[i].SetFireRate(1);
+            attachedGuns[i].StartFiring();
+        }
+    }
+    private IEnumerator StraightWavy()
+    {
+        StopAllGuns();
+        yield return new WaitForSeconds(1);
+        for (int i = 0; i < attachedGuns.Length; i++)
+        {
+            attachedGuns[i].SetWavy();
+            attachedGuns[i].SetFireRate(.5f);
+            attachedGuns[i].StartFiring();
+        }
+
     }
 
     private void StopAllGuns()
