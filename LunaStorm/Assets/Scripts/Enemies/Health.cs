@@ -37,6 +37,7 @@ public class Health : MonoBehaviour
             if (gameObject.CompareTag("Player"))
             {
                 GameManager.instance.UpdateHP(-damage);
+                GameManager.instance.UpdateScore(hitScore);
                 Debug.Log("Ouch");
             }
             else if (gameObject.CompareTag("Enemy"))
@@ -52,6 +53,7 @@ public class Health : MonoBehaviour
             if(gameObject.CompareTag("Player"))
             {
                 Debug.Log("Am deadddd");
+                //start game over 
             }
             else if(gameObject.CompareTag("Enemy"))
             {
@@ -86,6 +88,8 @@ public class Health : MonoBehaviour
         mySkin.material.color = flash2;
         yield return new WaitForSeconds(.05f);
         mySkin.material = origColor;
+
+        yield return new WaitForSeconds(2.5f);
         if (GetComponent<PlayerAttack>())
         {
             GetComponent<PlayerAttack>().enabled =true;
