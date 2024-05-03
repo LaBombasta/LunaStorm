@@ -124,6 +124,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 10
   turnSpeed: 45
+  normalFR: 1
+  straightFR: 0.7
+  spinFR: 0.2
+  wavyFR: 0.4
+  burstFR: 0
+  lockedOnFR: 1.2
   attachedGuns: []
   droppedItem:
   - {fileID: 0}
@@ -231,7 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: rotSpeed
-      value: -360
+      value: 720
       objectReference: {fileID: 0}
     - target: {fileID: 2171699586938168385, guid: 80ca99834278b654a897e320491853e8, type: 3}
       propertyPath: m_Enabled

@@ -231,6 +231,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 10
   turnSpeed: 45
+  normalFR: 1
+  straightFR: 0.7
+  spinFR: 0.2
+  wavyFR: 0.4
+  burstFR: 0
+  lockedOnFR: 1.2
   attachedGuns: []
   droppedItem:
   - {fileID: 0}
