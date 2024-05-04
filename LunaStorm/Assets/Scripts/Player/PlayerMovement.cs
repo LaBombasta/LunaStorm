@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     private float forwardOffset = 16.0f;
     private float leftOffset = 30.0f;
     private float rightOffset = 30.0f;
-    private bool transitionToPlayer = false; // Flag to track whether transition to player has occurred
     public float smoothingFactor = 5f; // Adjust the smoothing factor for camera transition
 
     public float rollSpeed = 1000f;
@@ -51,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         {
             adjustedSpeed *= barrelRollSpeedMultiplier;
         }
-        if(GameManager.instance.LockecInBattle())
+        if(GameManager.instance.LockedInBattle())
         {
             Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
             controller.Move(moveDirection * adjustedSpeed * Time.deltaTime);

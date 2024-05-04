@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Wave finished you can go home now");
     }
 
-    public bool LockecInBattle()
+    public bool LockedInBattle()
     {
         return lockedInBattle;
     }
