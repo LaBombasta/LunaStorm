@@ -8,12 +8,15 @@ public class PlayerAttack : MonoBehaviour
     public Vector3 bulletSpawnOffset = new Vector3(0f, 0f, 1f);
     public float bulletSpeed = 10f;
 
-    public GameObject missilePrefab;
-    public Vector3 missileSpawnOffset = new Vector3(0f, 0f, 1f);
-    public float missileSpeed = 20f;
+    HomingMissile hMissile;
 
     public float fireRate = 0.2f;
     private float fireTimer = 0f;
+
+    private void Start()
+    {
+        hMissile = GetComponent<HomingMissile>();
+    }
 
     void Update()
     {
@@ -31,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
             fireTimer += Time.deltaTime;
             if (fireTimer >= fireRate)
             {
-                HomingMissile();
+                hMissile.FireMissile();
                 fireTimer = 0f;
             }
         }
@@ -67,40 +70,5 @@ public class PlayerAttack : MonoBehaviour
 
     //separate out the homing missle code into its own script
 
-    void HomingMissile()
-    {
-        GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
-        if (turrets.Length > 0)
-        {
-            GameObject missile = Instantiate(missilePrefab, transform.position, missilePrefab.transform.rotation);
-            missile.transform.LookAt(turrets[0].transform);
-            StartCoroutine(Homing(missile, turrets[0].transform));
-        }
-        else
-        {
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            if (enemies.Length > 0)
-            {
-                GameObject missile = Instantiate(missilePrefab, transform.position, missilePrefab.transform.rotation);
-                missile.transform.LookAt(enemies[0].transform);
-                StartCoroutine(Homing(missile, enemies[0].transform));
-            }
-            else
-            {
-                Debug.LogWarning("No game objects found with the 'Enemy' tag.");
-            }
-        }
-    }
-
-    //add code to find the distance from the player to the enemies, and home towards the closest one
-    public IEnumerator Homing(GameObject missile, Transform target)
-    {
-        while (Vector3.Distance(target.position, missile.transform.position) > 0.3f)
-        {
-            missile.transform.position += (target.position - missile.transform.position).normalized * missileSpeed * Time.deltaTime;
-            missile.transform.LookAt(target);
-            yield return null;
-        }
-        Destroy(missile);
-    }
+   
 }
