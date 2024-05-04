@@ -15,6 +15,14 @@ public class Health : MonoBehaviour
     [SerializeField] private Color flash2 = Color.white;
 
     // need a gameobject for the scoring UI
+
+    // hide UI lives on death
+    [SerializeField] private GameObject life1;
+    [SerializeField] private GameObject life2;
+    [SerializeField] private GameObject life3;
+
+    public LifeCounter lifeCounter;
+
     
 
     private Material origColor;
@@ -37,6 +45,7 @@ public class Health : MonoBehaviour
             if (gameObject.CompareTag("Player"))
             {
                 GameManager.instance.UpdateHP(-damage);
+                GameManager.instance.UpdateScore(hitScore);
                 Debug.Log("Ouch");
             }
             else if (gameObject.CompareTag("Enemy"))
@@ -52,6 +61,11 @@ public class Health : MonoBehaviour
             if(gameObject.CompareTag("Player"))
             {
                 Debug.Log("Am deadddd");
+                // hide one of the ship images
+                //life3.SetActive(false);
+                lifeCounter.SubtractLives();
+                // when all lives are gone set player to inactive, pass score and game over reason to game over test boxes, and call Game over
+                //start game over 
             }
             else if(gameObject.CompareTag("Enemy"))
             {
@@ -86,6 +100,8 @@ public class Health : MonoBehaviour
         mySkin.material.color = flash2;
         yield return new WaitForSeconds(.05f);
         mySkin.material = origColor;
+
+        yield return new WaitForSeconds(2.5f);
         if (GetComponent<PlayerAttack>())
         {
             GetComponent<PlayerAttack>().enabled =true;

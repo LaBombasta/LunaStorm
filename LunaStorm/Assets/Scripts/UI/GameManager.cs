@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     // UI elements
     public TextMeshProUGUI scoreText;
+    public GameObject gameOverUI;
+    public GameObject inGameUI;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,24 @@ public class GameManager : MonoBehaviour
         instance = this;
         UpdateScore(0);
         UpdateHP(0);
+
+        //lock cursor on start of game
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void Update()
+    {
+        if (gameOverUI.activeInHierarchy)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     public void UpdateScore(int amount)
@@ -77,5 +98,27 @@ public class GameManager : MonoBehaviour
     public bool LockedInBattle()
     {
         return lockedInBattle;
+    }
+
+    public void GameOverUI()
+    {
+        inGameUI.SetActive(false);
+        gameOverUI.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");  
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("QuitGame");
     }
 }

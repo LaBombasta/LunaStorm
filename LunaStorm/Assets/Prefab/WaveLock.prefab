@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3185102861073834283}
   m_Layer: 0
-  m_Name: EnemySpawn_M5
+  m_Name: EnemySpawn_M4
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 628371594082364129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 26, y: 0, z: 50}
+  m_LocalPosition: {x: 26, y: 0, z: 55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3847312a3834a4db4fcf2565fba5c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraLockScript: {fileID: 0}
+  cameraMovementScript: {fileID: 0}
 --- !u!114 &8734066976390313514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9457428b9cd464b9b5e26d85d98f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stationary: 1
   spawnPoints:
   - {fileID: 6810465156762525980}
   - {fileID: 6104652529016047821}
@@ -409,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5115607760935916605}
   m_Layer: 0
-  m_Name: EnemySpawn_M7
+  m_Name: EnemySpawn_M6
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -424,7 +425,7 @@ Transform:
   m_GameObject: {fileID: 2657317043723797496}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 51, y: 0, z: 10}
+  m_LocalPosition: {x: 51, y: 0, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -441,7 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2234072528176188756}
   m_Layer: 0
-  m_Name: EnemySpawn_M6
+  m_Name: EnemySpawn_M5
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -578,7 +579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2596092701245882709}
   m_Layer: 0
-  m_Name: EnemySpawn_M2
+  m_Name: EnemySpawn_M1
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -610,7 +611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8195558422371444926}
   m_Layer: 0
-  m_Name: EnemySpawn_M4
+  m_Name: EnemySpawn_M3
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -625,7 +626,7 @@ Transform:
   m_GameObject: {fileID: 6346960588328819939}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 50}
+  m_LocalPosition: {x: 0, y: 0, z: 55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -657,7 +658,7 @@ Transform:
   m_GameObject: {fileID: 6810465156762525980}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -51, y: 0, z: 10}
+  m_LocalPosition: {x: -51, y: 0, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1094,7 +1095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5543993885657235350}
   m_Layer: 0
-  m_Name: EnemySpawn_M3
+  m_Name: EnemySpawn_M2
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1109,7 +1110,7 @@ Transform:
   m_GameObject: {fileID: 8986066205327631800}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -26, y: 0, z: 50}
+  m_LocalPosition: {x: -26, y: 0, z: 55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

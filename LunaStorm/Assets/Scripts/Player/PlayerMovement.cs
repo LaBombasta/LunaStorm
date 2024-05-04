@@ -59,7 +59,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 moveDirection = new Vector3(horizontalInput, 0f,1).normalized;
             moveDirection.z /=3;
-            controller.Move(moveDirection * adjustedSpeed * Time.deltaTime);
+            moveDirection.z *= forwardSpeed;
+            moveDirection.x *= adjustedSpeed;
+            controller.Move(moveDirection * Time.deltaTime);
         }
         
         
