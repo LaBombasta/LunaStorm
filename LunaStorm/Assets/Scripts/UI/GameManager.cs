@@ -20,9 +20,11 @@ public class GameManager : MonoBehaviour
     private bool lockedInBattle = false;
 
     // UI elements
+    public GameObject inGameUI;
     public TextMeshProUGUI scoreText;
     public GameObject gameOverUI;
-    public GameObject inGameUI;
+    public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI gameOverText;
 
     // Start is called before the first frame update
     void Start()
@@ -102,6 +104,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOverUI()
     {
+        finalScoreText.text = "Final Score: " + score;
         inGameUI.SetActive(false);
         gameOverUI.SetActive(true);
     }

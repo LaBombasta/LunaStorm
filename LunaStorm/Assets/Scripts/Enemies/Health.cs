@@ -16,11 +16,7 @@ public class Health : MonoBehaviour
 
     // need a gameobject for the scoring UI
 
-    // hide UI lives on death
-    [SerializeField] private GameObject life1;
-    [SerializeField] private GameObject life2;
-    [SerializeField] private GameObject life3;
-
+   // point to lifecounter script
     public LifeCounter lifeCounter;
 
     
@@ -62,7 +58,6 @@ public class Health : MonoBehaviour
             {
                 Debug.Log("Am deadddd");
                 // hide one of the ship images
-                //life3.SetActive(false);
                 lifeCounter.SubtractLives();
                 // when all lives are gone set player to inactive, pass score and game over reason to game over test boxes, and call Game over
                 //start game over 
