@@ -13,6 +13,7 @@ TagManager:
   - WaveLock
   - Moveable
   - FinalBoss
+  - Upgrade
   layers:
   - Default
   - TransparentFX
