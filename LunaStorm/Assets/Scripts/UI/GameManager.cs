@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         
         camMov.enabled = true;
         lockedInBattle = false;
-        Debug.Log("Wave finished you can go home now");
+        //Debug.Log("Wave finished you can go home now");
     }
 
     public bool LockedInBattle()

@@ -42,9 +42,10 @@ public class Health : MonoBehaviour
             {
                 GameManager.instance.UpdateHP(-damage);
                 GameManager.instance.UpdateScore(hitScore);
+                lifeCounter.SubtractLives();
                 Debug.Log("Ouch");
             }
-            else if (gameObject.CompareTag("Enemy"))
+            else if (gameObject.CompareTag("Enemy")|| gameObject.CompareTag("Turret"))
             {
                 //this is where you add points for hitting
                 GameManager.instance.UpdateScore(hitScore);
@@ -81,22 +82,28 @@ public class Health : MonoBehaviour
     
     IEnumerator Flash()
     {
+        Debug.Log("Starting");
         if(GetComponent<PlayerAttack>())
         {
             GetComponent<PlayerAttack>().enabled = false;
         }
         mySkin.material = blankCanvas;
-        mySkin.material.color = flash1;
-        yield return new WaitForSeconds(.05f);
-        mySkin.material.color = flash2;
-        yield return new WaitForSeconds(.05f);
-        mySkin.material.color = flash1;
-        yield return new WaitForSeconds(.05f);
-        mySkin.material.color = flash2;
-        yield return new WaitForSeconds(.05f);
+        float timer = 0;
+        while (timer < 1.5f)
+        {
+            mySkin.material.color = flash1;
+            yield return new WaitForSeconds(.05f);
+            mySkin.material.color = flash2;
+            yield return new WaitForSeconds(.05f);
+            mySkin.material.color = flash1;
+            yield return new WaitForSeconds(.05f);
+            mySkin.material.color = flash2;
+            yield return new WaitForSeconds(.05f);
+            timer += Time.deltaTime +.2f;
+            yield return null;
+        }
         mySkin.material = origColor;
 
-        yield return new WaitForSeconds(2.5f);
         if (GetComponent<PlayerAttack>())
         {
             GetComponent<PlayerAttack>().enabled =true;
