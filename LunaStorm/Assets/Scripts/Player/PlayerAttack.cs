@@ -13,6 +13,13 @@ public class PlayerAttack : MonoBehaviour
     public float fireRate = 0.2f;
     private float fireTimer = 0f;
 
+    public int upgradeCount = 0;
+
+    // Reference to the original bullet spawn points
+    public Transform bulletSpawnCenter;
+    public Transform bulletSpawnLWing;
+    public Transform bulletSpawnRWing;
+
     private void Start()
     {
         hMissile = GetComponent<HomingMissile>();
@@ -38,6 +45,40 @@ public class PlayerAttack : MonoBehaviour
                 fireTimer = 0f;
             }
         }
+
+       /* // Handle upgrades
+        if (upgradeCount == 1)
+        {
+            if (bulletSpawnCenter != null)
+            {
+                // Move the existing bulletSpawnCenter GameObject
+                bulletSpawnCenter.localPosition += new Vector3(0.25f, 0f, 0f);
+
+                // Instantiate a new bulletSpawnCenter GameObject as a child of the player character
+                GameObject newBulletSpawnCenter = Instantiate(bulletSpawnCenter.gameObject, transform.position, Quaternion.identity, transform);
+
+                // Set the position of the new bulletSpawnCenter
+                newBulletSpawnCenter.transform.localPosition = new Vector3(0.5f, bulletSpawnCenter.localPosition.y, bulletSpawnCenter.localPosition.z);
+            }
+            else
+            {
+                Debug.LogError("BulletSpawn Center not assigned.");
+            }
+        }
+
+
+        else if (upgradeCount == 2)
+        {
+            if (bulletSpawnLWing != null && bulletSpawnRWing != null)
+            {
+                bulletSpawnLWing.localRotation = Quaternion.Euler(0f, 20f, 0f);
+                bulletSpawnRWing.localRotation = Quaternion.Euler(0f, -20f, 0f);
+            }
+            else
+            {
+                Debug.LogError("BulletSpawn LWing or BulletSpawn RWing not assigned.");
+            }
+        }*/
     }
 
     void FireBullet()
@@ -68,7 +109,16 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    //separate out the homing missle code into its own script
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Upgrade"))
+        {
+            Destroy(collision.gameObject);
 
-   
+            upgradeCount++;
+        }
+    }
+
+
+
 }

@@ -60,8 +60,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4caba023f0810714d858999314175801, type: 3}
+      propertyPath: m_TagString
+      value: Upgrade
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4caba023f0810714d858999314175801, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7361467712657625965}
   m_SourcePrefab: {fileID: 100100000, guid: 4caba023f0810714d858999314175801, type: 3}
+--- !u!1 &8534057449909422661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4caba023f0810714d858999314175801, type: 3}
+  m_PrefabInstance: {fileID: 8840137091199121172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &7361467712657625965
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534057449909422661}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.44
+  m_Center: {x: 0, y: 0, z: 0}
