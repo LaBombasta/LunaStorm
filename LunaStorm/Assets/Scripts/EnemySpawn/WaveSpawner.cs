@@ -14,6 +14,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float waveCountDown;
 
     // create an array of waves
+    public Boss boss;
     public EnemyWave[] wavesOfEnemies;
 
     // Wave Index
@@ -58,11 +59,15 @@ public class WaveSpawner : MonoBehaviour
         {
             if (doOnce)
             {
-                if(stationary)
+                if(boss == null)
                 {
-                    GameManager.instance.EnterBattle();
+                    if (stationary)
+                    {
+                        GameManager.instance.EnterBattle();
+                    }
+                    BEGINDESTRUCTION();
                 }
-                BEGINDESTRUCTION();
+                
             }
             doOnce = false;
         }
