@@ -24,7 +24,7 @@ public class Boss : MonoBehaviour
     {
         attachedGuns = gameObject.GetComponentsInChildren<BulletSpawner>(true);
         //CallingAllGuns();
-        SetMoveType(3);
+        //SetMoveType(3);
     }
     
 

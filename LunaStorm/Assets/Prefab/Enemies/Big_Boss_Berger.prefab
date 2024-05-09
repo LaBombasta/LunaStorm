@@ -245,14 +245,7 @@ MonoBehaviour:
   wavyFR: 0
   burstFR: 0
   lockedOnFR: 0
-  attachedGuns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  attachedGuns: []
   droppedItem: []
 --- !u!4 &3011685716387597196 stripped
 Transform:
