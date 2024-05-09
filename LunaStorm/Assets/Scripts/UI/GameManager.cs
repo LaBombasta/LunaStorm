@@ -146,6 +146,11 @@ public class GameManager : MonoBehaviour
         inGameUI.SetActive(false);
         gameOverUI.SetActive(true);
     }
+    public void WinnerUI()
+    {
+        gameOverText.text = "You are victorious brave infiltrator";
+        GameOverUI();
+    }
 
     public void RestartGame()
     {
