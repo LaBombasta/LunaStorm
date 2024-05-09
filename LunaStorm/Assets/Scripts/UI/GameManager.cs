@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(myPlayer);
         if(myPlayer.GetComponent<Health>())
         {
-            Debug.Log("Im hereeeee");
+            //Debug.Log("Im hereeeee");
             myPlayer.GetComponent<Health>().enabled = true;
             playerHP = myPlayer.GetComponent<Health>().getHP();
         }
