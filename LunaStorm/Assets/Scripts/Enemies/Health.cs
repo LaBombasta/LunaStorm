@@ -16,10 +16,9 @@ public class Health : MonoBehaviour
 
     // need a gameobject for the scoring UI
 
-   // point to lifecounter script
-    public LifeCounter lifeCounter;
+   
 
-    
+
 
     private Material origColor;
 
@@ -42,7 +41,7 @@ public class Health : MonoBehaviour
             {
                 GameManager.instance.UpdateHP(-damage);
                 GameManager.instance.UpdateScore(hitScore);
-                lifeCounter.SubtractLives();
+                GameManager.instance.SubtractLives();
                 Debug.Log("Ouch");
             }
             else if (gameObject.CompareTag("Enemy")|| gameObject.CompareTag("Turret"))
@@ -59,7 +58,7 @@ public class Health : MonoBehaviour
             {
                 Debug.Log("Am deadddd");
                 // hide one of the ship images
-                lifeCounter.SubtractLives();
+                GameManager.instance.SubtractLives();
                 // when all lives are gone set player to inactive, pass score and game over reason to game over test boxes, and call Game over
                 //start game over 
             }

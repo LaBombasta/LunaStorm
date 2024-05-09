@@ -7314,6 +7314,34 @@ PrefabInstance:
       propertyPath: finalScoreText
       value: 
       objectReference: {fileID: 1541964555}
+    - target: {fileID: 5635508064322742602, guid: 9616579fa9e6eef4e865d6a16dd1aba8, type: 3}
+      propertyPath: lives.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635508064322742602, guid: 9616579fa9e6eef4e865d6a16dd1aba8, type: 3}
+      propertyPath: lives.Array.data[0]
+      value: 
+      objectReference: {fileID: 752493061}
+    - target: {fileID: 5635508064322742602, guid: 9616579fa9e6eef4e865d6a16dd1aba8, type: 3}
+      propertyPath: lives.Array.data[1]
+      value: 
+      objectReference: {fileID: 1940085181}
+    - target: {fileID: 5635508064322742602, guid: 9616579fa9e6eef4e865d6a16dd1aba8, type: 3}
+      propertyPath: lives.Array.data[2]
+      value: 
+      objectReference: {fileID: 1401594209}
+    - target: {fileID: 5635508064322742602, guid: 9616579fa9e6eef4e865d6a16dd1aba8, type: 3}
+      propertyPath: lives.Array.data[3]
+      value: 
+      objectReference: {fileID: 1459560581}
+    - target: {fileID: 5635508064322742602, guid: 9616579fa9e6eef4e865d6a16dd1aba8, type: 3}
+      propertyPath: lives.Array.data[4]
+      value: 
+      objectReference: {fileID: 1598882717}
+    - target: {fileID: 5635508064322742602, guid: 9616579fa9e6eef4e865d6a16dd1aba8, type: 3}
+      propertyPath: lives.Array.data[5]
+      value: 
+      objectReference: {fileID: 2116994573}
     - target: {fileID: 6051880266965239032, guid: 9616579fa9e6eef4e865d6a16dd1aba8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.16988
@@ -7722,7 +7750,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480039805}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2107ca39ec2d1ea44a1fb3457d7925a0, type: 3}
   m_Name: 

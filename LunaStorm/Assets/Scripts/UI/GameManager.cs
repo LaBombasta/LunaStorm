@@ -26,9 +26,17 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI gameOverText;
 
+    [SerializeField] public GameObject[] lives;
+    private int remainingLives;
+    private bool isDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        remainingLives = lives.Length;
+        Debug.Log(" remaining lives: " + remainingLives);
+        
+
         cam = FindAnyObjectByType<Camera>();
         if(cam.GetComponent<CameraMovement>())
         {
@@ -41,6 +49,7 @@ public class GameManager : MonoBehaviour
         myPlayer = GameObject.FindGameObjectWithTag("Player");
         if(myPlayer.GetComponent<Health>())
         {
+            myPlayer.GetComponent<Health>().enabled = true;
             playerHP = myPlayer.GetComponent<Health>().getHP();
         }
 
@@ -101,9 +110,37 @@ public class GameManager : MonoBehaviour
     {
         return lockedInBattle;
     }
+   
+    public void SubtractLives()
+    {
+        // subtract life
+        remainingLives--;
+
+        // hide image of ship
+        lives[remainingLives].SetActive(false);
+
+        // if lives remaining is 0 call game over
+        if (remainingLives == 0 && !isDead)
+        {
+            isDead = true;
+
+            // display message on GameOver Screen
+            gameOverText.text = "You Lost.  Try Again.";
+
+           
+            //call game over
+            GameOverUI();
+        }
+    }
 
     public void GameOverUI()
     {
+        if (myPlayer.GetComponent<Health>())
+        {
+            Debug.Log("made it to game over ui health check!");
+            myPlayer.GetComponent<Health>().enabled = false;
+        }
+               
         finalScoreText.text = "Final Score: " + score;
         inGameUI.SetActive(false);
         gameOverUI.SetActive(true);
