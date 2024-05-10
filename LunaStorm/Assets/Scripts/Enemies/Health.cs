@@ -16,10 +16,6 @@ public class Health : MonoBehaviour
 
     // need a gameobject for the scoring UI
 
-   
-
-
-
     private Material origColor;
 
     void Start()
@@ -36,7 +32,7 @@ public class Health : MonoBehaviour
         if(HP >0)
         {
             StartCoroutine(Flash());
-            
+
             if (gameObject.CompareTag("Player"))
             {
                 GameManager.instance.UpdateHP(-damage);
@@ -44,13 +40,19 @@ public class Health : MonoBehaviour
                 GameManager.instance.SubtractLives();
                 Debug.Log("Ouch");
             }
-            else if (gameObject.CompareTag("Enemy")|| gameObject.CompareTag("Turret"))
+            else if (gameObject.CompareTag("Enemy") || gameObject.CompareTag("Turret"))
             {
                 //this is where you add points for hitting
                 GameManager.instance.UpdateScore(hitScore);
                 //Destroy(this.gameObject);
             }
-            
+            else if (gameObject.CompareTag("FinalBoss"));
+            {
+
+                GameManager.instance.UpdateScore(hitScore);
+
+            }
+
         }
         else
         {
@@ -76,6 +78,10 @@ public class Health : MonoBehaviour
     public int getHP()
     {
         return HP;
+    }
+    public int getMaxHP()
+    {
+        return MaxHp;
     }
 
     

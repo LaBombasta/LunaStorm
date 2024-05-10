@@ -47,8 +47,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("you dont have the script");
         }
         myPlayer = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(myPlayer);
         if(myPlayer.GetComponent<Health>())
         {
+            //Debug.Log("Im hereeeee");
             myPlayer.GetComponent<Health>().enabled = true;
             playerHP = myPlayer.GetComponent<Health>().getHP();
         }
@@ -115,7 +117,10 @@ public class GameManager : MonoBehaviour
     {
         // subtract life
         remainingLives--;
-
+        if(remainingLives<0)
+        {
+            remainingLives = 0;
+        }
         // hide image of ship
         lives[remainingLives].SetActive(false);
 
@@ -123,7 +128,8 @@ public class GameManager : MonoBehaviour
         if (remainingLives == 0 && !isDead)
         {
             isDead = true;
-
+            myPlayer.GetComponent<PlayerMovement>().enabled = false;
+            myPlayer.GetComponent<PlayerAttack>().enabled = false;
             // display message on GameOver Screen
             gameOverText.text = "You Lost.  Try Again.";
 
@@ -135,15 +141,15 @@ public class GameManager : MonoBehaviour
 
     public void GameOverUI()
     {
-        if (myPlayer.GetComponent<Health>())
-        {
-            Debug.Log("made it to game over ui health check!");
-            myPlayer.GetComponent<Health>().enabled = false;
-        }
-               
+        myPlayer.SetActive(false);
         finalScoreText.text = "Final Score: " + score;
         inGameUI.SetActive(false);
         gameOverUI.SetActive(true);
+    }
+    public void WinnerUI()
+    {
+        gameOverText.text = "You are victorious brave infiltrator";
+        GameOverUI();
     }
 
     public void RestartGame()

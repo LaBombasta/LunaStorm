@@ -112,9 +112,18 @@ public class BulletSpawner : MonoBehaviour
         if (bullet)
         {
             activeBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-            activeBullet.GetComponent<Bullet>().speed = speed + GetComponentInParent<Enemy>().enemySpeed;
-            activeBullet.GetComponent<Bullet>().bulletLifeTime = bulletLifetime;
-            activeBullet.transform.rotation = transform.rotation;
+            if(!GetComponentInParent<Boss>())
+            {
+                activeBullet.GetComponent<Bullet>().speed = speed + GetComponentInParent<Enemy>().enemySpeed;
+                activeBullet.GetComponent<Bullet>().bulletLifeTime = bulletLifetime;
+                activeBullet.transform.rotation = transform.rotation;
+            }
+            else
+            {
+                activeBullet.GetComponent<Bullet>().bulletLifeTime = bulletLifetime;
+                activeBullet.transform.rotation = transform.rotation;
+            }
+            
         }
     }
     public void StopFiring()

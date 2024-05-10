@@ -17,12 +17,14 @@ public class Boss : MonoBehaviour
 
     [SerializeField] private BulletSpawner[] attachedGuns;
     [SerializeField] private GameObject[] droppedItem;
-
+    private bool phase1 = true;
+    private bool phase2;
 
     private void Start()
     {
         attachedGuns = gameObject.GetComponentsInChildren<BulletSpawner>(true);
-        CallingAllGuns();
+        //CallingAllGuns();
+        //SetMoveType(3);
     }
     
 
@@ -34,24 +36,31 @@ public class Boss : MonoBehaviour
                 StartCoroutine(Idle());
                 break;
             case 1:
+                Debug.Log("Spinning");
                 StartCoroutine(Spin());
                 break;
             case 2:
+                Debug.Log("Lcoked");
                 StartCoroutine(LockOn());
                 break;
             case 3:
+                Debug.Log("waving");
                 StartCoroutine(Wavy());
                 break;
             case 4:
+                Debug.Log("Straight");
                 StartCoroutine(Straight());
                 break;
             case 5:
+                Debug.Log("Stopped");
                 StartCoroutine(StoppedFire());
                 break;
             case 6:
+                Debug.Log("TheCage");
                 StartCoroutine(TheCage());
                 break;
             case 7:
+                Debug.Log("Oppress");
                 StartCoroutine(Oppress());
                 break;
             case 8:
@@ -70,6 +79,7 @@ public class Boss : MonoBehaviour
     private void RandomSelection()
     {
         int rando = Random.Range((int)1, 7);
+        SetMoveType(rando);
     }
     private IEnumerator Straight()
     {
@@ -94,6 +104,10 @@ public class Boss : MonoBehaviour
             attachedGuns[j].SetFireRate(spinFR);
             attachedGuns[j].StartFiring();
         }
+        attachedGuns[attachedGuns.Length - 1].SetWavy();
+        attachedGuns[attachedGuns.Length - 1].SetFireRate(spinFR);
+        attachedGuns[attachedGuns.Length - 1].StartFiring();
+
         yield return new WaitForSeconds(attackTimer);
         SetMoveType(0);
     }
@@ -120,6 +134,9 @@ public class Boss : MonoBehaviour
             attachedGuns[i].SetFireRate(wavyFR);
             attachedGuns[i].StartFiring();
         }
+        attachedGuns[attachedGuns.Length - 1].SetWavy();
+        attachedGuns[attachedGuns.Length - 1].SetFireRate(spinFR);
+        attachedGuns[attachedGuns.Length - 1].StartFiring();
         yield return new WaitForSeconds(attackTimer);
         SetMoveType(0);
     }
@@ -215,6 +232,31 @@ public class Boss : MonoBehaviour
         }
     }
 
+    public void CalculatePhase()
+    {
+        int phase = GetComponent<Health>().getHP();
+        int maxHp = GetComponent<Health>().getMaxHP();
+        if (phase1&&phase<maxHp*.75)
+        {
+            phase1 = false;
+            phase2 = true;
+            //stop all coroutines
+            //start shield timer
+            //call something on wave spawner
+            //after wave restart couroutines
+            //SpawnSheild
+        }
+        if (phase2 && phase < maxHp * .5)
+        {
+            phase2 = false;
+            //phase3 = true;
+            //spawnSheild
+        }
+    }
+    public void SpawnSheild()
+    {
+        //instantiate a sheild 
+    }
 
     private void OnDestroy()
     {
