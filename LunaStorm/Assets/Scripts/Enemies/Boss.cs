@@ -17,6 +17,10 @@ public class Boss : MonoBehaviour
 
     [SerializeField] private BulletSpawner[] attachedGuns;
     [SerializeField] private GameObject[] droppedItem;
+    [SerializeField] private GameObject shieldLocation;
+    [SerializeField] private GameObject shield;
+    [SerializeField] private WaveSpawner myMinions;
+
     private bool phase1 = true;
     private bool phase2;
 
@@ -240,6 +244,10 @@ public class Boss : MonoBehaviour
         {
             phase1 = false;
             phase2 = true;
+            SpawnShield();
+            StopAllCoroutines();
+            StopAllGuns();
+            SummonMinions();
             //stop all coroutines
             //start shield timer
             //call something on wave spawner
@@ -253,11 +261,22 @@ public class Boss : MonoBehaviour
             //spawnSheild
         }
     }
-    public void SpawnSheild()
+    public void SpawnShield()
     {
-        //instantiate a sheild 
+        Instantiate(shield, shieldLocation.transform.position,Quaternion.Euler(0,0,0));
     }
-
+    public void SetMinions(WaveSpawner minion)
+    {
+        myMinions = minion;
+    }
+    public void SummonMinions()
+    {
+        myMinions.BEGINDESTRUCTION();
+    }
+    public void StopMinions()
+    {
+        myMinions.StopMe();
+    }
     private void OnDestroy()
     {
         Destroy(gameObject);

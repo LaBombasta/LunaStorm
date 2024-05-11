@@ -11,14 +11,15 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 69463bfa088752b4ea213004b4bb357f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _BUILTIN_SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: 3000
   stringTagMap:
-    RenderType: Opaque
+    RenderType: Transparent
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -31,26 +32,26 @@ Material:
     m_Ints: []
     m_Floats:
     - _BUILTIN_AlphaClip: 0
-    - _BUILTIN_Blend: 2
+    - _BUILTIN_Blend: 3
     - _BUILTIN_CullMode: 0
     - _BUILTIN_DstBlend: 0
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _BUILTIN_SrcBlend: 1
-    - _BUILTIN_Surface: 0
+    - _BUILTIN_SrcBlend: 2
+    - _BUILTIN_Surface: 1
     - _BUILTIN_ZTest: 4
-    - _BUILTIN_ZWrite: 1
+    - _BUILTIN_ZWrite: 0
     - _BUILTIN_ZWriteControl: 0
-    - _DotsNoiseScale: 30
-    - _FresnelPower: 0
+    - _DotsNoiseScale: 111.3
+    - _FresnelPower: 0.75
     - _GradientNoiseScale: 5
     - _HexSize: 0.8
-    - _MaskPower: 2
+    - _MaskPower: 0.2
     m_Colors:
-    - _Fresnel_Color: {r: 1, g: 0, b: 0.7973337, a: 1}
+    - _Fresnel_Color: {r: 6.167052, g: 6.167052, b: 6.167052, a: 1}
     - _HexTiling: {r: 30, g: 20, b: 0, a: 0}
     - _NoiseSpeed: {r: 0, g: 0.2, b: 0, a: 0}
-    - _White: {r: 0.4344602, g: 1.509434, b: 0, a: 0}
+    - _White: {r: 6.951363, g: 24.150944, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7230487286699730518
 MonoBehaviour:

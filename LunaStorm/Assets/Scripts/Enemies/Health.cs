@@ -44,13 +44,14 @@ public class Health : MonoBehaviour
             {
                 //this is where you add points for hitting
                 GameManager.instance.UpdateScore(hitScore);
+                if (gameObject.GetComponent<Boss>())
+                {
+                    gameObject.GetComponent<Boss>().CalculatePhase();
+                }else
+                {
+                    Debug.Log("this is not workindg");
+                }
                 //Destroy(this.gameObject);
-            }
-            else if (gameObject.CompareTag("FinalBoss"));
-            {
-
-                GameManager.instance.UpdateScore(hitScore);
-
             }
 
         }

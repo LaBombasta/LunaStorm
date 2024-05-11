@@ -20,7 +20,6 @@ public class WaveSpawner : MonoBehaviour
     // Wave Index
     public int enemyWaveIndex = 0;
     private bool doOnce = true;
-    
 
    
     public void BEGINDESTRUCTION()
@@ -47,10 +46,18 @@ public class WaveSpawner : MonoBehaviour
             enemyWaveIndex++;
         }
         yield return new WaitForSeconds(wavesOfEnemies[enemyWaveIndex-1].enemyLifeTime);
-        if (stationary)
+        if (stationary && boss == null)
         {
             GameManager.instance.FinishBattle();
         }
+        else
+        {
+            StartCoroutine(SpawnEnemyWave());
+        }
+    }
+    public void StopMe()
+    {
+        StopAllCoroutines();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,6 +73,12 @@ public class WaveSpawner : MonoBehaviour
                         GameManager.instance.EnterBattle();
                     }
                     BEGINDESTRUCTION();
+                }
+                else
+                {
+                    GameManager.instance.EnterBattle();
+                    boss.SetMoveType(0);
+                    boss.SetMinions(this);
                 }
                 
             }
