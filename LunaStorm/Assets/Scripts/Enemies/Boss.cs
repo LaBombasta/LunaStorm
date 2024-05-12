@@ -38,6 +38,7 @@ public class Boss : MonoBehaviour
         {
             case 0:
                 StartCoroutine(Idle());
+                StopMinions();
                 break;
             case 1:
                 Debug.Log("Spinning");
@@ -76,6 +77,7 @@ public class Boss : MonoBehaviour
     }
     private IEnumerator Idle()
     {
+        Debug.Log("Starting my Idle");
         StopAllGuns();
         yield return new WaitForSeconds(2);
         RandomSelection();
@@ -84,6 +86,7 @@ public class Boss : MonoBehaviour
     {
         int rando = Random.Range((int)1, 7);
         SetMoveType(rando);
+        Debug.Log("Choosing:" + rando);
     }
     private IEnumerator Straight()
     {
@@ -244,26 +247,28 @@ public class Boss : MonoBehaviour
         {
             phase1 = false;
             phase2 = true;
-            SpawnShield();
             StopAllCoroutines();
             StopAllGuns();
             SummonMinions();
-            //stop all coroutines
-            //start shield timer
-            //call something on wave spawner
-            //after wave restart couroutines
-            //SpawnSheild
+            StartCoroutine(SpawnShield());
         }
-        if (phase2 && phase < maxHp * .5)
+        if (phase2 && phase < maxHp * .25)
         {
             phase2 = false;
-            //phase3 = true;
-            //spawnSheild
+            StopAllCoroutines();
+            StopAllGuns();
+            SummonMinions();
+            StartCoroutine(SpawnShield());
         }
     }
-    public void SpawnShield()
+    public IEnumerator SpawnShield()
     {
-        Instantiate(shield, shieldLocation.transform.position,Quaternion.Euler(0,0,0));
+        GameObject barrier = Instantiate(shield, shieldLocation.transform.position,Quaternion.Euler(-20,180,0));
+        while(barrier!=null)
+        {
+            yield return null;
+        }
+        SetMoveType(0);
     }
     public void SetMinions(WaveSpawner minion)
     {
@@ -271,7 +276,11 @@ public class Boss : MonoBehaviour
     }
     public void SummonMinions()
     {
-        myMinions.BEGINDESTRUCTION();
+        if(myMinions != null)
+        {
+            myMinions.BEGINDESTRUCTION();
+        }
+       
     }
     public void StopMinions()
     {

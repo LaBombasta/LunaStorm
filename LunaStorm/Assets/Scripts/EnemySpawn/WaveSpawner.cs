@@ -77,8 +77,9 @@ public class WaveSpawner : MonoBehaviour
                 else
                 {
                     GameManager.instance.EnterBattle();
-                    boss.SetMoveType(0);
                     boss.SetMinions(this);
+                    boss.SetMoveType(0);
+                    
                 }
                 
             }

@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySkin: {fileID: 8236243124244860898}
-  HP: 3
-  MaxHp: 7
+  HP: 4
+  MaxHp: 4
   hitScore: 5
   deathScore: 20
   flash1: {r: 1, g: 0, b: 0, a: 1}

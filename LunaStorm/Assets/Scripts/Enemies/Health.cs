@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
     // need a gameobject for the scoring UI
 
     private Material origColor;
+    private bool noDamage;
 
     void Start()
     {
@@ -28,54 +29,67 @@ public class Health : MonoBehaviour
     private void TakeDamage(int damage)
     {
         //Debug.Log("doing the thing");
-        HP -= damage;
-        if(HP >0)
+        if(!noDamage)
         {
-            StartCoroutine(Flash());
+            HP -= damage;
+            if (HP > 0)
+            {
+                StartCoroutine(Flash());
 
-            if (gameObject.CompareTag("Player"))
-            {
-                GameManager.instance.UpdateHP(-damage);
-                GameManager.instance.UpdateScore(hitScore);
-                GameManager.instance.SubtractLives();
-                Debug.Log("Ouch");
-            }
-            else if (gameObject.CompareTag("Enemy") || gameObject.CompareTag("Turret"))
-            {
-                //this is where you add points for hitting
-                GameManager.instance.UpdateScore(hitScore);
-                if (gameObject.GetComponent<Boss>())
+                if (gameObject.CompareTag("Player"))
                 {
-                    gameObject.GetComponent<Boss>().CalculatePhase();
-                }else
-                {
-                    Debug.Log("this is not workindg");
+                    GameManager.instance.UpdateHP(-damage);
+                    GameManager.instance.UpdateScore(hitScore);
+                    GameManager.instance.SubtractLives();
+                    Debug.Log("Ouch");
                 }
-                //Destroy(this.gameObject);
-            }
+                else if (gameObject.CompareTag("Enemy") || gameObject.CompareTag("Turret"))
+                {
+                    //Debug.Log(HP);
+                    //this is where you add points for hitting
+                    GameManager.instance.UpdateScore(hitScore);
+                    if (gameObject.GetComponent<Boss>())
+                    {
+                        gameObject.GetComponent<Boss>().CalculatePhase();
+                    }
+                    
+                    //Destroy(this.gameObject);
+                }
 
-        }
-        else
-        {
-            if(gameObject.CompareTag("Player"))
-            {
-                Debug.Log("Am deadddd");
-                // hide one of the ship images
-                GameManager.instance.SubtractLives();
-                // when all lives are gone set player to inactive, pass score and game over reason to game over test boxes, and call Game over
-                //start game over 
             }
-            else if(gameObject.CompareTag("Enemy"))
+            else
             {
-                GameManager.instance.UpdateScore(deathScore);
-                gameObject.BroadcastMessage("ItemDrop", SendMessageOptions.DontRequireReceiver);
-                Destroy(this.gameObject);
-                //this is where you would instantiate a particle effect explosion.
+                if (gameObject.CompareTag("Player"))
+                {
+                    Debug.Log("Am deadddd");
+                    // hide one of the ship images
+                    GameManager.instance.SubtractLives();
+                    // when all lives are gone set player to inactive, pass score and game over reason to game over test boxes, and call Game over
+                    //start game over 
+                }
+                else if (gameObject.CompareTag("Enemy") || gameObject.CompareTag("Turret"))
+                {
+                    GameManager.instance.UpdateScore(deathScore);
+                    gameObject.BroadcastMessage("ItemDrop", SendMessageOptions.DontRequireReceiver);
+                    Destroy(this.gameObject);
+                    //this is where you would instantiate a particle effect explosion.
+                }
+
             }
-            
         }
+       
+    }
+    public void NoDamage(float num)
+    {
+        StartCoroutine(INVINCIBLE(num));
     }
 
+    private IEnumerator INVINCIBLE(float timer)
+    {
+        noDamage = true;
+        yield return new WaitForSeconds(timer);
+        noDamage = false;
+    }
     public int getHP()
     {
         return HP;

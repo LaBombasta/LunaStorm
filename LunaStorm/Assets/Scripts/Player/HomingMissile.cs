@@ -89,14 +89,19 @@ public class HomingMissile : MonoBehaviour
                     missile.transform.position += direction * missileSpeed * Time.deltaTime;
                     missile.transform.LookAt(target);
                 }
+                
                 else
                 {
+
                     if (target.CompareTag("Turret") || target.CompareTag("Enemy"))
                     {
-                        Destroy(target.gameObject);
+                        target.BroadcastMessage("TakeDamage", 2, SendMessageOptions.DontRequireReceiver);
+                        Destroy(missile);
                     }
                     target = null;
                 }
+                
+                
             }
             else
             {
@@ -106,7 +111,15 @@ public class HomingMissile : MonoBehaviour
             yield return null;
         }
 
-        Destroy(missile);
+        
+    }
+   
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Turret") || collision.gameObject.CompareTag("Enemy"))
+        {
+            BroadcastMessage("TakeDamage", 4, SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     IEnumerator MoveMissileStraight(GameObject missile, Vector3 direction)

@@ -108,11 +108,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0344b5b2038ebd14a9e55b31493df028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newScale: {x: 1500, y: 750, z: 75}
+  renderer: {fileID: 4003526513802234392}
+  mat1: {fileID: 2100000, guid: 0b853266ad26b764db71541e1097696c, type: 2}
+  mat2: {fileID: 2100000, guid: efc5ae9610c1ba84b91d0ac22548ac74, type: 2}
+  newScale: {x: 2500, y: 750, z: 4000}
   timer: 1
   shrinkScale: {x: 4000, y: 200, z: 200}
   shrinkTimer: 0.5
-  HP: 500
+  HP: 200
   boss: {fileID: 0}
 --- !u!65 &8715554513238226272
 BoxCollider:
@@ -135,3 +138,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.035922185, y: 0.020232735, z: 0.001648753}
   m_Center: {x: 0.000002075918, y: -0.00023733731, z: 0.0004340273}
+--- !u!23 &4003526513802234392 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 0356d828cd97ab34890829a6ef4f23fc, type: 3}
+  m_PrefabInstance: {fileID: 2328070215694866076}
+  m_PrefabAsset: {fileID: 0}

@@ -5,6 +5,12 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     [SerializeField]
+    private Renderer renderer;
+    [SerializeField]
+    private Material mat1;
+    [SerializeField]
+    private Material mat2;
+    [SerializeField]
     private Vector3 newScale;
     [SerializeField]
     private float timer;
@@ -14,8 +20,7 @@ public class Shield : MonoBehaviour
     private float shrinkTimer;
     [SerializeField]
     private int HP;
-    [SerializeField]
-    private Boss boss;
+   // public Boss boss;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +41,20 @@ public class Shield : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
-        Debug.Log("hi");
+        StartCoroutine(Blink());
         HP -= damage;
-       if(HP<=0)
+        if (HP <= 0)
         {
             StartCoroutine(ShrinkOverTime());
         }
+    }
+
+    IEnumerator Blink()
+    {
+        renderer.material = mat2;
+        yield return new WaitForSeconds(.05f);
+        renderer.material = mat1;
+
     }
 
 
@@ -58,7 +71,7 @@ public class Shield : MonoBehaviour
             }
             yield return null;
         }
-        boss.SetMoveType(0);
+        //boss.SetMoveType(0);
 
         Destroy(this.gameObject);
     }
