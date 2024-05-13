@@ -6556,6 +6556,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+  m_IsActive: 1
 --- !u!65 &1329283792
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6586,7 +6587,7 @@ Transform:
   m_GameObject: {fileID: 1329283791}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.16988, y: 35, z: 551.5}
+  m_LocalPosition: {x: 9.16988, y: 35, z: 458.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10305,6 +10306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8734066976390313514, guid: e91fe326f0c385447a0026a967e448bb, type: 3}
       propertyPath: wavesOfEnemies.Array.data[7].timeUntilNextWave
+      value: 0
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8734066976390313514, guid: e91fe326f0c385447a0026a967e448bb, type: 3}

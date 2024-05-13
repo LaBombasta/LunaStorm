@@ -240,7 +240,7 @@ public class Boss : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             attachedGuns[i].SetSpin();
-            attachedGuns[i].SetFireRate(.1f);
+            attachedGuns[i].SetFireRate(.15f);
             attachedGuns[i].StartFiring();
 
         }
@@ -248,14 +248,14 @@ public class Boss : MonoBehaviour
         for (int i = 2; i < 4; i++)
         {
             attachedGuns[i].SetSpin();
-            attachedGuns[i].SetFireRate(.1f);
+            attachedGuns[i].SetFireRate(.15f);
             attachedGuns[i].StartFiring();
         }
         yield return new WaitForSeconds(.6f);
         for (int i = 4; i < 6; i++)
         {
             attachedGuns[i].SetSpin();
-            attachedGuns[i].SetFireRate(.1f);
+            attachedGuns[i].SetFireRate(.15f);
             attachedGuns[i].StartFiring();
         }
         attachedGuns[6].LockedOn();
