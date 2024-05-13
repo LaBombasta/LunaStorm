@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         remainingLives = lives.Length;
-        Debug.Log(" remaining lives: " + remainingLives);
+        //Debug.Log(" remaining lives: " + remainingLives);
         
 
         cam = FindAnyObjectByType<Camera>();
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("you dont have the script");
         }
         myPlayer = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(myPlayer);
+        //Debug.Log(myPlayer);
         if(myPlayer.GetComponent<Health>())
         {
             //Debug.Log("Im hereeeee");
@@ -82,6 +82,10 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int amount)
     {
         score += amount;
+        if(score<0)
+        {
+            score = 0;
+        }
         //Debug.Log(score);
         //update text object;
         scoreText.text = "Score: " + score;
@@ -137,6 +141,15 @@ public class GameManager : MonoBehaviour
             //call game over
             GameOverUI();
         }
+    }
+    public void AddLife()
+    {
+        if (remainingLives<lives.Length)
+        {
+            lives[remainingLives].SetActive(true);
+            remainingLives++;
+        }
+        
     }
 
     public void GameOverUI()

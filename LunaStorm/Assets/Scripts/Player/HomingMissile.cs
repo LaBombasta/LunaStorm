@@ -95,7 +95,7 @@ public class HomingMissile : MonoBehaviour
 
                     if (target.CompareTag("Turret") || target.CompareTag("Enemy"))
                     {
-                        target.BroadcastMessage("TakeDamage", 2, SendMessageOptions.DontRequireReceiver);
+                        target.BroadcastMessage("TakeDamage", 2, SendMessageOptions.RequireReceiver);
                         Destroy(missile);
                     }
                     target = null;

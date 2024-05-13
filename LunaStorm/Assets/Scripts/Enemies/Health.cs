@@ -17,19 +17,24 @@ public class Health : MonoBehaviour
     // need a gameobject for the scoring UI
 
     private Material origColor;
+    [SerializeField]
     private bool noDamage;
-
     void Start()
     {
         //here is where we find the scoring UI
         //
         origColor = mySkin.material;
+        noDamage = false;
     }
 
     private void TakeDamage(int damage)
     {
         //Debug.Log("doing the thing");
-        if(!noDamage)
+        if(noDamage)
+        {
+            Debug.Log("I took no damage on this instance");
+        }
+        else
         {
             HP -= damage;
             if (HP > 0)
@@ -41,7 +46,7 @@ public class Health : MonoBehaviour
                     GameManager.instance.UpdateHP(-damage);
                     GameManager.instance.UpdateScore(hitScore);
                     GameManager.instance.SubtractLives();
-                    Debug.Log("Ouch");
+                    //Debug.Log("Ouch");
                 }
                 else if (gameObject.CompareTag("Enemy") || gameObject.CompareTag("Turret"))
                 {
@@ -52,7 +57,7 @@ public class Health : MonoBehaviour
                     {
                         gameObject.GetComponent<Boss>().CalculatePhase();
                     }
-                    
+
                     //Destroy(this.gameObject);
                 }
 
@@ -61,7 +66,7 @@ public class Health : MonoBehaviour
             {
                 if (gameObject.CompareTag("Player"))
                 {
-                    Debug.Log("Am deadddd");
+                    //Debug.Log("Am deadddd");
                     // hide one of the ship images
                     GameManager.instance.SubtractLives();
                     // when all lives are gone set player to inactive, pass score and game over reason to game over test boxes, and call Game over
@@ -69,14 +74,15 @@ public class Health : MonoBehaviour
                 }
                 else if (gameObject.CompareTag("Enemy") || gameObject.CompareTag("Turret"))
                 {
+                    Debug.Log("HI there");
                     GameManager.instance.UpdateScore(deathScore);
-                    gameObject.BroadcastMessage("ItemDrop", SendMessageOptions.DontRequireReceiver);
                     Destroy(this.gameObject);
                     //this is where you would instantiate a particle effect explosion.
                 }
 
             }
         }
+
        
     }
     public void NoDamage(float num)
@@ -86,6 +92,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator INVINCIBLE(float timer)
     {
+        //Debug.Log(this.gameObject);
         noDamage = true;
         yield return new WaitForSeconds(timer);
         noDamage = false;
@@ -102,7 +109,7 @@ public class Health : MonoBehaviour
     
     IEnumerator Flash()
     {
-        Debug.Log("Starting");
+        //Debug.Log("Starting");
         if(GetComponent<PlayerAttack>())
         {
             GetComponent<PlayerAttack>().enabled = false;

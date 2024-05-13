@@ -41,35 +41,37 @@ public class Boss : MonoBehaviour
                 StopMinions();
                 break;
             case 1:
-                Debug.Log("Spinning");
+                //Debug.Log("Spinning");
                 StartCoroutine(Spin());
                 break;
             case 2:
-                Debug.Log("Lcoked");
+                //Debug.Log("Lcoked");
                 StartCoroutine(LockOn());
                 break;
             case 3:
-                Debug.Log("waving");
+               //Debug.Log("waving");
                 StartCoroutine(Wavy());
                 break;
             case 4:
-                Debug.Log("Straight");
+                //Debug.Log("Straight");
                 StartCoroutine(Straight());
                 break;
             case 5:
-                Debug.Log("Stopped");
+                //Debug.Log("Stopped");
                 StartCoroutine(StoppedFire());
                 break;
             case 6:
-                Debug.Log("TheCage");
+                //Debug.Log("TheCage");
                 StartCoroutine(TheCage());
                 break;
             case 7:
-                Debug.Log("Oppress");
+                //Debug.Log("Oppress");
                 StartCoroutine(Oppress());
                 break;
             case 8:
-                
+                //Debug.Log("DelayedWave");
+                StopMinions();
+                StartCoroutine(DelayedWave());
                 break;
             default:
                 break;
@@ -77,7 +79,7 @@ public class Boss : MonoBehaviour
     }
     private IEnumerator Idle()
     {
-        Debug.Log("Starting my Idle");
+        //Debug.Log("Starting my Idle");
         StopAllGuns();
         yield return new WaitForSeconds(2);
         RandomSelection();
@@ -86,7 +88,7 @@ public class Boss : MonoBehaviour
     {
         int rando = Random.Range((int)1, 7);
         SetMoveType(rando);
-        Debug.Log("Choosing:" + rando);
+        //Debug.Log("Choosing:" + rando);
     }
     private IEnumerator Straight()
     {
@@ -196,7 +198,7 @@ public class Boss : MonoBehaviour
         for (int i = 4; i < 6; i++)
         {
             attachedGuns[i].SetWavy();
-            attachedGuns[i].SetFireRate(lockedOnFR);
+            attachedGuns[i].SetFireRate(wavyFR);
             attachedGuns[i].StartFiring();
         }
 
@@ -208,24 +210,58 @@ public class Boss : MonoBehaviour
         StopAllGuns();
         for (int i = 0; i < 2; i++)
         {
-            attachedGuns[i].SetSpin();
-            attachedGuns[i].SetFireRate(spinFR);
+            attachedGuns[i].SetWavy();
+            attachedGuns[i].SetFireRate(wavyFR);
             attachedGuns[i].StartFiring();
+            
         }
         for (int i = 2; i < 4; i++)
         {
-            attachedGuns[i].SetWavy();
-            attachedGuns[i].SetFireRate(wavyFR);
+            attachedGuns[i].SetSpin();
+            attachedGuns[i].SetFireRate(spinFR);
             attachedGuns[i].StartFiring();
         }
         for (int i = 4; i < 6; i++)
         {
             attachedGuns[i].SetLockedOn();
-            attachedGuns[i].SetFireRate(lockedOnFR);
+            attachedGuns[i].SetFireRate(.5f);
             attachedGuns[i].StartFiring();
         }
+        attachedGuns[6].SetSpin();
+        attachedGuns[6].SetFireRate(.1f);
+        attachedGuns[6].StartFiring();
 
         yield return new WaitForSeconds(attackTimer * 2);
+        SetMoveType(0);
+    }
+    private IEnumerator DelayedWave()
+    {
+        StopAllGuns();
+        for (int i = 0; i < 2; i++)
+        {
+            attachedGuns[i].SetSpin();
+            attachedGuns[i].SetFireRate(.1f);
+            attachedGuns[i].StartFiring();
+
+        }
+        yield return new WaitForSeconds(.6f);
+        for (int i = 2; i < 4; i++)
+        {
+            attachedGuns[i].SetSpin();
+            attachedGuns[i].SetFireRate(.1f);
+            attachedGuns[i].StartFiring();
+        }
+        yield return new WaitForSeconds(.6f);
+        for (int i = 4; i < 6; i++)
+        {
+            attachedGuns[i].SetSpin();
+            attachedGuns[i].SetFireRate(.1f);
+            attachedGuns[i].StartFiring();
+        }
+        attachedGuns[6].LockedOn();
+        attachedGuns[6].SetFireRate(.7f);
+        attachedGuns[6].StartFiring();
+        yield return new WaitForSeconds(12);
         SetMoveType(0);
     }
 
@@ -268,7 +304,7 @@ public class Boss : MonoBehaviour
         {
             yield return null;
         }
-        SetMoveType(0);
+        SetMoveType(8);
     }
     public void SetMinions(WaveSpawner minion)
     {

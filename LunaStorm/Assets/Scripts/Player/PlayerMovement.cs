@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         // Get the CameraMovement component attached to the camera
         cameraMovement = mainCamera.GetComponent<CameraMovement>();
 
-        health = FindObjectOfType<Health>();
+        health = GetComponent<Health>();
 
         CalculateBounds();
     }
