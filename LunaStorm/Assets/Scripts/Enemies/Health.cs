@@ -77,6 +77,10 @@ public class Health : MonoBehaviour
                     Debug.Log("HI there");
                     GameManager.instance.UpdateScore(deathScore);
                     Destroy(this.gameObject);
+                    if(gameObject.GetComponent<Boss>())
+                    {
+                        GameManager.instance.FinishBattle();
+                    }
                     //this is where you would instantiate a particle effect explosion.
                 }
 
