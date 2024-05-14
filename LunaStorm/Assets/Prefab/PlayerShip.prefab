@@ -190,10 +190,12 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2888214702400964595, guid: a22980a992a01cd4ebb0e988c53320ea, type: 3}
   bulletSpawnOffset: {x: 0, y: 0, z: 1.5}
   bulletSpeed: 40
-  missilePrefab: {fileID: 9163555175170251341, guid: dba280d2c3dc1d149906587cc0e8f3f4, type: 3}
-  missileSpawnOffset: {x: 0, y: 0, z: 1.5}
-  missileSpeed: 20
   fireRate: 0.2
+  missileRate: 1
+  upgradeCount: 0
+  bulletSpawnCenter: {fileID: 0}
+  bulletSpawnLWing: {fileID: 0}
+  bulletSpawnRWing: {fileID: 0}
 --- !u!143 &6111978662909470158
 CharacterController:
   m_ObjectHideFlags: 0

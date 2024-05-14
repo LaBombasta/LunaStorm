@@ -11,7 +11,9 @@ public class PlayerAttack : MonoBehaviour
     HomingMissile hMissile;
 
     public float fireRate = 0.2f;
+    public float missileRate = 1.0f;
     private float fireTimer = 0f;
+    
 
     public int upgradeCount = 0;
 
@@ -36,11 +38,13 @@ public class PlayerAttack : MonoBehaviour
                 fireTimer = 0f;
             }
         }
-        if (Input.GetKey(KeyCode.F))
+        else if (Input.GetKey(KeyCode.F))
         {
             fireTimer += Time.deltaTime;
-            if (fireTimer >= fireRate)
+            //Debug.Log(fireTimer);
+            if (fireTimer >= missileRate)
             {
+                missileRate = .5F;
                 hMissile.FireMissile();
                 fireTimer = 0f;
             }
@@ -138,7 +142,7 @@ public class PlayerAttack : MonoBehaviour
             if (bulletRigidbody != null)
             {
                 bulletRigidbody.velocity = bullet.transform.forward * speed;
-                Destroy(bullet, 5f);
+                Destroy(bullet, 1.2f);
             }
             else
             {

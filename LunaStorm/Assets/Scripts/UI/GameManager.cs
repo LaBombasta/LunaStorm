@@ -26,9 +26,17 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI gameOverText;
 
+    [SerializeField] public GameObject[] lives;
+    private int remainingLives;
+    private bool isDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        remainingLives = lives.Length;
+        //Debug.Log(" remaining lives: " + remainingLives);
+        
+
         cam = FindAnyObjectByType<Camera>();
         if(cam.GetComponent<CameraMovement>())
         {
@@ -39,8 +47,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("you dont have the script");
         }
         myPlayer = GameObject.FindGameObjectWithTag("Player");
+        //Debug.Log(myPlayer);
         if(myPlayer.GetComponent<Health>())
         {
+            //Debug.Log("Im hereeeee");
+            myPlayer.GetComponent<Health>().enabled = true;
             playerHP = myPlayer.GetComponent<Health>().getHP();
         }
 
@@ -71,6 +82,10 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int amount)
     {
         score += amount;
+        if(score<0)
+        {
+            score = 0;
+        }
         //Debug.Log(score);
         //update text object;
         scoreText.text = "Score: " + score;
@@ -101,12 +116,53 @@ public class GameManager : MonoBehaviour
     {
         return lockedInBattle;
     }
+   
+    public void SubtractLives()
+    {
+        // subtract life
+        remainingLives--;
+        if(remainingLives<0)
+        {
+            remainingLives = 0;
+        }
+        // hide image of ship
+        lives[remainingLives].SetActive(false);
+
+        // if lives remaining is 0 call game over
+        if (remainingLives == 0 && !isDead)
+        {
+            isDead = true;
+            myPlayer.GetComponent<PlayerMovement>().enabled = false;
+            myPlayer.GetComponent<PlayerAttack>().enabled = false;
+            // display message on GameOver Screen
+            gameOverText.text = "You Lost.  Try Again.";
+
+           
+            //call game over
+            GameOverUI();
+        }
+    }
+    public void AddLife()
+    {
+        if (remainingLives<lives.Length)
+        {
+            lives[remainingLives].SetActive(true);
+            remainingLives++;
+        }
+        
+    }
 
     public void GameOverUI()
     {
+        myPlayer.SetActive(false);
         finalScoreText.text = "Final Score: " + score;
         inGameUI.SetActive(false);
         gameOverUI.SetActive(true);
+    }
+    public void WinnerUI()
+    {
+        gameOverText.text = "You are victorious brave infiltrator";
+        GameOverUI();
     }
 
     public void RestartGame()

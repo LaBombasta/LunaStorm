@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         // Get the CameraMovement component attached to the camera
         cameraMovement = mainCamera.GetComponent<CameraMovement>();
 
-        health = FindObjectOfType<Health>();
+        health = GetComponent<Health>();
 
         CalculateBounds();
     }
@@ -68,14 +68,13 @@ public class PlayerMovement : MonoBehaviour
         // Barrel Roll
         if (canRoll && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
         {
-            health.enabled = false;
+            health.NoDamage(.5f);
 
             // Determine the direction of the barrel roll based on horizontal input
             int rollDirection = horizontalInput < 0 ? 1 : -1; // If moving left, roll right; if moving right, roll left
 
             StartCoroutine(BarrelRoll(rollDirection));
 
-            health.enabled = true;
         }
 
         //******************************** add lerp when the camera movement becomes enabled again so that it is a smooth transition back to the player************************

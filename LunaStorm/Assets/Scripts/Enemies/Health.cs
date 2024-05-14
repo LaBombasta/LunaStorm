@@ -16,73 +16,105 @@ public class Health : MonoBehaviour
 
     // need a gameobject for the scoring UI
 
-   // point to lifecounter script
-    public LifeCounter lifeCounter;
-
-    
-
     private Material origColor;
-
+    [SerializeField]
+    private bool noDamage;
     void Start()
     {
         //here is where we find the scoring UI
         //
         origColor = mySkin.material;
+        noDamage = false;
     }
 
     private void TakeDamage(int damage)
     {
         //Debug.Log("doing the thing");
-        HP -= damage;
-        if(HP >0)
+        if(noDamage)
         {
-            StartCoroutine(Flash());
-            
-            if (gameObject.CompareTag("Player"))
-            {
-                GameManager.instance.UpdateHP(-damage);
-                GameManager.instance.UpdateScore(hitScore);
-                lifeCounter.SubtractLives();
-                Debug.Log("Ouch");
-            }
-            else if (gameObject.CompareTag("Enemy")|| gameObject.CompareTag("Turret"))
-            {
-                //this is where you add points for hitting
-                GameManager.instance.UpdateScore(hitScore);
-                //Destroy(this.gameObject);
-            }
-            
+            Debug.Log("I took no damage on this instance");
         }
         else
         {
-            if(gameObject.CompareTag("Player"))
+            HP -= damage;
+            if (HP > 0)
             {
-                Debug.Log("Am deadddd");
-                // hide one of the ship images
-                lifeCounter.SubtractLives();
-                // when all lives are gone set player to inactive, pass score and game over reason to game over test boxes, and call Game over
-                //start game over 
+                StartCoroutine(Flash());
+
+                if (gameObject.CompareTag("Player"))
+                {
+                    GameManager.instance.UpdateHP(-damage);
+                    GameManager.instance.UpdateScore(hitScore);
+                    GameManager.instance.SubtractLives();
+                    //Debug.Log("Ouch");
+                }
+                else if (gameObject.CompareTag("Enemy") || gameObject.CompareTag("Turret"))
+                {
+                    //Debug.Log(HP);
+                    //this is where you add points for hitting
+                    GameManager.instance.UpdateScore(hitScore);
+                    if (gameObject.GetComponent<Boss>())
+                    {
+                        gameObject.GetComponent<Boss>().CalculatePhase();
+                    }
+
+                    //Destroy(this.gameObject);
+                }
+
             }
-            else if(gameObject.CompareTag("Enemy"))
+            else
             {
-                GameManager.instance.UpdateScore(deathScore);
-                gameObject.BroadcastMessage("ItemDrop", SendMessageOptions.DontRequireReceiver);
-                Destroy(this.gameObject);
-                //this is where you would instantiate a particle effect explosion.
+                if (gameObject.CompareTag("Player"))
+                {
+                    //Debug.Log("Am deadddd");
+                    // hide one of the ship images
+                    GameManager.instance.SubtractLives();
+                    // when all lives are gone set player to inactive, pass score and game over reason to game over test boxes, and call Game over
+                    //start game over 
+                }
+                else if (gameObject.CompareTag("Enemy") || gameObject.CompareTag("Turret"))
+                {
+                    Debug.Log("HI there");
+                    GameManager.instance.UpdateScore(deathScore);
+                    Destroy(this.gameObject);
+                    if(gameObject.GetComponent<Boss>())
+                    {
+                        GameManager.instance.FinishBattle();
+                    }
+                    //this is where you would instantiate a particle effect explosion.
+                }
+
+
             }
-            
         }
+
+       
+    }
+    public void NoDamage(float num)
+    {
+        StartCoroutine(INVINCIBLE(num));
     }
 
+    private IEnumerator INVINCIBLE(float timer)
+    {
+        //Debug.Log(this.gameObject);
+        noDamage = true;
+        yield return new WaitForSeconds(timer);
+        noDamage = false;
+    }
     public int getHP()
     {
         return HP;
+    }
+    public int getMaxHP()
+    {
+        return MaxHp;
     }
 
     
     IEnumerator Flash()
     {
-        Debug.Log("Starting");
+        //Debug.Log("Starting");
         if(GetComponent<PlayerAttack>())
         {
             GetComponent<PlayerAttack>().enabled = false;

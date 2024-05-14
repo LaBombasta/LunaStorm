@@ -269,7 +269,10 @@ public class Enemy : MonoBehaviour
         int rand = (int)Random.Range(0, droppedItem.Length);
         if (droppedItem[rand] != null)
         {
-            GameObject drop = Instantiate(droppedItem[rand], transform);
+            Debug.Log("this should be making somehitng");
+            GameObject drop = Instantiate(droppedItem[rand], gameObject.transform);
+            drop.transform.parent = null;
+            Debug.Log(drop.name.ToString());
             Destroy(drop, 10);
         }
         else
@@ -284,6 +287,7 @@ public class Enemy : MonoBehaviour
     }
     private void OnDestroy()
     {
+        ItemDrop();
         Destroy(gameObject);
         //This is where you spawn an explosion particle effect
     }

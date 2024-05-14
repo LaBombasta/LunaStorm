@@ -239,6 +239,10 @@ MonoBehaviour:
   lockedOnFR: 1.2
   attachedGuns: []
   droppedItem:
+  - {fileID: 6870611785561769114, guid: 7ddee2957831907489962417f6c99284, type: 3}
+  - {fileID: 6870611785561769114, guid: 7ddee2957831907489962417f6c99284, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &1153302310895900134
 MonoBehaviour:
@@ -253,8 +257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySkin: {fileID: 1265556058007731002}
-  HP: 5
-  MaxHp: 7
+  HP: 9
+  MaxHp: 9
   hitScore: 5
   deathScore: 50
   flash1: {r: 1, g: 0, b: 0, a: 1}
