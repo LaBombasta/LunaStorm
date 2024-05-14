@@ -45,69 +45,108 @@ public class PlayerAttack : MonoBehaviour
                 fireTimer = 0f;
             }
         }
-
-       /* // Handle upgrades
-        if (upgradeCount == 1)
-        {
-            if (bulletSpawnCenter != null)
-            {
-                // Move the existing bulletSpawnCenter GameObject
-                bulletSpawnCenter.localPosition += new Vector3(0.25f, 0f, 0f);
-
-                // Instantiate a new bulletSpawnCenter GameObject as a child of the player character
-                GameObject newBulletSpawnCenter = Instantiate(bulletSpawnCenter.gameObject, transform.position, Quaternion.identity, transform);
-
-                // Set the position of the new bulletSpawnCenter
-                newBulletSpawnCenter.transform.localPosition = new Vector3(0.5f, bulletSpawnCenter.localPosition.y, bulletSpawnCenter.localPosition.z);
-            }
-            else
-            {
-                Debug.LogError("BulletSpawn Center not assigned.");
-            }
-        }
-
-
-        else if (upgradeCount == 2)
-        {
-            if (bulletSpawnLWing != null && bulletSpawnRWing != null)
-            {
-                bulletSpawnLWing.localRotation = Quaternion.Euler(0f, 20f, 0f);
-                bulletSpawnRWing.localRotation = Quaternion.Euler(0f, -20f, 0f);
-            }
-            else
-            {
-                Debug.LogError("BulletSpawn LWing or BulletSpawn RWing not assigned.");
-            }
-        }*/
     }
 
     void FireBullet()
     {
-        GameObject[] mainWeapons = GameObject.FindGameObjectsWithTag("MainWeapon");
-        if (mainWeapons.Length > 0)
+        Quaternion rotationC = bulletSpawnCenter.transform.rotation * Quaternion.Euler(0, 0, 0);
+        Quaternion rotationL = bulletSpawnLWing.transform.rotation * Quaternion.Euler(0, 0, 0);
+        Quaternion rotationR = bulletSpawnRWing.transform.rotation * Quaternion.Euler(0, 0, 0);
+
+        Vector3 offsetCenter = bulletSpawnCenter.transform.forward * bulletSpawnOffset.z;
+        Vector3 offsetLWing = bulletSpawnLWing.transform.forward * bulletSpawnOffset.z;
+        Vector3 offsetRWing = bulletSpawnRWing.transform.forward * bulletSpawnOffset.z;
+
+        GameObject bulletC, bulletL, bulletR, bulletC1 = null, bulletL1 = null, bulletR1 = null;
+
+        switch (upgradeCount)
         {
-            foreach (GameObject mainWeapon in mainWeapons)
-            {
-                Quaternion rotation = mainWeapon.transform.rotation;
-                rotation *= Quaternion.Euler(90, 0, 0);
-                GameObject bullet = Instantiate(bulletPrefab, mainWeapon.transform.position + mainWeapon.transform.forward * bulletSpawnOffset.z, rotation);
-                Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-                if (bulletRigidbody != null)
-                {
-                    bulletRigidbody.velocity = mainWeapon.transform.forward * bulletSpeed;
-                    Destroy(bullet, 5f);
-                }
-                else
-                {
-                    Debug.LogWarning("Rigidbody component not found on the instantiated bullet.");
-                }
-            }
+            case 0:
+                bulletC = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position + offsetCenter, rotationC);
+                bulletL = InstantiateBullet(bulletPrefab, bulletSpawnLWing.transform.position + offsetLWing, rotationL);
+                bulletR = InstantiateBullet(bulletPrefab, bulletSpawnRWing.transform.position + offsetRWing, rotationR);
+                break;
+
+            case 1:
+                bulletC = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position - new Vector3(0.25f, 0, 0) + offsetCenter, rotationC);
+                bulletC1 = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position + new Vector3(0.25f, 0, 0) + offsetCenter, rotationC);
+                bulletL = InstantiateBullet(bulletPrefab, bulletSpawnLWing.transform.position + offsetLWing, rotationL);
+                bulletR = InstantiateBullet(bulletPrefab, bulletSpawnRWing.transform.position + offsetRWing, rotationR);
+                break;
+
+            case 2:
+                bulletC = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position - new Vector3(0.25f, 0, 0) + offsetCenter, rotationC);
+                bulletC1 = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position + new Vector3(0.25f, 0, 0) + offsetCenter, rotationC);
+                bulletL = InstantiateBullet(bulletPrefab, bulletSpawnLWing.transform.position - new Vector3(0.25f, 0, 0) + offsetLWing, rotationL);
+                bulletL1 = InstantiateBullet(bulletPrefab, bulletSpawnLWing.transform.position + new Vector3(0.25f, 0, 0) + offsetLWing, rotationL);
+                bulletR = InstantiateBullet(bulletPrefab, bulletSpawnRWing.transform.position - new Vector3(0.25f, 0, 0) + offsetRWing, rotationR);
+                bulletR1 = InstantiateBullet(bulletPrefab, bulletSpawnRWing.transform.position + new Vector3(0.25f, 0, 0) + offsetRWing, rotationR);
+                break;
+
+            default:
+                Debug.LogWarning("Invalid upgrade count.");
+                return;
+        }
+
+        ApplyBulletVelocityAndDestroy(bulletC, bulletSpeed);
+        ApplyBulletVelocityAndDestroy(bulletL, bulletSpeed);
+        ApplyBulletVelocityAndDestroy(bulletR, bulletSpeed);
+        ApplyBulletVelocityAndDestroy(bulletC1, bulletSpeed);
+        ApplyBulletVelocityAndDestroy(bulletL1, bulletSpeed);
+        ApplyBulletVelocityAndDestroy(bulletR1, bulletSpeed);
+    }
+
+    GameObject InstantiateBullet(GameObject prefab, Vector3 position, Quaternion rotation)
+    {
+        GameObject bullet = Instantiate(prefab, position, rotation);
+        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+
+        if (bulletRigidbody != null)
+        {
+            // Calculate the velocity based on the bullet's forward direction and speed
+            Vector3 velocity = bullet.transform.forward * bulletSpeed;
+
+            Debug.Log("Bullet forward direction: " + bullet.transform.forward);
+
+
+            // Apply the velocity to the Rigidbody component
+            bulletRigidbody.velocity = velocity;
+
+            // Set up a callback to destroy the bullet after a delay
+            Destroy(bullet, 5f);
         }
         else
         {
-            Debug.LogWarning("No game objects found with the 'MainWeapon' tag.");
+            Debug.LogWarning("Rigidbody component not found on the instantiated bullet.");
+        }
+
+        // Add debug log
+        if (bulletRigidbody == null)
+        {
+            Debug.Log("Rigidbody component not found on the bullet GameObject: " + bullet.name);
+        }
+
+        return bullet;
+    }
+
+
+    void ApplyBulletVelocityAndDestroy(GameObject bullet, float speed)
+    {
+        if (bullet != null)
+        {
+            Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+            if (bulletRigidbody != null)
+            {
+                bulletRigidbody.velocity = bullet.transform.forward * speed;
+                Destroy(bullet, 5f);
+            }
+            else
+            {
+                Debug.LogWarning("Rigidbody component not found on the instantiated bullet.");
+            }
         }
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
