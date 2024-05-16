@@ -37,11 +37,13 @@ public class AudioManager : MonoBehaviour
     public IEnumerator Fade(bool fadeIn, AudioSource source, float duration, float targetVol)
     {
         Debug.Log("Hi");
+        /*
         if (!fadeIn)
         {
             double lengthOfSource = (double)source.clip.samples / source.clip.frequency;
             yield return new WaitForSecondsRealtime((float)(lengthOfSource - duration));
         }
+        */
 
         float time = 0f;
         float startVol = source.volume;
@@ -62,7 +64,7 @@ public class AudioManager : MonoBehaviour
     public IEnumerator StartBossBattle()
     {
         StartCoroutine(Fade(false, musicSource, 4, 0f));
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         musicSource.clip = BossBattle;
         musicSource.Play();
         musicSource.volume = 0f;
