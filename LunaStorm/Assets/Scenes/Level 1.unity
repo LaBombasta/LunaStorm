@@ -3762,7 +3762,7 @@ MonoBehaviour:
   SFXSource: {fileID: 429297030}
   Background: {fileID: 8300000, guid: 1a69aa29ca1dfef40a9b15acb46d2fbe, type: 3}
   EnemyGunfire: {fileID: 0}
-  PlayerGunfire: {fileID: 0}
+  PlayerGunfire: {fileID: 8300000, guid: 8db3a1fbd1afdd84baba9e1a8866f95a, type: 3}
   MissileSound: {fileID: 0}
   ShieldCreation: {fileID: 0}
 --- !u!4 &727190082
@@ -3995,6 +3995,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752493061}
   m_CullTransparentMesh: 1
+--- !u!4 &755189709 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7631354720451023900, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+  m_PrefabInstance: {fileID: 1009949074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &769382577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5566,6 +5571,22 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2249806163724530251, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 727190081}
+    - target: {fileID: 2249806163724530251, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: bulletSpawnLWing
+      value: 
+      objectReference: {fileID: 1109330861}
+    - target: {fileID: 2249806163724530251, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: bulletSpawnRWing
+      value: 
+      objectReference: {fileID: 755189709}
+    - target: {fileID: 2249806163724530251, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+      propertyPath: bulletSpawnCenter
+      value: 
+      objectReference: {fileID: 1761860355}
+    - target: {fileID: 2249806163724530251, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
       propertyPath: bulletSpawnOffset.z
       value: 1.5
       objectReference: {fileID: 0}
@@ -6098,6 +6119,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 839b2302222fcb64184ce866f6813d1a, type: 3}
+--- !u!4 &1109330861 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5761790282955289642, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+  m_PrefabInstance: {fileID: 1009949074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1127705407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9606,6 +9632,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 839b2302222fcb64184ce866f6813d1a, type: 3}
+--- !u!4 &1761860355 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3602286800752764855, guid: 9ac4b6162759a8046b578b023b3bd9fd, type: 3}
+  m_PrefabInstance: {fileID: 1009949074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1775085365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10907,7 +10938,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

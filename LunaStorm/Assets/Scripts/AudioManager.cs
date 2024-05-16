@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager audioManager;
     [Header("--- Audio Source ---")]
     [SerializeField]
     AudioSource musicSource;
