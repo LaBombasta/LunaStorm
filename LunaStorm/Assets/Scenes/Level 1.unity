@@ -3762,7 +3762,7 @@ MonoBehaviour:
   SFXSource: {fileID: 429297030}
   Background: {fileID: 8300000, guid: 2a7ab5d59e8997b4dac81e8ed52287e0, type: 3}
   BossBattle: {fileID: 8300000, guid: 057c6ec2f6b1d05448a3ff716ec9c6c6, type: 3}
-  EnemyGunfire: {fileID: 0}
+  EnemyGunfire: {fileID: 8300000, guid: e017d4d1b7c5c0941b22f4d4ce50384a, type: 3}
   PlayerGunfire: {fileID: 8300000, guid: 8db3a1fbd1afdd84baba9e1a8866f95a, type: 3}
   MissileSound: {fileID: 0}
   ShieldCreation: {fileID: 0}
