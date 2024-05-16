@@ -36,6 +36,7 @@ public class Health : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.PlaySoundEffects(AudioManager.instance.iveBeenHit);
             HP -= damage;
             if (HP > 0)
             {
