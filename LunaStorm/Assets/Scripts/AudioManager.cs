@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         instance = this;
-        musicSource.volume = 1f;
+        musicSource.volume = .5f;
         musicSource.clip = Background;
         musicSource.Play();
 
@@ -63,12 +63,12 @@ public class AudioManager : MonoBehaviour
     }
     public IEnumerator StartBossBattle()
     {
-        StartCoroutine(Fade(false, musicSource, 4, 0f));
-        yield return new WaitForSeconds(5);
+        StartCoroutine(Fade(true, musicSource, 2, 0f));
+        yield return new WaitForSeconds(2);
         musicSource.clip = BossBattle;
         musicSource.Play();
         musicSource.volume = 0f;
-        StartCoroutine(Fade(true, musicSource, 3, 1f));
+        StartCoroutine(Fade(true, musicSource, 1, .5f));
 
 
     }

@@ -55,6 +55,7 @@ public class PlayerAttack : MonoBehaviour
 
     void FireBullet()
     {
+        AudioManager.instance.PlaySoundEffects(AudioManager.instance.PlayerGunfire);
         Quaternion rotationC = bulletSpawnCenter.transform.rotation * Quaternion.Euler(0, 0, 0);
         Quaternion rotationL = bulletSpawnLWing.transform.rotation * Quaternion.Euler(0, 0, 0);
         Quaternion rotationR = bulletSpawnRWing.transform.rotation * Quaternion.Euler(0, 0, 0);
