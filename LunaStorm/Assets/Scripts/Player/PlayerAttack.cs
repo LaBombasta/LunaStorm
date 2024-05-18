@@ -22,6 +22,8 @@ public class PlayerAttack : MonoBehaviour
     public Transform bulletSpawnLWing;
     public Transform bulletSpawnRWing;
 
+    [SerializeField] public AudioManager audioManager;
+
     private void Start()
     {
         hMissile = GetComponent<HomingMissile>();
@@ -53,6 +55,7 @@ public class PlayerAttack : MonoBehaviour
 
     void FireBullet()
     {
+        AudioManager.instance.PlaySoundEffects(AudioManager.instance.PlayerGunfire);
         Quaternion rotationC = bulletSpawnCenter.transform.rotation * Quaternion.Euler(0, 0, 0);
         Quaternion rotationL = bulletSpawnLWing.transform.rotation * Quaternion.Euler(0, 0, 0);
         Quaternion rotationR = bulletSpawnRWing.transform.rotation * Quaternion.Euler(0, 0, 0);
@@ -104,6 +107,7 @@ public class PlayerAttack : MonoBehaviour
     {
         GameObject bullet = Instantiate(prefab, position, rotation);
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+        audioManager.PlaySoundEffects(audioManager.PlayerGunfire);
 
         if (bulletRigidbody != null)
         {

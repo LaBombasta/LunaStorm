@@ -72,6 +72,7 @@ public class BulletSpawner : MonoBehaviour
             }
             if (timer >= fireRate)
             {
+                //AudioManager.instance.PlaySoundEffects(AudioManager.instance.EnemyGunfire);
                 Fire();
                 timer = 0;
             }

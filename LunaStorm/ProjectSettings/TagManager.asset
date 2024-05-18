@@ -15,6 +15,7 @@ TagManager:
   - FinalBoss
   - Upgrade
   - Bullet
+  - Audio
   layers:
   - Default
   - TransparentFX
