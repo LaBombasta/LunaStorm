@@ -130,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator BarrelRoll(int rollDirection)
     {
         sheild.Play();
+        AudioManager.instance.PlaySoundEffects(AudioManager.instance.BarrellRoll);
         canRoll = false; // Disable rolling until the cooldown is over
 
         float rollAmount = 360f; // Adjust the amount of rotation for the barrel roll
