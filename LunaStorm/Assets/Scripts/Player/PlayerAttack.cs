@@ -5,24 +5,19 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public GameObject gunFlashPrefab;
+    public GameObject explosionPrefab; // Variable to hold the explosion prefab
     public Vector3 bulletSpawnOffset = new Vector3(0f, 0f, 1f);
     public float bulletSpeed = 10f;
-
-    HomingMissile hMissile;
-
     public float fireRate = 0.2f;
     public float missileRate = 1.0f;
     private float fireTimer = 0f;
-    
-
     public int upgradeCount = 0;
-
-    // Reference to the original bullet spawn points
     public Transform bulletSpawnCenter;
     public Transform bulletSpawnLWing;
     public Transform bulletSpawnRWing;
-
     [SerializeField] public AudioManager audioManager;
+    private HomingMissile hMissile;
 
     private void Start()
     {
@@ -43,7 +38,6 @@ public class PlayerAttack : MonoBehaviour
         else if (Input.GetKey(KeyCode.F))
         {
             fireTimer += Time.deltaTime;
-            //Debug.Log(fireTimer);
             if (fireTimer >= missileRate)
             {
                 missileRate = .5F;
@@ -56,9 +50,11 @@ public class PlayerAttack : MonoBehaviour
     void FireBullet()
     {
         AudioManager.instance.PlaySoundEffects(AudioManager.instance.PlayerGunfire);
-        Quaternion rotationC = bulletSpawnCenter.transform.rotation * Quaternion.Euler(0, 0, 0);
-        Quaternion rotationL = bulletSpawnLWing.transform.rotation * Quaternion.Euler(0, 0, 0);
-        Quaternion rotationR = bulletSpawnRWing.transform.rotation * Quaternion.Euler(0, 0, 0);
+        GameObject gunFlash;
+
+        Quaternion rotationC = bulletSpawnCenter.transform.rotation;
+        Quaternion rotationL = bulletSpawnLWing.transform.rotation;
+        Quaternion rotationR = bulletSpawnRWing.transform.rotation;
 
         Vector3 offsetCenter = bulletSpawnCenter.transform.forward * bulletSpawnOffset.z;
         Vector3 offsetLWing = bulletSpawnLWing.transform.forward * bulletSpawnOffset.z;
@@ -75,25 +71,34 @@ public class PlayerAttack : MonoBehaviour
                 break;
 
             case 1:
-                bulletC = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position - new Vector3(0.25f, 0, 0) + offsetCenter, rotationC);
-                bulletC1 = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position + new Vector3(0.25f, 0, 0) + offsetCenter, rotationC);
+                bulletC = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position - new Vector3(0.5f, 0, 0) + offsetCenter, rotationC);
+                bulletC1 = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position + new Vector3(0.5f, 0, 0) + offsetCenter, rotationC);
                 bulletL = InstantiateBullet(bulletPrefab, bulletSpawnLWing.transform.position + offsetLWing, rotationL);
                 bulletR = InstantiateBullet(bulletPrefab, bulletSpawnRWing.transform.position + offsetRWing, rotationR);
                 break;
 
             case 2:
-                bulletC = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position - new Vector3(0.25f, 0, 0) + offsetCenter, rotationC);
-                bulletC1 = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position + new Vector3(0.25f, 0, 0) + offsetCenter, rotationC);
+                bulletC = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position - new Vector3(0.75f, 0, 0) + offsetCenter, rotationC);
+                bulletC1 = InstantiateBullet(bulletPrefab, bulletSpawnCenter.transform.position + new Vector3(0.75f, 0, 0) + offsetCenter, rotationC);
+
+                rotationL = rotationL * Quaternion.Euler(0, -20.0f, 0);
+                rotationR = rotationR * Quaternion.Euler(0, 20.0f, 0);
+                Quaternion rotationL1 = rotationL * Quaternion.Euler(0, -20.0f, 0);
+                Quaternion rotationR1 = rotationR * Quaternion.Euler(0, 20.0f, 0);
+
                 bulletL = InstantiateBullet(bulletPrefab, bulletSpawnLWing.transform.position - new Vector3(0.25f, 0, 0) + offsetLWing, rotationL);
-                bulletL1 = InstantiateBullet(bulletPrefab, bulletSpawnLWing.transform.position + new Vector3(0.25f, 0, 0) + offsetLWing, rotationL);
+                bulletL1 = InstantiateBullet(bulletPrefab, bulletSpawnLWing.transform.position + new Vector3(0.25f, 0, 0) + offsetLWing, rotationL1);
                 bulletR = InstantiateBullet(bulletPrefab, bulletSpawnRWing.transform.position - new Vector3(0.25f, 0, 0) + offsetRWing, rotationR);
-                bulletR1 = InstantiateBullet(bulletPrefab, bulletSpawnRWing.transform.position + new Vector3(0.25f, 0, 0) + offsetRWing, rotationR);
+                bulletR1 = InstantiateBullet(bulletPrefab, bulletSpawnRWing.transform.position + new Vector3(0.25f, 0, 0) + offsetRWing, rotationR1);
                 break;
 
             default:
                 Debug.LogWarning("Invalid upgrade count.");
                 return;
         }
+
+        gunFlash = Instantiate(gunFlashPrefab, bulletSpawnCenter.transform.position, bulletSpawnCenter.transform.rotation);
+        Destroy(gunFlash, gunFlash.GetComponent<ParticleSystem>().main.duration);
 
         ApplyBulletVelocityAndDestroy(bulletC, bulletSpeed);
         ApplyBulletVelocityAndDestroy(bulletL, bulletSpeed);
@@ -111,16 +116,8 @@ public class PlayerAttack : MonoBehaviour
 
         if (bulletRigidbody != null)
         {
-            // Calculate the velocity based on the bullet's forward direction and speed
             Vector3 velocity = bullet.transform.forward * bulletSpeed;
-
-            Debug.Log("Bullet forward direction: " + bullet.transform.forward);
-
-
-            // Apply the velocity to the Rigidbody component
             bulletRigidbody.velocity = velocity;
-
-            // Set up a callback to destroy the bullet after a delay
             Destroy(bullet, 5f);
         }
         else
@@ -128,7 +125,6 @@ public class PlayerAttack : MonoBehaviour
             Debug.LogWarning("Rigidbody component not found on the instantiated bullet.");
         }
 
-        // Add debug log
         if (bulletRigidbody == null)
         {
             Debug.Log("Rigidbody component not found on the bullet GameObject: " + bullet.name);
@@ -136,7 +132,6 @@ public class PlayerAttack : MonoBehaviour
 
         return bullet;
     }
-
 
     void ApplyBulletVelocityAndDestroy(GameObject bullet, float speed)
     {
@@ -155,17 +150,17 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Upgrade"))
         {
             Destroy(collision.gameObject);
-
             upgradeCount++;
         }
+        else if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
+            Destroy(collision.gameObject);
+        }
     }
-
-
-
 }

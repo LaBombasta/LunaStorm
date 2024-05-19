@@ -5,43 +5,38 @@ using UnityEngine.VFX;
 
 public class LevelChange : MonoBehaviour
 {
-    private EndLevel1IGC endLevel;
+    public GameObject finalBoss; // Public variable to hold the final boss GameObject
 
-    GameObject finalBoss;
+    private EndLevel1IGC endLevel;
+    private bool hasTriggeredIGC = false; // Flag to track if IGC sequence has been triggered
 
     private void Start()
     {
-        // Assuming EndLevel1IGC is the script attached to an object in your scene.
         endLevel = FindObjectOfType<EndLevel1IGC>();
 
-        // Use FindGameObjectWithTag to find an object with a specific tag.
-        finalBoss = GameObject.FindGameObjectWithTag("FinalBoss");
+        // Check if the final boss GameObject is not assigned
+        if (finalBoss == null)
+        {
+            Debug.LogWarning("Final Boss GameObject not assigned.");
+        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            // Check if the finalBoss object is found before destroying it.
-            if (finalBoss != null)
+            // Check if the final boss GameObject is assigned and exists
+            if (finalBoss != null && finalBoss.activeSelf)
             {
                 Destroy(finalBoss);
             }
         }
 
-        // Check if the finalBoss object has been destroyed
-        // You can simply check if finalBoss is null to determine if it's been destroyed.
-        if (finalBoss == null)
+        // Check if the final boss GameObject is destroyed, endLevel is not null, and IGC has not been triggered
+        if (finalBoss == null && endLevel != null && !hasTriggeredIGC)
         {
-            // Call the IGC method from EndLevel1IGC script
-            if (endLevel != null)
-            {
-                endLevel.IGC();
-            }
-            else
-            {
-                Debug.LogWarning("EndLevel1IGC script reference not set.");
-            }
+            endLevel.IGC();
+            hasTriggeredIGC = true; // Set the flag to true to prevent further triggering
         }
     }
 }

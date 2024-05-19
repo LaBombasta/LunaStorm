@@ -11,6 +11,8 @@ public class EndLevel1IGC : MonoBehaviour
 
     Camera mainCamera;
 
+    private bool isCameraMoving = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +72,7 @@ public class EndLevel1IGC : MonoBehaviour
         float elapsedTime = 0f;
         Vector3 startingPosition = objectTransform.position;
 
-        while (elapsedTime < lerpSpeed)
+        while (elapsedTime < lerpSpeed && isCameraMoving)
         {
             // Calculate the interpolation value
             float t = elapsedTime / lerpSpeed;
@@ -93,17 +95,13 @@ public class EndLevel1IGC : MonoBehaviour
     {
         // Define the target position behind the player
         Vector3 targetPosition = player.transform.position - player.transform.forward * 20f; // Move 20 units behind the player
-        targetPosition.y = player.transform.position.y + 10.0f; // Maintain the same y-position as the camera
+        targetPosition.y = player.transform.position.y + 10.0f; // Adjust as needed for height
 
-        // Define the target rotation (X rotation to 0)
-        Quaternion targetRotation = Quaternion.Euler(0f, mainCamera.transform.rotation.eulerAngles.y, 0f);
-
-        // Define the speed of camera movement and rotation
+        // Define the speed of camera movement
         float lerpSpeed = 10.0f; // Adjust as needed
 
-        // Get the starting position and rotation of the camera
+        // Get the starting position of the camera
         Vector3 startingPosition = mainCamera.transform.position;
-        Quaternion startingRotation = mainCamera.transform.rotation;
 
         // Calculate the distance between the starting and target positions
         float distance = Vector3.Distance(startingPosition, targetPosition);
@@ -123,8 +121,12 @@ public class EndLevel1IGC : MonoBehaviour
             // Lerp the position of the camera
             mainCamera.transform.position = Vector3.Lerp(startingPosition, targetPosition, t);
 
-            // Lerp the rotation of the camera
-            mainCamera.transform.rotation = Quaternion.Lerp(startingRotation, targetRotation, t);
+            // Check if the camera's Z position is less than the player's Z position
+            if (mainCamera.transform.position.z < player.transform.position.z)
+            {
+                // Make the camera look at the player with an up direction to avoid flipping
+                mainCamera.transform.LookAt(player.transform.position + Vector3.up * 2.0f); // Adjust the offset as needed
+            }
 
             // Increment the elapsed time
             elapsedTime += Time.deltaTime;
@@ -132,19 +134,23 @@ public class EndLevel1IGC : MonoBehaviour
             yield return null;
         }
 
-        // Ensure the camera reaches the target position and rotation
+        // Ensure the camera reaches the target position
         mainCamera.transform.position = targetPosition;
-        mainCamera.transform.rotation = targetRotation;
+
+        // Check if the camera's Z position is less than the player's Z position
+        if (mainCamera.transform.position.z < player.transform.position.z)
+        {
+            // Make sure the camera is looking at the player with an up direction
+            mainCamera.transform.LookAt(player.transform.position + Vector3.up * 2.0f); // Adjust the offset as needed
+        }
     }
-
-
 
     //Coroutine to move player
     IEnumerator MovePlayer()
     {
-        float moveSpeed = 0.075f; // Adjust this speed as needed
+        float moveSpeed = 100.075f; // Adjust this speed as needed
 
-        while (true)
+        while (true) // Infinite loop
         {
             // Calculate the movement direction (forward)
             Vector3 moveDirection = Vector3.forward;
@@ -152,21 +158,27 @@ public class EndLevel1IGC : MonoBehaviour
             // Move the player using CharacterController
             player.GetComponent<CharacterController>().Move(moveDirection * moveSpeed * Time.deltaTime);
 
+            Debug.Log("loooooooooooooooooooop");
+
             // Check for collisions with objects tagged "Finish"
             Collider[] colliders = Physics.OverlapSphere(player.transform.position, 1.0f); // Adjust radius as needed
             foreach (Collider collider in colliders)
             {
                 if (collider.CompareTag("Finish"))
                 {
+
                     // Load the next scene (Level 2)
-                    SceneManager.LoadScene("Level 2");
+                    SceneManager.LoadScene("Victory");
+
                     yield break; // Exit the coroutine
                 }
             }
 
             yield return null;
         }
+
     }
+
 
     IEnumerator IGCSequence()
     {
@@ -196,7 +208,6 @@ public class EndLevel1IGC : MonoBehaviour
                 Destroy(obj, 2.0f);
             }
         }
-
 
         // Move Player
         yield return StartCoroutine(MovePlayer());
