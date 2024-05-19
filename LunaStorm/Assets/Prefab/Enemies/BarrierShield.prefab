@@ -115,8 +115,7 @@ MonoBehaviour:
   timer: 1
   shrinkScale: {x: 4000, y: 200, z: 200}
   shrinkTimer: 0.5
-  HP: 200
-  boss: {fileID: 0}
+  HP: 500
 --- !u!65 &8715554513238226272
 BoxCollider:
   m_ObjectHideFlags: 0

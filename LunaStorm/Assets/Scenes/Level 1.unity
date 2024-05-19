@@ -2607,11 +2607,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2531571055662539647, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: HP
-      value: 2500
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 2531571055662539647, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: MaxHp
-      value: 2500
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 3011685716387597196, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: m_LocalScale.x
