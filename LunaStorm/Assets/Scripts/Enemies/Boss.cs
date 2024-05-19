@@ -28,7 +28,7 @@ public class Boss : MonoBehaviour
     {
         attachedGuns = gameObject.GetComponentsInChildren<BulletSpawner>(true);
         //CallingAllGuns();
-        //SetMoveType(3);
+        //SetMoveType(5);
     }
     
 
@@ -86,7 +86,7 @@ public class Boss : MonoBehaviour
     }
     private void RandomSelection()
     {
-        int rando = Random.Range((int)1, 7);
+        int rando = Random.Range((int)1, 8);
         SetMoveType(rando);
         //Debug.Log("Choosing:" + rando);
     }
@@ -99,7 +99,14 @@ public class Boss : MonoBehaviour
             attachedGuns[i].SetFireRate(normalFR);
             attachedGuns[i].StartFiring();
         }
-        yield return new WaitForSeconds(attackTimer);
+        yield return new WaitForSeconds(attackTimer/2);
+        for (int i = 0; i < attachedGuns.Length; i++)
+        {
+            attachedGuns[i].SetWavy();
+            attachedGuns[i].SetFireRate(normalFR);
+            attachedGuns[i].StartFiring();
+        }
+        yield return new WaitForSeconds(attackTimer / 2);
         SetMoveType(0);
     }
 
@@ -156,7 +163,7 @@ public class Boss : MonoBehaviour
         for (int i = 0; i < attachedGuns.Length-1; i++)
         {
             attachedGuns[i].SetSpin();
-            attachedGuns[i].SetFireRate(spinFR);
+            attachedGuns[i].SetFireRate(spinFR/2);
             attachedGuns[i].StartFiring();
         }
         yield return new WaitForSeconds(2);
@@ -165,7 +172,7 @@ public class Boss : MonoBehaviour
         for (int i = 0; i < attachedGuns.Length-1; i++)
         {
             attachedGuns[i].SetSpin();
-            attachedGuns[i].SetFireRate(spinFR);
+            attachedGuns[i].SetFireRate(spinFR/2);
             attachedGuns[i].StartFiring();
         }
         yield return new WaitForSeconds(2);
@@ -201,7 +208,9 @@ public class Boss : MonoBehaviour
             attachedGuns[i].SetFireRate(wavyFR);
             attachedGuns[i].StartFiring();
         }
-
+        attachedGuns[attachedGuns.Length - 1].SetLockedOn();
+        attachedGuns[attachedGuns.Length - 1].SetFireRate(lockedOnFR/2);
+        attachedGuns[attachedGuns.Length - 1].StartFiring();
         yield return new WaitForSeconds(attackTimer * 2);
         SetMoveType(0);
     }

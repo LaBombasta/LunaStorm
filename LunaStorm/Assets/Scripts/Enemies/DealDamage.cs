@@ -6,6 +6,7 @@ public class DealDamage : MonoBehaviour
 {
     public int damage;
     public string tagToHit;
+    public GameObject explosionPrefab; // Variable to hold the explosion prefab
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log(collision.gameObject);
@@ -13,6 +14,7 @@ public class DealDamage : MonoBehaviour
         if(collision.gameObject.CompareTag(tagToHit))
         {
             collision.transform.gameObject.BroadcastMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

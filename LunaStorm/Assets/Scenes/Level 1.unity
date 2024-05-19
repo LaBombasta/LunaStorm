@@ -2607,11 +2607,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2531571055662539647, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: HP
-      value: 1000
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 2531571055662539647, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: MaxHp
-      value: 1000
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 3011685716387597196, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: m_LocalScale.x
@@ -3760,6 +3760,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 2015979458}
   SFXSource: {fileID: 429297030}
+  BackgroundMusicVolume: 0.2
+  SFXVolume: 0.7
   Background: {fileID: 8300000, guid: 2a7ab5d59e8997b4dac81e8ed52287e0, type: 3}
   BossBattle: {fileID: 8300000, guid: 057c6ec2f6b1d05448a3ff716ec9c6c6, type: 3}
   EnemyGunfire: {fileID: 8300000, guid: e017d4d1b7c5c0941b22f4d4ce50384a, type: 3}
@@ -3767,6 +3769,10 @@ MonoBehaviour:
   MissileSound: {fileID: 0}
   ShieldCreation: {fileID: 0}
   iveBeenHit: {fileID: 8300000, guid: f7d44c119cccf234aa852d8f7a5df20e, type: 3}
+  PowerUp: {fileID: 8300000, guid: 213b4e8521173424ca6fd5db667661a0, type: 3}
+  HealthUp: {fileID: 8300000, guid: 1c1f2b13e7f270e43a81b8e5562af5cc, type: 3}
+  PowerDown: {fileID: 8300000, guid: d85086b51b96ff14d996afd09848132a, type: 3}
+  BarrellRoll: {fileID: 0}
 --- !u!4 &727190082
 Transform:
   m_ObjectHideFlags: 0
@@ -5466,7 +5472,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2144598022725070078, guid: 7eeef88246495f345bbbf272396729c6, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2144598022725070078, guid: 7eeef88246495f345bbbf272396729c6, type: 3}
       propertyPath: mainCamera
@@ -5530,7 +5536,7 @@ PrefabInstance:
       objectReference: {fileID: 727190081}
     - target: {fileID: 8277886875485701582, guid: 7eeef88246495f345bbbf272396729c6, type: 3}
       propertyPath: upgradeCount
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8277886875485701582, guid: 7eeef88246495f345bbbf272396729c6, type: 3}
       propertyPath: bulletSpawnLWing

@@ -6,17 +6,17 @@ public class PlayerAttack : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public GameObject gunFlashPrefab;
-    public GameObject explosionPrefab; // Variable to hold the explosion prefab
     public Vector3 bulletSpawnOffset = new Vector3(0f, 0f, 1f);
     public float bulletSpeed = 10f;
     public float fireRate = 0.2f;
     public float missileRate = 1.0f;
     private float fireTimer = 0f;
     public int upgradeCount = 0;
+    [SerializeField]
+    private int maxUpgradeCount = 2;
     public Transform bulletSpawnCenter;
     public Transform bulletSpawnLWing;
     public Transform bulletSpawnRWing;
-    [SerializeField] public AudioManager audioManager;
     private HomingMissile hMissile;
 
     private void Start()
@@ -31,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
             fireTimer += Time.deltaTime;
             if (fireTimer >= fireRate)
             {
+                AudioManager.instance.PlaySoundEffects(AudioManager.instance.PlayerGunfire);
                 FireBullet();
                 fireTimer = 0f;
             }
@@ -112,7 +113,6 @@ public class PlayerAttack : MonoBehaviour
     {
         GameObject bullet = Instantiate(prefab, position, rotation);
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-        audioManager.PlaySoundEffects(audioManager.PlayerGunfire);
 
         if (bulletRigidbody != null)
         {
@@ -155,12 +155,33 @@ public class PlayerAttack : MonoBehaviour
         if (collision.gameObject.CompareTag("Upgrade"))
         {
             Destroy(collision.gameObject);
-            upgradeCount++;
+            //Debug.Log("PoweredUpdudeeee");
+            IncreaseUpgradeCount();
         }
-        else if (collision.gameObject.CompareTag("Bullet"))
+    }
+
+    public void IncreaseUpgradeCount()
+    {
+        upgradeCount++;
+        if(upgradeCount>maxUpgradeCount)
         {
-            Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
-            Destroy(collision.gameObject);
+            upgradeCount = maxUpgradeCount;
+        }else
+        {
+            AudioManager.instance.PlaySoundEffects(AudioManager.instance.PowerUp);
         }
+    }
+
+    public void DecreaseUpgradeCount()
+    {
+        if(upgradeCount>0)
+        {
+            upgradeCount--;
+            AudioManager.instance.PlaySoundEffects(AudioManager.instance.PowerDown);
+        }
+    }
+    public void ResetUpgradeCount()
+    {
+        upgradeCount = 0;
     }
 }

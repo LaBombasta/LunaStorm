@@ -269,7 +269,6 @@ public class Enemy : MonoBehaviour
         int rand = (int)Random.Range(0, droppedItem.Length);
         if (droppedItem[rand] != null)
         {
-            Debug.Log("this should be making somehitng");
             GameObject drop = Instantiate(droppedItem[rand], gameObject.transform);
             drop.transform.parent = null;
             Debug.Log(drop.name.ToString());
@@ -277,7 +276,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("you hit nothing as your reward");
+           // Debug.Log("you hit nothing as your reward");
         }
        
     }

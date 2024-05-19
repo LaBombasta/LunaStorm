@@ -6,7 +6,7 @@ public class HealthPowerUp : MonoBehaviour
 {
     private void Start()
     {
-        Debug.Log("I've been created");
+        //Debug.Log("I've been created");
         Destroy(this.gameObject, 10.0f);
     }
     private void OnCollisionEnter(Collision collision)

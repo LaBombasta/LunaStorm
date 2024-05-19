@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   tagToHit: Player
+  explosionPrefab: {fileID: 4116293653724682450, guid: c3cd3a874eae4fa419346bd4f2cf25af, type: 3}
 --- !u!54 &-6475018575962408757
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -184,3 +185,4 @@ MonoBehaviour:
   deathScore: 0
   flash1: {r: 1, g: 0, b: 0, a: 1}
   flash2: {r: 1, g: 1, b: 1, a: 1}
+  noDamage: 0

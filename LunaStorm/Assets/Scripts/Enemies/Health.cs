@@ -29,10 +29,9 @@ public class Health : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
-        //Debug.Log("doing the thing");
         if(noDamage)
         {
-            Debug.Log("I took no damage on this instance");
+            AudioManager.instance.PlaySoundEffects(AudioManager.instance.EnemyGunfire);
         }
         else
         {

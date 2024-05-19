@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     AudioSource musicSource;
     [SerializeField]
     AudioSource SFXSource;
+    public float BackgroundMusicVolume;
+    public float SFXVolume;
 
     [Header("--- Audio Clips ---")]
     public AudioClip Background;
@@ -19,15 +21,19 @@ public class AudioManager : MonoBehaviour
     public AudioClip MissileSound;
     public AudioClip ShieldCreation;
     public AudioClip iveBeenHit;
+    public AudioClip PowerUp;
+    public AudioClip HealthUp;
+    public AudioClip PowerDown;
+    public AudioClip BarrellRoll;
 
 
     private void Start()
     {
         instance = this;
-        musicSource.volume = .5f;
+        musicSource.volume = BackgroundMusicVolume;
         musicSource.clip = Background;
         musicSource.Play();
-
+        SFXSource.volume = SFXVolume;
     }
 
     public void PlaySoundEffects(AudioClip clip)

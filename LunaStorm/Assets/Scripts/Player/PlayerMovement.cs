@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public Camera mainCamera;
     private CameraMovement cameraMovement; // Reference to the CameraMovement script
     private CharacterController controller;
+    [SerializeField]
+    private ParticleSystem sheild;
 
     private Health health;
 
@@ -127,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator BarrelRoll(int rollDirection)
     {
+        sheild.Play();
         canRoll = false; // Disable rolling until the cooldown is over
 
         float rollAmount = 360f; // Adjust the amount of rotation for the barrel roll

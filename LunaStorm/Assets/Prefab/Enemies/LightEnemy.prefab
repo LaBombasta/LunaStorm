@@ -133,7 +133,7 @@ MonoBehaviour:
   attachedGuns: []
   droppedItem:
   - {fileID: 6870611785561769114, guid: 7ddee2957831907489962417f6c99284, type: 3}
-  - {fileID: 0}
+  - {fileID: 8534057449909422661, guid: 715d863c8fbccbb49806588877a5e8af, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &-4701805270046870578

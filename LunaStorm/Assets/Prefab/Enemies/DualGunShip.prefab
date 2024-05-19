@@ -241,7 +241,7 @@ MonoBehaviour:
   droppedItem:
   - {fileID: 6870611785561769114, guid: 7ddee2957831907489962417f6c99284, type: 3}
   - {fileID: 6870611785561769114, guid: 7ddee2957831907489962417f6c99284, type: 3}
-  - {fileID: 0}
+  - {fileID: 8534057449909422661, guid: 715d863c8fbccbb49806588877a5e8af, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &1153302310895900134
@@ -263,6 +263,7 @@ MonoBehaviour:
   deathScore: 50
   flash1: {r: 1, g: 0, b: 0, a: 1}
   flash2: {r: 0.5566038, g: 0.52247244, b: 0.52247244, a: 0.972549}
+  noDamage: 0
 --- !u!136 &5794142870391115412
 CapsuleCollider:
   m_ObjectHideFlags: 0

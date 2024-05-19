@@ -126,6 +126,10 @@ public class GameManager : MonoBehaviour
    
     public void SubtractLives()
     {
+        if(myPlayer.GetComponent<PlayerAttack>())
+        {
+            myPlayer.GetComponent<PlayerAttack>().DecreaseUpgradeCount();
+        }
         // subtract life
         remainingLives--;
         if(remainingLives<0)
@@ -154,6 +158,7 @@ public class GameManager : MonoBehaviour
         if (remainingLives<lives.Length)
         {
             lives[remainingLives].SetActive(true);
+            AudioManager.instance.PlaySoundEffects(AudioManager.instance.HealthUp);
             remainingLives++;
         }
         
