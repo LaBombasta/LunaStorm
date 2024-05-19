@@ -3772,7 +3772,7 @@ MonoBehaviour:
   PowerUp: {fileID: 8300000, guid: 213b4e8521173424ca6fd5db667661a0, type: 3}
   HealthUp: {fileID: 8300000, guid: 1c1f2b13e7f270e43a81b8e5562af5cc, type: 3}
   PowerDown: {fileID: 8300000, guid: d85086b51b96ff14d996afd09848132a, type: 3}
-  BarrellRoll: {fileID: 0}
+  BarrellRoll: {fileID: 8300000, guid: 923e0f3a1f1963445a13bd608e4a746a, type: 3}
 --- !u!4 &727190082
 Transform:
   m_ObjectHideFlags: 0
