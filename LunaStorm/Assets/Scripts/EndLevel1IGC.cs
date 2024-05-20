@@ -29,6 +29,7 @@ public class EndLevel1IGC : MonoBehaviour
     public void IGC()
     {
         StartCoroutine(IGCSequence());
+        player.layer = LayerMask.NameToLayer("NoCollision");
     }
 
     void DisableScriptsExcept(params string[] allowedScripts)
@@ -158,7 +159,7 @@ public class EndLevel1IGC : MonoBehaviour
             // Move the player using CharacterController
             player.GetComponent<CharacterController>().Move(moveDirection * moveSpeed * Time.deltaTime);
 
-            Debug.Log("loooooooooooooooooooop");
+            //Debug.Log("loooooooooooooooooooop");
 
             // Check for collisions with objects tagged "Finish"
             Collider[] colliders = Physics.OverlapSphere(player.transform.position, 1.0f); // Adjust radius as needed

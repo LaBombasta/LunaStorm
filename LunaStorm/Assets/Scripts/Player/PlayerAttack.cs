@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 AudioManager.instance.PlaySoundEffects(AudioManager.instance.PlayerGunfire);
                 FireBullet();
-                fireTimer = 0f;
+                //fireTimer = 0f;
             }
         }
         else if (Input.GetKey(KeyCode.F))
@@ -50,6 +50,7 @@ public class PlayerAttack : MonoBehaviour
 
     void FireBullet()
     {
+        fireTimer = 0f;
         AudioManager.instance.PlaySoundEffects(AudioManager.instance.PlayerGunfire);
         GameObject gunFlash;
 
@@ -118,7 +119,7 @@ public class PlayerAttack : MonoBehaviour
         {
             Vector3 velocity = bullet.transform.forward * bulletSpeed;
             bulletRigidbody.velocity = velocity;
-            Destroy(bullet, 5f);
+            Destroy(bullet, 1.2f);
         }
         else
         {

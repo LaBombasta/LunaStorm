@@ -79,7 +79,7 @@ public class WaveSpawner : MonoBehaviour
                     AudioManager.instance.BossMusicTime();
                     GameManager.instance.EnterBattle();
                     boss.SetMinions(this);
-                    boss.SetMoveType(6);
+                    boss.SetMoveType(0);
                     
                 }
                 
