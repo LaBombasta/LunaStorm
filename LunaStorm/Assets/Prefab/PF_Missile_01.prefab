@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 4
   tagToHit: Enemy
+  explosionPrefab: {fileID: 7008103833584524411, guid: 3496b6c89ab43264db829512f1a4dc55, type: 3}
 --- !u!54 &-972299795764222275
 Rigidbody:
   m_ObjectHideFlags: 0
