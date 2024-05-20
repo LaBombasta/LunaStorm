@@ -2607,11 +2607,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2531571055662539647, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: HP
-      value: 2000
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 2531571055662539647, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: MaxHp
-      value: 2000
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 3011685716387597196, guid: ca5bc0223d8c34840bbed40f0a4f5fcf, type: 3}
       propertyPath: m_LocalScale.x
@@ -3760,8 +3760,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 2015979458}
   SFXSource: {fileID: 429297030}
-  BackgroundMusicVolume: 0.2
-  SFXVolume: 0.7
+  BackgroundMusicVolume: 0.07
+  SFXVolume: 0.25
   Background: {fileID: 8300000, guid: 2a7ab5d59e8997b4dac81e8ed52287e0, type: 3}
   BossBattle: {fileID: 8300000, guid: 057c6ec2f6b1d05448a3ff716ec9c6c6, type: 3}
   EnemyGunfire: {fileID: 8300000, guid: e017d4d1b7c5c0941b22f4d4ce50384a, type: 3}
@@ -3985,7 +3985,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0973a58661544ee43864eaf901a00975, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20c7b2e1a6fd1d34185d402c8f43d368, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7489,7 +7489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0973a58661544ee43864eaf901a00975, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20c7b2e1a6fd1d34185d402c8f43d368, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7969,7 +7969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0973a58661544ee43864eaf901a00975, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20c7b2e1a6fd1d34185d402c8f43d368, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8971,7 +8971,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0973a58661544ee43864eaf901a00975, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20c7b2e1a6fd1d34185d402c8f43d368, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10711,7 +10711,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0973a58661544ee43864eaf901a00975, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20c7b2e1a6fd1d34185d402c8f43d368, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11578,7 +11578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0973a58661544ee43864eaf901a00975, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20c7b2e1a6fd1d34185d402c8f43d368, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
