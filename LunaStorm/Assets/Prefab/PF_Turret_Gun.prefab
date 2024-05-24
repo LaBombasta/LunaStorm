@@ -215,6 +215,7 @@ MonoBehaviour:
   deathScore: 150
   flash1: {r: 1, g: 0, b: 0, a: 1}
   flash2: {r: 1, g: 1, b: 1, a: 1}
+  noDamage: 0
 --- !u!4 &7667941648412165793 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3030261731570733654, guid: dbc554c33be184a48b6971b9b4df1d04, type: 3}
@@ -244,7 +245,7 @@ MonoBehaviour:
   ammoSpawnPoint_L: {fileID: 8225051157929374053}
   ammoSpawnPoint_R: {fileID: 913849497943412730}
   timeBetweenShots: 5
-  projectileSpeed: 2000
+  projectileSpeed: 20
   timeToExplode: 15
 --- !u!65 &3580153239378250901
 BoxCollider:

@@ -33,6 +33,7 @@ public class Turret : MonoBehaviour
 
         if (distanceToTarget <= maxRange)
         {
+            // set player location to temp location
             currentState = TurretAIState.Attacking;
         }
         else
@@ -61,9 +62,9 @@ public class Turret : MonoBehaviour
 
                     if (turretRound_L_RB != null || turretRound_R_RB != null)
                     {
-                        turretRound_L_RB.velocity = transform.forward * projectileSpeed * Time.deltaTime;
+                        turretRound_L_RB.velocity = transform.forward * projectileSpeed;
                         Destroy(turretRound_Left, timeToExplode);
-                        turretRound_R_RB.velocity = transform.forward * projectileSpeed * Time.deltaTime;
+                        turretRound_R_RB.velocity = transform.forward * projectileSpeed;
                         Destroy(turretRound_Right, timeToExplode);
                        
                     }
