@@ -56,6 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  sheild: {fileID: 0}
   forwardSpeed: 12
   barrelRollSpeedMultiplier: 2.2
   smoothingFactor: 5
@@ -73,9 +74,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2888214702400964595, guid: a22980a992a01cd4ebb0e988c53320ea, type: 3}
+  gunFlashPrefab: {fileID: 0}
   bulletSpawnOffset: {x: 0, y: 0, z: 1}
   bulletSpeed: 20
   fireRate: 0.2
+  missileRate: 1
+  upgradeCount: 0
+  maxUpgradeCount: 2
+  bulletSpawnCenter: {fileID: 0}
+  bulletSpawnLWing: {fileID: 0}
+  bulletSpawnRWing: {fileID: 0}
 --- !u!114 &2350510437748044919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +103,7 @@ MonoBehaviour:
   deathScore: 0
   flash1: {r: 1, g: 0, b: 0, a: 1}
   flash2: {r: 1, g: 1, b: 1, a: 1}
+  noDamage: 0
 --- !u!114 &-7857442352856833988
 MonoBehaviour:
   m_ObjectHideFlags: 0

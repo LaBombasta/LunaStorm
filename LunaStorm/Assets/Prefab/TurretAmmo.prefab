@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 82486080011790137}
   - component: {fileID: 511804404207455127}
   - component: {fileID: 5223519586034482801}
+  - component: {fileID: 5598855124847789223}
   m_Layer: 0
   m_Name: TurretAmmo
   m_TagString: TurretProjectile
@@ -152,6 +153,21 @@ MonoBehaviour:
   damage: 1
   tagToHit: Player
   explosionPrefab: {fileID: 4116293653724682450, guid: c3cd3a874eae4fa419346bd4f2cf25af, type: 3}
+--- !u!114 &5598855124847789223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115942699217024950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f544c578a253554db740a9d49c90bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnSpeed: 2.5
+  missileSpeed: 20
+  lockDistance: 10
 --- !u!1 &2657936821414796118
 GameObject:
   m_ObjectHideFlags: 0

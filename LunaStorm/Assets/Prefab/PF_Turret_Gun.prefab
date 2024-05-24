@@ -241,12 +241,12 @@ MonoBehaviour:
   currentState: 0
   target: {fileID: 0}
   turretAmmo: {fileID: 1115942699217024950, guid: ae602f39854c94849985d30420a71711, type: 3}
-  maxRange: 50
+  maxRange: 65
   ammoSpawnPoint_L: {fileID: 8225051157929374053}
   ammoSpawnPoint_R: {fileID: 913849497943412730}
-  timeBetweenShots: 5
+  timeBetweenShots: 8
   projectileSpeed: 20
-  timeToExplode: 15
+  timeToExplode: 6
 --- !u!65 &3580153239378250901
 BoxCollider:
   m_ObjectHideFlags: 0
