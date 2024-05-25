@@ -6,11 +6,13 @@ using static UnityEngine.GraphicsBuffer;
 public class HomingMissile : MonoBehaviour
 {
     public GameObject missilePrefab;
+    public GameObject explosionPrefab;
     public Vector3 missileSpawnOffset = new Vector3(0f, 0f, 2f);
     public float missileSpeed = 20f;
 
     public void FireMissile()
     {
+        AudioManager.instance.PlaySoundEffects(AudioManager.instance.MissileSound);
         GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -95,7 +97,9 @@ public class HomingMissile : MonoBehaviour
 
                     if (target.CompareTag("Turret") || target.CompareTag("Enemy"))
                     {
-                        target.BroadcastMessage("TakeDamage", 2, SendMessageOptions.RequireReceiver);
+                        target.BroadcastMessage("TakeDamage", 3, SendMessageOptions.RequireReceiver);
+                        GameObject temp = Instantiate(explosionPrefab, missile.transform.position, Quaternion.identity);
+                        Destroy(temp, 1);
                         Destroy(missile);
                     }
                     target = null;

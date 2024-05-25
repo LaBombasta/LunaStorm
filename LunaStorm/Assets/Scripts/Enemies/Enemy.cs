@@ -95,14 +95,22 @@ public class Enemy : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2);
-        
-        while(turnDegree < 90)
+        for (int i = 0; i < attachedGuns.Length; i++)
+        {
+            attachedGuns[i].SetLockedOn();
+            attachedGuns[i].SetFireRate(normalFR);
+            attachedGuns[i].StartFiring();
+        }
+        while (turnDegree < 90)
         {
             turnDegree += turnSpeed * Time.deltaTime;
             transform.Rotate(new Vector3(0, turnSpeed, 0) * Time.deltaTime);
             //Debug.Log(turnDegree);
             yield return new WaitForSeconds(0);
+
         }
+        yield return new WaitForSeconds(4);
+        StopAllGuns();
     }
     private IEnumerator LeftTurn()
     {
@@ -116,13 +124,20 @@ public class Enemy : MonoBehaviour
         }
 
         yield return new WaitForSeconds(2);
-
+        for (int i = 0; i < attachedGuns.Length; i++)
+        {
+            attachedGuns[i].SetLockedOn();
+            attachedGuns[i].SetFireRate(normalFR);
+            attachedGuns[i].StartFiring();
+        }
         while (turnDegree < 90)
         {
             turnDegree += turnSpeed * Time.deltaTime;
             transform.Rotate(new Vector3(0, -turnSpeed, 0) * Time.deltaTime);
             yield return new WaitForSeconds(0);
         }
+        yield return new WaitForSeconds(4);
+        StopAllGuns();
     }
 
     private IEnumerator RightTurn180()

@@ -14,7 +14,9 @@ public class DealDamage : MonoBehaviour
         if(collision.gameObject.CompareTag(tagToHit))
         {
             collision.transform.gameObject.BroadcastMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            GameObject temp  = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(temp, 1);
+
             Destroy(this.gameObject);
         }
     }

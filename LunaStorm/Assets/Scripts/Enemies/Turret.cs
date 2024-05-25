@@ -54,7 +54,7 @@ public class Turret : MonoBehaviour
                 if (weaponFired == false)
                 {
                     weaponFired = true;
-                    
+                    AudioManager.instance.PlaySoundEffects(AudioManager.instance.MissileSound);
                     GameObject turretRound_Left = Instantiate(turretAmmo, ammoSpawnPoint_L.position, ammoSpawnPoint_L.rotation);
                     Rigidbody  turretRound_L_RB = turretRound_Left.GetComponent<Rigidbody>();
                     GameObject turretRound_Right = Instantiate(turretAmmo, ammoSpawnPoint_R.position, ammoSpawnPoint_R.rotation);
